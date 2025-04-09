@@ -1,0 +1,242 @@
+/* CSS cho hiệu ứng chuyển tiếp mượt mà giữa các câu hỏi */
+
+/* Container chính */
+.quiz-container {
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  /* Hiệu ứng hover ban đầu */
+  .initial-hover {
+    animation: initialPulse 1.5s ease;
+  }
+  
+  @keyframes initialPulse {
+    0% { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
+    50% { box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); }
+    100% { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
+  }
+  
+  /* Slide câu hỏi */
+  .question-slide {
+    position: relative;
+    width: 100%;
+    opacity: 1;
+    transition: all 0.3s ease;
+  }
+  
+  /* Hiệu ứng slide in từ phải sang trái */
+  .slide-in {
+    animation: slideInFromRight 0.3s forwards;
+  }
+  
+  @keyframes slideInFromRight {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Hiệu ứng slide out từ trái sang phải */
+  .slide-out {
+    animation: slideOutToLeft 0.3s forwards;
+  }
+  
+  @keyframes slideOutToLeft {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+  }
+  
+  /* Hiệu ứng slide in từ trái sang phải (cho nút Trước) */
+  .slide-in-reverse {
+    animation: slideInFromLeft 0.3s forwards;
+  }
+  
+  @keyframes slideInFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Hiệu ứng slide out từ phải sang trái (cho nút Trước) */
+  .slide-out-reverse {
+    animation: slideOutToRight 0.3s forwards;
+  }
+  
+  @keyframes slideOutToRight {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
+  
+  /* Hiệu ứng progress bar mượt mà */
+  .progress-bar {
+    transition: width 0.5s ease-in-out;
+  }
+  
+  /* Hiệu ứng option hover */
+  .option-label {
+    transition: all 0.2s ease;
+  }
+  
+  .option-label:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* Hiệu ứng option được chọn */
+  .option-label input[type="radio"]:checked + .option-text {
+    font-weight: bold;
+    color: #f4a460;
+  }
+  
+  /* Hiệu ứng rung lắc khi validate */
+  .shake {
+    animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  }
+  
+  @keyframes shake {
+    10%, 90% {
+      transform: translateX(-1px);
+    }
+    20%, 80% {
+      transform: translateX(2px);
+    }
+    30%, 50%, 70% {
+      transform: translateX(-3px);
+    }
+    40%, 60% {
+      transform: translateX(3px);
+    }
+  }
+  
+  /* Thông báo lỗi */
+  .error-message {
+    color: #e74c3c;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: rgba(231, 76, 60, 0.1);
+    border-radius: 5px;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Nút điều hướng */
+  .btn-nav, .btn-submit {
+    transition: all 0.3s ease;
+  }
+  
+  .btn-nav:hover, .btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .btn-nav:active, .btn-submit:active {
+    transform: translateY(0);
+  }
+  
+  /* Màn hình loading */
+  .loading, .submitting {
+    text-align: center;
+    padding: 30px;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  .spinner {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 3px solid rgba(244, 164, 96, 0.3);
+    border-radius: 50%;
+    border-top-color: #f4a460;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Màn hình thành công */
+  .success-message {
+    text-align: center;
+    padding: 30px;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  .success-icon {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    background-color: #2ecc71;
+    color: white;
+    border-radius: 50%;
+    font-size: 24px;
+    margin-bottom: 15px;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  @keyframes popIn {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Màn hình hoàn thành */
+  .completion-screen {
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  /* Hiệu ứng smooth cho emojis */
+  .emoji {
+    transition: all 0.5s ease;
+  }
+  
+  .emoji:hover {
+    transform: translateY(-5px) rotate(10deg);
+  }
+  
+  /* Đảm bảo container quản lý overflow đúng cách */
+  body {
+    overflow-x: hidden;
+  }

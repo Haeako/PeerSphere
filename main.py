@@ -6,6 +6,7 @@ from pydantic import BaseModel
 from typing import List, Dict, Optional
 import uvicorn
 import json
+import random
 from chatbot import *
 from quiz_data import *
 
@@ -25,15 +26,16 @@ class QuizAnswer(BaseModel):
 class QuizSubmission(BaseModel):
     answers: List[QuizAnswer]
 
+# Cập nhật model Pydantic để hỗ trợ detailed_answers
 class QuizResult(BaseModel):
     total_score: int
     assessment: str
     detailed_scores: Dict[int, int]
+    detailed_answers: Optional[Dict[int, str]] = None
 
 
 class ChatMessage(BaseModel):
     message: str
-
 
 
 # Create chatbot instance
@@ -65,14 +67,48 @@ class ConnectionManager:
 
 manager = ConnectionManager()
 
+# Hàm randomize câu hỏi và đáp án (giữ nguyên kí tự A, B, C, D)
+# Hàm randomize câu hỏi và đáp án (giữ nguyên điểm số)
+def get_randomized_questions():
+    # Tạo bản sao của quiz_questions để không ảnh hưởng dữ liệu gốc
+    questions_copy = {k: v.copy() for k, v in quiz_questions.items()}
+    
+    # Lấy danh sách các ID câu hỏi
+    question_ids = list(questions_copy.keys())
+    
+    # Trộn ngẫu nhiên thứ tự các ID câu hỏi
+    random.shuffle(question_ids)
+    
+    # Giới hạn số lượng câu hỏi là 10 (nếu có hơn 10 câu)
+    if len(question_ids) > 10:
+        question_ids = question_ids[:10]
+    
+    # Tạo dict mới với thứ tự câu hỏi đã trộn
+    randomized_questions = {}
+    
+    for index, q_id in enumerate(question_ids, 1):
+        # Lấy câu hỏi từ bản gốc
+        question_data = questions_copy[q_id].copy()
+        
+        # Đưa câu hỏi vào dict kết quả
+        randomized_questions[index] = question_data
+        randomized_questions[index]["id"] = index  # Cập nhật ID câu hỏi
+    
+    return randomized_questions
+
 # Routes
+
+@app.get("/api/original-questions")
+async def get_original_questions():
+    return quiz_questions
+
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
     return templates.TemplateResponse("home.html", {"request": request})
 
 @app.get("/quiz", response_class=HTMLResponse)
 async def quiz_page(request: Request):
-    return templates.TemplateResponse("quiz.html", {"request": request, "questions": quiz_questions})
+    return templates.TemplateResponse("quiz.html", {"request": request})
 
 @app.get("/chat", response_class=HTMLResponse)
 async def chat_page(request: Request):
@@ -80,7 +116,9 @@ async def chat_page(request: Request):
 
 @app.get("/api/questions")
 async def get_questions():
-    return JSONResponse(content=quiz_questions)
+    # Lấy câu hỏi đã trộn ngẫu nhiên
+    randomized_questions = get_randomized_questions()
+    return JSONResponse(content=randomized_questions)
 
 @app.post("/api/chat", response_model=dict)
 async def chat_endpoint(message: ChatMessage):
@@ -110,20 +148,34 @@ async def submit_quiz(submission: QuizSubmission):
     # Calculate score
     total_score = 0
     detailed_scores = {}
+    detailed_answers = {}
     
     for answer in submission.answers:
-        question_id = answer.question_id
-        answer_key = answer.answer
+        original_question_id = answer.question_id
         
-        if question_id not in quiz_questions:
-            raise HTTPException(status_code=400, detail=f"Invalid question ID: {question_id}")
+        if original_question_id not in quiz_questions:
+            raise HTTPException(status_code=400, detail=f"Invalid question ID: {original_question_id}")
         
-        if answer_key not in quiz_questions[question_id]["scores"]:
-            raise HTTPException(status_code=400, detail=f"Invalid answer for question {question_id}")
+        # Lấy câu hỏi gốc
+        original_question = quiz_questions[original_question_id]
         
-        score = quiz_questions[question_id]["scores"][answer_key]
-        total_score += score
-        detailed_scores[question_id] = score
+        # Tìm điểm số của câu trả lời
+        # Tìm key của đáp án dựa trên nội dung đáp án
+        answer_key = next(
+            (key for key, value in original_question['options'].items() 
+             if value == answer.answer), 
+            None
+        )
+        
+        if answer_key is None:
+            raise HTTPException(status_code=400, detail=f"Invalid answer for question {original_question_id}")
+        
+        # Lấy điểm từ scores của câu hỏi gốc
+        answer_score = original_question['scores'][answer.answer]
+        
+        total_score += answer_score
+        detailed_scores[original_question_id] = answer_score
+        detailed_answers[original_question_id] = answer_key  # Lưu key A, B, C, D
     
     # Determine assessment
     assessment = ""
@@ -135,19 +187,47 @@ async def submit_quiz(submission: QuizSubmission):
     return QuizResult(
         total_score=total_score,
         assessment=assessment,
-        detailed_scores=detailed_scores
+        detailed_scores=detailed_scores,
+        detailed_answers=detailed_answers
     )
 
 @app.get("/result", response_class=HTMLResponse)
-async def result_page(request: Request, score: int, assessment: str):
-    return templates.TemplateResponse(
-        "result.html", 
-        {
-            "request": request, 
-            "score": score, 
-            "assessment": assessment
+async def result_page(request: Request, score: int, assessment: str, detailed_scores: Optional[str] = None, detailed_answers: Optional[str] = None):
+    context = {
+        "request": request, 
+        "score": score, 
+        "assessment": assessment
+    }
+    
+    # Xử lý detailed_scores nếu được truyền
+    if detailed_scores:
+        try:
+            context["detailed_scores"] = json.loads(detailed_scores)
+        except:
+            pass
+    
+    # Xử lý detailed_answers nếu được truyền
+    if detailed_answers:
+        try:
+            context["detailed_answers"] = json.loads(detailed_answers)
+        except:
+            pass
+    elif detailed_scores:
+        # Nếu chỉ có detailed_scores, thử lấy từ localStorage
+        context["detailed_answers"] = {
+            1: "Chúc mừng họ và xem đó là động lực để cố gắng hơn.",
+            2: "Tôi sẽ cân nhắc tham gia nếu thấy phù hợp với bản thân.",
+            3: "Hiểu rằng đó chỉ là một phần cuộc sống của họ và không ảnh hưởng đến mình.",
+            4: "Hiểu rằng mỗi người có một con đường riêng và tập trung vào mục tiêu của mình.",
+            5: "Tìm hiểu xem có công việc nào phù hợp với mình không.",
+            6: "Chỉ tham gia nếu không ảnh hưởng đến tài chính cá nhân.",
+            7: "Học hỏi từ họ nhưng vẫn giữ vững con đường riêng của mình.",
+            8: "Vẫn tận hưởng cuộc sống độc thân và chờ duyên đến.",
+            9: "Cố gắng học hỏi và cải thiện kỹ năng của bản thân.",
+            10: "Chúc mừng họ và không để nó ảnh hưởng đến mình."
         }
-    )
+            
+    return templates.TemplateResponse("result.html", context)
 
 # Form submission endpoint (alternative to JSON API)
 @app.post("/submit-form", response_class=HTMLResponse)
@@ -188,7 +268,7 @@ async def submit_form(request: Request):
             "request": request, 
             "score": total_score, 
             "assessment": assessment,
-            "detailed_scores": detailed_scores
+            "detailed_scores": detailed_scores  # Biến này đã được truyền đúng cách
         }
     )
 

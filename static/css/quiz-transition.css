@@ -1,0 +1,404 @@
+/* CSS cho hiệu ứng chuyển tiếp mượt mà giữa các câu hỏi */
+
+/* Thiết lập cơ bản */
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #fff8f0, #ffeecf);
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  
+  /* Container chính của quiz */
+  .quiz-container {
+    position: relative;
+    max-width: 600px;
+    margin: 50px auto;
+    background: #fff2e6;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Quan trọng để hiệu ứng slide hoạt động đúng */
+    min-height: 400px; /* Đảm bảo chiều cao tối thiểu để tránh nhảy layout */
+  }
+  
+  /* Hiệu ứng hover ban đầu */
+  .initial-hover {
+    animation: initialPulse 1.5s ease;
+  }
+  
+  @keyframes initialPulse {
+    0% { box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+    50% { box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); }
+    100% { box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+  }
+  
+  /* Container slide câu hỏi */
+  .question-slide {
+    position: relative;
+    width: 100%;
+    opacity: 1;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+  }
+  
+  /* Hiệu ứng slide in từ phải sang trái */
+  .slide-in {
+    animation-name: slideInFromRight;
+  }
+  
+  @keyframes slideInFromRight {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Hiệu ứng slide out từ trái sang phải */
+  .slide-out {
+    animation-name: slideOutToLeft;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  
+  @keyframes slideOutToLeft {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+  }
+  
+  /* Hiệu ứng slide in từ trái sang phải (cho nút Trước) */
+  .slide-in-reverse {
+    animation-name: slideInFromLeft;
+  }
+  
+  @keyframes slideInFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Hiệu ứng slide out từ phải sang trái (cho nút Trước) */
+  .slide-out-reverse {
+    animation-name: slideOutToRight;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  
+  @keyframes slideOutToRight {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
+  
+  /* Tiêu đề câu hỏi */
+  .question-title {
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    color: #4d3e3e;
+  }
+  
+  /* Progress bar */
+  .progress-container {
+    margin-bottom: 20px;
+  }
+  
+  .progress {
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 5px;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, #f4a460, #e08a3c);
+    width: 0;
+    transition: width 0.5s ease-in-out; /* Hiệu ứng mượt mà cho progress bar */
+    border-radius: 5px;
+  }
+  
+  /* Options container */
+  .options-container {
+    margin-bottom: 25px;
+  }
+  
+  /* Style cho options */
+  .option-label {
+    display: block;
+    margin-bottom: 12px;
+    padding: 15px;
+    border-radius: 8px;
+    background: #ff0000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+  
+  .option-label:hover {
+    background: #fc2e2e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Radio button styling */
+  .option-label input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+  }
+  
+  .option-label input[type="radio"] + .option-text {
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    display: inline-block;
+  }
+  
+  .option-label input[type="radio"] + .option-text:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    border: 2px solid #f4a460;
+    border-radius: 100%;
+    background: white;
+    transition: all 0.3s ease;
+  }
+  
+  .option-label input[type="radio"]:checked + .option-text:before {
+    background-color: #f4a460;
+    box-shadow: inset 0 0 0 4px white;
+  }
+  
+  .option-label:hover input[type="radio"] + .option-text:before {
+    box-shadow: 0 0 0 3px rgba(244, 164, 96, 0.2);
+  }
+  
+  .option-label input[type="radio"]:checked + .option-text {
+    color: #f4a460;
+    font-weight: 600;
+  }
+  
+  /* Hiệu ứng option được chọn */
+  .option-label input[type="radio"]:checked + .option-text {
+    font-weight: bold;
+    color: #f4a460;
+  }
+  
+  /* Nút điều hướng */
+  .nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  .nav-buttons:not(:has(#prevBtn)) #nextBtn {
+    margin-left: auto;
+  }
+  
+  .btn-nav,
+  .btn-submit {
+    background-color: #f4a460;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    font-size: 1em;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-nav:hover,
+  .btn-submit:hover {
+    background-color: #e08a3c;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .btn-nav:active,
+  .btn-submit:active {
+    transform: translateY(-1px);
+  }
+  
+  /* Nếu chỉ có một nút (nút Tiếp theo) */
+  .nav-buttons:has(button:only-child) button {
+    margin-left: auto;
+  }
+  
+  /* Hiệu ứng rung lắc khi validate */
+  .shake {
+    animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  }
+  
+  @keyframes shake {
+    10%, 90% {
+      transform: translateX(-1px);
+    }
+    20%, 80% {
+      transform: translateX(2px);
+    }
+    30%, 50%, 70% {
+      transform: translateX(-3px);
+    }
+    40%, 60% {
+      transform: translateX(3px);
+    }
+  }
+  
+  /* Thông báo lỗi */
+  .error-message {
+    color: #e74c3c;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: rgba(231, 76, 60, 0.1);
+    border-radius: 5px;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Màn hình loading */
+  .loading, .submitting {
+    text-align: center;
+    padding: 40px 20px;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  .loading p, .submitting p {
+    margin-top: 15px;
+    color: #4d3e3e;
+  }
+  
+  /* Spinner */
+  .spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(244, 164, 96, 0.3);
+    border-radius: 50%;
+    border-top-color: #f4a460;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Màn hình thành công */
+  .success-message {
+    text-align: center;
+    padding: 40px 20px;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  .success-message p {
+    margin: 10px 0;
+    color: #4d3e3e;
+  }
+  
+  .success-icon {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    background-color: #2ecc71;
+    color: white;
+    border-radius: 50%;
+    font-size: 30px;
+    margin-bottom: 20px;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  @keyframes popIn {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Màn hình hoàn thành */
+  .completion-screen {
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  .completion-screen h2 {
+    color: #4d3e3e;
+    margin-bottom: 20px;
+  }
+  
+  /* Đảm bảo emoji trang trí không làm lỗi layout */
+  .emoji {
+    position: absolute;
+    z-index: -1;
+    transition: all 0.5s ease;
+    opacity: 0.7;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .quiz-container {
+      padding: 20px;
+      margin: 20px auto;
+    }
+    
+    .btn-nav, .btn-submit {
+      padding: 10px 20px;
+    }
+    
+    .option-label {
+      padding: 12px;
+    }
+    
+    .question-title {
+      font-size: 1.2em;
+    }
+  }

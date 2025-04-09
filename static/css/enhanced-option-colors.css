@@ -1,0 +1,158 @@
+/* CSS cải thiện màu sắc cho các thanh đáp án */
+
+/* Style cho các thanh đáp án với màu sắc riêng biệt */
+.option-label {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border-radius: 12px;
+    border-left: 5px solid;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Màu sắc riêng cho từng đáp án */
+  .option-label:nth-child(1) {
+    border-color: #3B82F6; /* Xanh dương */
+    background: linear-gradient(to right, rgba(59, 130, 246, 0.05), white);
+  }
+  
+  .option-label:nth-child(2) {
+    border-color: #F59E0B; /* Cam */
+    background: linear-gradient(to right, rgba(245, 158, 11, 0.05), white);
+  }
+  
+  .option-label:nth-child(3) {
+    border-color: #10B981; /* Xanh lá */
+    background: linear-gradient(to right, rgba(16, 185, 129, 0.05), white);
+  }
+  
+  .option-label:nth-child(4) {
+    border-color: #EC4899; /* Hồng */
+    background: linear-gradient(to right, rgba(236, 72, 153, 0.05), white);
+  }
+  
+  /* Hiệu ứng hover cho các option */
+  .option-label:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .option-label:nth-child(1):hover {
+    background: linear-gradient(to right, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
+  }
+  
+  .option-label:nth-child(2):hover {
+    background: linear-gradient(to right, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
+  }
+  
+  .option-label:nth-child(3):hover {
+    background: linear-gradient(to right, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+  }
+  
+  .option-label:nth-child(4):hover {
+    background: linear-gradient(to right, rgba(236, 72, 153, 0.1), rgba(236, 72, 153, 0.05));
+  }
+  
+  /* Style cho option được chọn */
+  .option-label input[type="radio"]:checked + .option-text {
+    font-weight: 600;
+  }
+  
+  .option-label:nth-child(1) input[type="radio"]:checked + .option-text {
+    color: #3B82F6;
+  }
+  
+  .option-label:nth-child(2) input[type="radio"]:checked + .option-text {
+    color: #F59E0B;
+  }
+  
+  .option-label:nth-child(3) input[type="radio"]:checked + .option-text {
+    color: #10B981;
+  }
+  
+  .option-label:nth-child(4) input[type="radio"]:checked + .option-text {
+    color: #EC4899;
+  }
+  
+  /* Style cho đáp án được chọn */
+  .option-label:nth-child(1):has(input[type="radio"]:checked),
+  .option-label:nth-child(1) input[type="radio"]:checked ~ .option-text {
+    background: linear-gradient(to right, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.05));
+    border-color: #3B82F6;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+  }
+  
+  .option-label:nth-child(2):has(input[type="radio"]:checked),
+  .option-label:nth-child(2) input[type="radio"]:checked ~ .option-text {
+    background: linear-gradient(to right, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.05));
+    border-color: #F59E0B;
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
+  }
+  
+  .option-label:nth-child(3):has(input[type="radio"]:checked),
+  .option-label:nth-child(3) input[type="radio"]:checked ~ .option-text {
+    background: linear-gradient(to right, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05));
+    border-color: #10B981;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
+  }
+  
+  .option-label:nth-child(4):has(input[type="radio"]:checked),
+  .option-label:nth-child(4) input[type="radio"]:checked ~ .option-text {
+    background: linear-gradient(to right, rgba(236, 72, 153, 0.15), rgba(236, 72, 153, 0.05));
+    border-color: #EC4899;
+    box-shadow: 0 2px 8px rgba(236, 72, 153, 0.2);
+  }
+  
+  /* Thêm kí tự A, B, C, D phía trước mỗi đáp án */
+  .option-label:nth-child(1) .option-text::before {
+    content: "A. ";
+    font-weight: bold;
+    color: #3B82F6;
+  }
+  
+  .option-label:nth-child(2) .option-text::before {
+    content: "B. ";
+    font-weight: bold;
+    color: #F59E0B;
+  }
+  
+  .option-label:nth-child(3) .option-text::before {
+    content: "C. ";
+    font-weight: bold;
+    color: #10B981;
+  }
+  
+  .option-label:nth-child(4) .option-text::before {
+    content: "D. ";
+    font-weight: bold;
+    color: #EC4899;
+  }
+  
+  /* CSS cho tương thích tốt hơn với các trình duyệt khác nhau */
+  @supports not (selector(:has(*))) {
+    .option-label input[type="radio"]:checked + .option-text {
+      background: transparent;
+    }
+    
+    .option-label:nth-child(1) input[type="radio"]:checked {
+      accent-color: #3B82F6;
+    }
+    
+    .option-label:nth-child(2) input[type="radio"]:checked {
+      accent-color: #F59E0B;
+    }
+    
+    .option-label:nth-child(3) input[type="radio"]:checked {
+      accent-color: #10B981;
+    }
+    
+    .option-label:nth-child(4) input[type="radio"]:checked {
+      accent-color: #EC4899;
+    }
+  }

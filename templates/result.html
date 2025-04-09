@@ -1,202 +1,943 @@
-<!-- templates/result.html -->
 <!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kết Quả Đánh Giá</title>
-  <!-- Bootstrap CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome cho icon (nếu chưa có) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="{{ url_for('static', path='css/styles.css') }}">
-  <link rel="icon" href="{{ url_for('static', path='favicon.ico') }}" type="image/x-icon">
   <style>
+    /* Base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     body {
-      background: linear-gradient(135deg, #fff8f0, #ffeecf);
+      background: linear-gradient(135deg, #f9f4ff, #e8f9ff);
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .result-container {
-      background: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      font-family: 'Nunito', sans-serif;
+      color: #1F2937;
+      overflow-x: hidden;
+      padding: 0;
       position: relative;
-      z-index: 1;
     }
-    .score-display {
+    
+    .main-container {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
       flex-direction: column;
+      min-height: 100vh;
+      padding: 20px;
       position: relative;
     }
-    /* Vòng tròn rỗng với gradient */
+    
+    /* Background decorations */
+    .bg-decoration {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.1;
+      z-index: -1;
+    }
+    
+    .bg-decoration:nth-child(1) {
+      width: 300px;
+      height: 300px;
+      background: rgba(139, 92, 246, 0.8);
+      top: -150px;
+      left: -150px;
+      animation: float 15s ease-in-out infinite alternate;
+    }
+    
+    .bg-decoration:nth-child(2) {
+      width: 400px;
+      height: 400px;
+      background: rgba(99, 102, 241, 0.6);
+      bottom: -200px;
+      right: -200px;
+      animation: float 18s ease-in-out infinite alternate-reverse;
+    }
+    
+    .bg-decoration:nth-child(3) {
+      width: 200px;
+      height: 200px;
+      background: rgba(244, 114, 182, 0.7);
+      bottom: 20%;
+      left: 10%;
+      animation: float 12s ease-in-out infinite alternate;
+    }
+    
+    @keyframes float {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(30px, -30px); }
+    }
+
+    /* CSS cho phần lời khuyên */
+.advice-panel {
+  margin-top: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  display: none; /* Ẩn mặc định */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.advice-panel.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.advice-title {
+  font-weight: 700;
+  color: #4B5563;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.advice-title svg {
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.advice-content {
+  color: #4B5563;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.advice-content ul {
+  padding-left: 20px;
+  margin-top: 8px;
+}
+
+.advice-content li {
+  margin-bottom: 5px;
+}
+
+/* Màu sắc cho các mức điểm khác nhau */
+.advice-high {
+  border-left: 3px solid #10B981;
+}
+
+.advice-medium {
+  border-left: 3px solid #3B82F6;
+}
+
+.advice-low {
+  border-left: 3px solid #F59E0B;
+}
+
+.advice-very-low {
+  border-left: 3px solid #EF4444;
+}
+
+.advice-high .advice-title svg {
+  color: #10B981;
+}
+
+.advice-medium .advice-title svg {
+  color: #3B82F6;
+}
+
+.advice-low .advice-title svg {
+  color: #F59E0B;
+}
+
+.advice-very-low .advice-title svg {
+  color: #EF4444;
+}
+
+/* Cập nhật cho phần range-item */
+.range-item {
+  cursor: pointer;
+}
+
+.range-item.active {
+  padding-bottom: 0; /* Để panel lời khuyên hiển thị sát bên dưới */
+}
+    
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    
+    .header:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #8B5CF6, #EC4899);
+      border-radius: 2px;
+    }
+    
+    .header h1 {
+      font-weight: 800;
+      background: linear-gradient(90deg, #6366F1, #8B5CF6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0;
+      font-size: 2.2rem;
+    }
+    
+    /* Result container */
+    .result-container {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    /* Score section */
+    .score-section {
+      background: linear-gradient(135deg, #6366F1, #8B5CF6);
+      color: white;
+      padding: 35px;
+      text-align: center;
+      position: relative;
+    }
+    
+    .score-section:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: calc(50% - 10px);
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid #8B5CF6;
+      z-index: 5;
+    }
+    
+    .score-title {
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .score-display {
+      position: relative;
+      display: inline-block;
+    }
+    
     .score-circle {
       width: 140px;
       height: 140px;
       border-radius: 50%;
-      position: relative;
-      background: none;
-      border: 8px solid transparent;
-      background-image: linear-gradient(white, white), 
-                        conic-gradient(#f4a460, #e08a3c, #f4a460);
-      background-origin: border-box;
-      background-clip: content-box, border-box;
+      background: rgba(255, 255, 255, 0.1);
       display: flex;
-      align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      margin-bottom: 10px;
+      align-items: center;
+      margin: 0 auto 15px;
+      position: relative;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
     }
-    .score-number {
-      font-size: 2.8rem;
-      font-weight: bold;
-      color: #f4a460;
+    
+    .score-circle:before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      background: white;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    
+    .score-text {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       z-index: 2;
     }
-    .score-text {
-      font-size: 1.5rem;
-      color: #4d3e3e;
+    
+    .score-number {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #6366F1;
+      margin-bottom: -5px;
+      line-height: 1;
     }
-    .assessment h4 {
-      color: #f4a460;
-      font-weight: bold;
+    
+    .score-label {
+      font-size: 0.9rem;
+      color: #6B7280;
+      font-weight: 600;
     }
-    .assessment p {
-      font-size: 1.1rem;
-      margin-bottom: 15px;
-    }
-    .score-range ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    .score-range li::before {
-      content: "• ";
-      color: #f4a460;
-    }
-    .return-link a {
-      background-color: #f4a460;
-      border: none;
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-    }
-    .return-link a:hover {
-      background-color: #e08a3c;
-    }
-    /* Icon trang trí xung quanh */
-    .decorative-icon {
+    
+    .score-circle-fill {
       position: absolute;
-      font-size: 1.5rem;
-      color: #f4a460;
-      animation: float 3s ease-in-out infinite;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: conic-gradient(#8B5CF6 0deg, #6366F1 var(--percentage, 360deg), transparent var(--percentage, 360deg), transparent 360deg);
+      opacity: 0.8;
+      transform-origin: center;
+      animation: rotateFill 1.5s ease forwards;
     }
-    /* Một vài vị trí mẫu cho icon */
-    .icon-top-left {
-      top: -20px;
-      left: -20px;
+    
+    @keyframes rotateFill {
+      0% { transform: rotate(-90deg); }
+      100% { transform: rotate(0deg); }
     }
-    .icon-top-right {
-      top: -20px;
-      right: -20px;
+    
+    /* Assessment section */
+    .assessment-section {
+      padding: 35px;
     }
-    .icon-bottom-left {
-      bottom: -20px;
-      left: -20px;
+    
+    .assessment-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #1F2937;
+      position: relative;
+      display: inline-block;
     }
-    .icon-bottom-right {
-      bottom: -20px;
-      right: -20px;
+    
+    .assessment-title:after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: #6366F1;
+      border-radius: 2px;
     }
-    /* Hiệu ứng chuyển động nhẹ */
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
+    
+    .assessment-text {
+      color: #4B5563;
+      margin-bottom: 30px;
+      line-height: 1.6;
+      font-size: 1.05rem;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #E5E7EB;
+    }
+    
+    /* Score ranges */
+    .score-ranges {
+      margin-bottom: 30px;
+    }
+    
+    .ranges-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #1F2937;
+    }
+    
+    .range-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .range-item {
+      position: relative;
+      padding: 12px 15px 12px 35px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      background: #F9FAFB;
+      transition: all 0.3s ease;
+    }
+    
+    .range-item:hover {
+      background: #F3F4F6;
+      transform: translateX(5px);
+    }
+    
+    .range-item:before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    
+    .range-item.active {
+      background: rgba(99, 102, 241, 0.05);
+      border-left: 3px solid #6366F1;
+      font-weight: 600;
+    }
+    
+    .range-item:nth-child(1):before {
+      background: #10B981; /* Green */
+    }
+    
+    .range-item:nth-child(2):before {
+      background: #3B82F6; /* Blue */
+    }
+    
+    .range-item:nth-child(3):before {
+      background: #F59E0B; /* Orange */
+    }
+    
+    .range-item:nth-child(4):before {
+      background: #EF4444; /* Red */
+    }
+    
+    /* Detailed scores */
+    .detailed-scores {
+      margin-bottom: 30px;
+    }
+    
+    .detailed-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #1F2937;
+    }
+    
+    .scores-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 8px;
+    }
+    
+    .scores-table th {
+      color: #6B7280;
+      font-weight: 600;
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #E5E7EB;
+    }
+    
+    .scores-table td {
+      padding: 12px 10px;
+      background: #F9FAFB;
+    }
+    
+    .scores-table tr td:first-child {
+      border-radius: 8px 0 0 8px;
+      font-weight: 600;
+    }
+    
+    .scores-table tr td:last-child {
+      border-radius: 0 8px 8px 0;
+      text-align: center;
+      font-weight: 600;
+    }
+    
+    .score-value {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      line-height: 28px;
+      text-align: center;
+      border-radius: 50%;
+      color: white;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    
+    .score-value.high {
+      background: #10B981; /* Green */
+    }
+    
+    .score-value.medium {
+      background: #3B82F6; /* Blue */
+    }
+    
+    .score-value.low {
+      background: #F59E0B; /* Orange */
+    }
+    
+    .score-value.very-low {
+      background: #EF4444; /* Red */
+    }
+    
+    /* Action buttons */
+    .action-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    
+    .btn-action {
+      padding: 12px 25px;
+      border-radius: 10px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .btn-primary {
+      background: #6366F1;
+      color: white;
+      box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+    }
+    
+    .btn-secondary {
+      background: white;
+      color: #4B5563;
+      border: 1px solid #E5E7EB;
+    }
+    
+    .btn-action:hover {
+      transform: translateY(-3px);
+    }
+    
+    .btn-primary:hover {
+      background: #4F46E5;
+      box-shadow: 0 6px 15px rgba(99, 102, 241, 0.4);
+    }
+    
+    .btn-secondary:hover {
+      background: #F9FAFB;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Decorative elements */
+    .decorative-elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    
+    .decoration {
+      position: absolute;
+      border-radius: 50%;
+      background: #6366F1;
+      opacity: 0.1;
+    }
+    
+    .decoration:nth-child(1) {
+      width: 30px;
+      height: 30px;
+      top: 10%;
+      left: 10%;
+      animation: floatSmall 6s ease-in-out infinite;
+    }
+    
+    .decoration:nth-child(2) {
+      width: 20px;
+      height: 20px;
+      top: 30%;
+      right: 5%;
+      animation: floatSmall 8s ease-in-out infinite 1s;
+    }
+    
+    .decoration:nth-child(3) {
+      width: 15px;
+      height: 15px;
+      bottom: 20%;
+      left: 5%;
+      animation: floatSmall 7s ease-in-out infinite 2s;
+    }
+    
+    .decoration:nth-child(4) {
+      width: 25px;
+      height: 25px;
+      bottom: 10%;
+      right: 10%;
+      animation: floatSmall 9s ease-in-out infinite 3s;
+    }
+    
+    @keyframes floatSmall {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(15px, -15px); }
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 1.8rem;
       }
-      50% {
-        transform: translateY(-8px);
+      
+      .score-section, .assessment-section {
+        padding: 25px;
+      }
+      
+      .score-circle {
+        width: 120px;
+        height: 120px;
+      }
+      
+      .score-number {
+        font-size: 2.3rem;
+      }
+      
+      .action-buttons {
+        flex-direction: column;
+      }
+      
+      .detailed-scores {
+        overflow-x: auto;
       }
     }
-    /* Có thể thêm hiệu ứng xoay nhẹ cho một icon nếu cần */
-    .rotate {
-      animation: rotate 6s linear infinite;
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 0.8s ease forwards;
+    }
+    
+    .delay-1 {
+      animation-delay: 0.2s;
+    }
+    
+    .delay-2 {
+      animation-delay: 0.4s;
+    }
+    
+    .delay-3 {
+      animation-delay: 0.6s;
+    }
+    
+    .delay-4 {
+      animation-delay: 0.8s;
     }
   </style>
 </head>
 <body>
-  <!-- Các icon trang trí xung quanh container -->
-  <i class="fa-solid fa-star decorative-icon icon-top-left"></i>
-  <i class="fa-solid fa-heart decorative-icon icon-top-right rotate"></i>
-  <i class="fa-solid fa-leaf decorative-icon icon-bottom-left"></i>
-  <i class="fa-solid fa-moon decorative-icon icon-bottom-right rotate"></i>
-
-  <div class="container">
-    <div class="result-container">
-      <h1 class="text-center mb-4">Kết Quả Đánh Giá</h1>
-
-      <div class="score-display">
-        <div class="score-circle">
-          <div class="score-number">{{ score }}</div>
-        </div>
-        <div class="score-text">điểm</div>
+  <div class="main-container">
+    <!-- Background decorations -->
+    <div class="bg-decoration"></div>
+    <div class="bg-decoration"></div>
+    <div class="bg-decoration"></div>
+    
+    <!-- Header -->
+    <div class="header fade-in">
+      <h1>Kết Quả Đánh Giá</h1>
+    </div>
+    
+    <!-- Result container -->
+    <div class="result-container fade-in delay-1">
+      <!-- Decorative elements -->
+      <div class="decorative-elements">
+        <div class="decoration"></div>
+        <div class="decoration"></div>
+        <div class="decoration"></div>
+        <div class="decoration"></div>
       </div>
-
-      <div class="assessment">
-        <h4>Đánh giá:</h4>
-        <p>{{ assessment }}</p>
-
-        <div class="score-range mt-3">
-          <p><strong>Thang điểm:</strong></p>
+      
+      <!-- Score section -->
+      <div class="score-section">
+        <h2 class="score-title">Điểm số của bạn</h2>
+        <div class="score-display">
+          <div class="score-circle">
+            <div class="score-circle-fill" style="--percentage: {{ (score / 30) * 360 }}deg"></div>
+            <div class="score-text">
+              <div class="score-number">{{ score }}</div>
+              <div class="score-label">/ 30 điểm</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Assessment section -->
+      <div class="assessment-section">
+        <h3 class="assessment-title fade-in delay-2">Đánh giá</h3>
+        <p class="assessment-text fade-in delay-2">{{ assessment }}</p>
+        
+        <!-- Score ranges -->
+        <!-- Cập nhật phần thang điểm đánh giá với lời khuyên -->
+<div class="score-ranges fade-in delay-3">
+  <h4 class="ranges-title">Thang điểm đánh giá</h4>
+  <ul class="range-list">
+    <li class="range-item {% if score >= 25 %}active{% endif %}" onclick="toggleAdvice('high')">
+      25 - 30 điểm: Bạn kiểm soát rất tốt áp lực đồng trang lứa.
+      <div id="advice-high" class="advice-panel advice-high {% if score >= 25 %}active{% endif %}">
+        <div class="advice-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L20 7.27V16.73L12 22L4 16.73V7.27L12 2Z" />
+            <path d="M12 22V12" />
+            <path d="M12 12L20 7.27" />
+            <path d="M12 12L4 7.27" />
+          </svg>
+          Lời khuyên để duy trì sự cân bằng tuyệt vời của bạn:
+        </div>
+        <div class="advice-content">
+          Bạn đang làm rất tốt trong việc giữ vững bản sắc và không để áp lực từ bạn bè ảnh hưởng đến quyết định của mình. Hãy tiếp tục phát huy:
           <ul>
-            <li>25 - 30 điểm: Bạn kiểm soát rất tốt áp lực đồng trang lứa.</li>
-            <li>18 - 24 điểm: Bạn có một số áp lực nhưng vẫn giữ được sự cân bằng.</li>
-            <li>10 - 17 điểm: Bạn đang bị ảnh hưởng đáng kể bởi áp lực đồng trang lứa.</li>
-            <li>0 - 9 điểm: Bạn có thể đang chịu áp lực lớn và cần tìm cách giải tỏa.</li>
+            <li>Chia sẻ kinh nghiệm và hỗ trợ những người bạn đang gặp khó khăn với áp lực đồng trang lứa</li>
+            <li>Duy trì quan điểm độc lập và tự tin của bạn, đây là điểm mạnh rất đáng quý</li>
+            <li>Tiếp tục nuôi dưỡng các mối quan hệ tích cực và lành mạnh</li>
+            <li>Hãy nhớ rằng việc chọn lựa bạn bè có cùng giá trị sống với bạn sẽ giúp bạn tiếp tục phát triển</li>
           </ul>
         </div>
       </div>
-
-      {% if detailed_scores %}
-      <div class="detailed-scores mt-4">
-        <h4>Chi tiết điểm của từng câu hỏi:</h4>
-        <div class="table-responsive">
-          <table class="table table-bordered table-hover">
-            <thead class="table-light">
-              <tr>
-                <th>Câu hỏi</th>
-                <th>Điểm</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for id, score in detailed_scores.items() %}
-              <tr>
-                <td>Câu {{ id }}</td>
-                <td>{{ score }}</td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
+    </li>
+    <li class="range-item {% if score >= 18 and score <= 24 %}active{% endif %}" onclick="toggleAdvice('medium')">
+      18 - 24 điểm: Bạn có một số áp lực nhưng vẫn giữ được sự cân bằng.
+      <div id="advice-medium" class="advice-panel advice-medium {% if score >= 18 and score <= 24 %}active{% endif %}">
+        <div class="advice-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M8 12L10.5 14.5L16 9" />
+            <circle cx="12" cy="12" r="10" />
+          </svg>
+          Lời khuyên để tăng cường sự độc lập của bạn:
+        </div>
+        <div class="advice-content">
+          Bạn đã làm tốt trong việc duy trì sự cân bằng, nhưng vẫn có thể cải thiện thêm:
+          <ul>
+            <li>Luyện tập nói "không" khi bạn cảm thấy không thoải mái với một hoạt động nào đó</li>
+            <li>Dành thời gian để xác định rõ ràng các giá trị cá nhân và mục tiêu của riêng bạn</li>
+            <li>Phát triển sự tự tin bằng cách tham gia các hoạt động bạn thực sự yêu thích</li>
+            <li>Kết nối với những người có tư duy tích cực và không đánh giá người khác</li>
+            <li>Chia sẻ cảm xúc của bạn với người bạn tin tưởng khi cảm thấy áp lực</li>
+          </ul>
         </div>
       </div>
-      {% endif %}
-
-      <div class="text-center mt-4 return-link">
-        <a href="/">Quay lại làm lại bài đánh giá</a>
+    </li>
+    <li class="range-item {% if score >= 10 and score <= 17 %}active{% endif %}" onclick="toggleAdvice('low')">
+      10 - 17 điểm: Bạn đang bị ảnh hưởng đáng kể bởi áp lực đồng trang lứa.
+      <div id="advice-low" class="advice-panel advice-low {% if score >= 10 and score <= 17 %}active{% endif %}">
+        <div class="advice-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 9v4" />
+            <path d="M12 17h.01" />
+            <circle cx="12" cy="12" r="10" />
+          </svg>
+          Lời khuyên để giảm bớt áp lực đồng trang lứa:
+        </div>
+        <div class="advice-content">
+          Bạn đang chịu ảnh hưởng khá nhiều từ áp lực xung quanh. Đây là một số cách để cải thiện tình hình:
+          <ul>
+            <li>Học cách nhận diện khi nào bạn đang làm điều gì đó chỉ vì áp lực từ người khác</li>
+            <li>Tìm kiếm sự hỗ trợ từ gia đình, giáo viên hoặc cố vấn tâm lý học đường</li>
+            <li>Mở rộng vòng tròn bạn bè để không phụ thuộc vào một nhóm duy nhất</li>
+            <li>Phát triển sở thích và tài năng của riêng bạn để tăng cường sự tự tin</li>
+            <li>Đặt ra giới hạn rõ ràng cho bản thân và thực hành giữ vững những giới hạn đó</li>
+            <li>Dành thời gian rèn luyện các kỹ năng từ chối lành mạnh</li>
+          </ul>
+        </div>
+      </div>
+    </li>
+    <li class="range-item {% if score >= 0 and score <= 9 %}active{% endif %}" onclick="toggleAdvice('very-low')">
+      0 - 9 điểm: Bạn có thể đang chịu áp lực lớn và cần tìm cách giải tỏa.
+      <div id="advice-very-low" class="advice-panel advice-very-low {% if score >= 0 and score <= 9 %}active{% endif %}">
+        <div class="advice-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 8v8" />
+            <path d="M12 20h.01" />
+            <circle cx="12" cy="12" r="10" />
+          </svg>
+          Lời khuyên quan trọng để xây dựng khả năng chống lại áp lực:
+        </div>
+        <div class="advice-content">
+          Bạn đang gặp khó khăn đáng kể với áp lực đồng trang lứa. Đây là những điều bạn nên cân nhắc:
+          <ul>
+            <li>Nói chuyện với một người lớn đáng tin cậy về những gì bạn đang trải qua</li>
+            <li>Cân nhắc tham khảo ý kiến của chuyên gia tư vấn tâm lý để có chiến lược phù hợp</li>
+            <li>Đánh giá lại các mối quan hệ bạn bè hiện tại và xem liệu chúng có lành mạnh không</li>
+            <li>Học cách nhận diện và quản lý cảm xúc tiêu cực khi bị áp lực</li>
+            <li>Tập trung vào việc xây dựng lòng tự trọng và giá trị bản thân</li>
+            <li>Tìm kiếm các nhóm hỗ trợ hoặc câu lạc bộ có cùng sở thích với bạn</li>
+            <li>Nhớ rằng: việc từ chối làm theo đám đông đôi khi là dấu hiệu của sự mạnh mẽ, không phải yếu đuối</li>
+          </ul>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+        
+        <!-- Hiển thị chi tiết điểm dùng JavaScript -->
+        <div class="detailed-scores fade-in delay-4" id="detailedScores">
+          <h4 class="detailed-title">Chi tiết điểm số từng câu hỏi</h4>
+          <div class="table-responsive">
+            <table class="scores-table">
+              <thead>
+                <tr>
+                  <th>Câu hỏi</th>
+                  <th>Điểm số</th>
+                </tr>
+              </thead>
+              <tbody id="scoresTableBody">
+                <!-- Dữ liệu sẽ được thêm vào đây bằng JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <!-- Action buttons -->
+        <div class="action-buttons fade-in delay-4">
+          <button class="btn-action btn-primary" onclick="window.location.href='/'">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 12h18M3 12L9 6m-6 6l6 6"/>
+            </svg>
+            Quay lại trang chủ
+          </button>
+          <button class="btn-action btn-secondary" onclick="window.location.href='/quiz'">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 12h18m-6-6l6 6-6 6"/>
+            </svg>
+            Làm lại bài kiểm tra
+          </button>
+        </div>
       </div>
     </div>
   </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+  let detailedScores = null;
+  let detailedAnswers = null;
+  
+  const storedScores = localStorage.getItem('detailedScores');
+  const storedAnswers = localStorage.getItem('detailedAnswers');
+  
+  if (storedScores) {
+    try {
+      detailedScores = JSON.parse(storedScores);
+    } catch (e) {
+      console.error('Error parsing stored scores:', e);
+    }
+  }
+  
+  if (storedAnswers) {
+    try {
+      detailedAnswers = JSON.parse(storedAnswers);
+    } catch (e) {
+      console.error('Error parsing stored answers:', e);
+    }
+  }
+  
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlDetailedScores = urlParams.get('detailed_scores');
+  const urlDetailedAnswers = urlParams.get('detailed_answers');
+  
+  if (urlDetailedScores) {
+    try {
+      detailedScores = JSON.parse(decodeURIComponent(urlDetailedScores));
+    } catch (e) {
+      console.error('Error parsing URL scores:', e);
+    }
+  }
+  
+  if (urlDetailedAnswers) {
+    try {
+      detailedAnswers = JSON.parse(decodeURIComponent(urlDetailedAnswers));
+    } catch (e) {
+      console.error('Error parsing URL answers:', e);
+    }
+  }
+  
+  let originalQuestions = {};
+  fetch('/api/original-questions')
+    .then(response => response.json())
+    .then(questions => {
+      originalQuestions = questions;
+      renderDetailedScores(originalQuestions);
+    })
+    .catch(error => console.error('Lỗi lấy câu hỏi gốc:', error));
 
+    // Hàm để hiển thị/ẩn lời khuyên
+function toggleAdvice(level) {
+  const advicePanel = document.getElementById(`advice-${level}`);
+  
+  // Nếu panel này đang active, chỉ cần ẩn nó đi
+  if (advicePanel.classList.contains('active')) {
+    advicePanel.classList.remove('active');
+    return;
+  }
+  
+  // Ẩn tất cả các panel lời khuyên khác
+  const allPanels = document.querySelectorAll('.advice-panel');
+  allPanels.forEach(panel => {
+    if (panel.id !== `advice-${level}`) {
+      panel.classList.remove('active');
+    }
+  });
+  
+  // Hiển thị panel được chọn
+  advicePanel.classList.add('active');
+}
+
+// Khi tải trang, mở panel lời khuyên tương ứng với điểm số
+document.addEventListener('DOMContentLoaded', function() {
+  // Tạo hiệu ứng chậm cho các panel advice 
+  const activePanel = document.querySelector('.advice-panel.active');
+  if (activePanel) {
+    // Thêm một chút delay để đảm bảo animation hoạt động tốt
+    setTimeout(() => {
+      activePanel.style.opacity = '1';
+      activePanel.style.transform = 'translateY(0)';
+    }, 800); // Delay sau khi các animation khác đã hoàn thành
+  }
+});
+  
+  function renderDetailedScores(originalQuestions) {
+    const tableBody = document.getElementById('scoresTableBody');
+    if (tableBody && detailedScores && detailedAnswers && originalQuestions) {
+      Object.entries(detailedScores).forEach(([id, score]) => {
+        const row = document.createElement('tr');
+        
+        const questionCell = document.createElement('td');
+        questionCell.textContent = `Câu ${id}`;
+        row.appendChild(questionCell);
+        
+        const originalQuestion = originalQuestions[id];
+        const answerKey = detailedAnswers[id];
+        const answerText = originalQuestion.options[answerKey];
+        
+        const answerCell = document.createElement('td');
+        answerCell.textContent = `${answerKey}`;
+        row.appendChild(answerCell);
+        
+        const scoreCell = document.createElement('td');
+        const scoreSpan = document.createElement('span');
+        scoreSpan.className = `score-value ${
+          score === 3 ? 'high' : 
+          score === 2 ? 'medium' : 
+          score === 1 ? 'low' : 'very-low'
+        }`;
+        scoreSpan.textContent = score;
+        
+        scoreCell.appendChild(scoreSpan);
+        row.appendChild(scoreCell);
+        
+        tableBody.appendChild(row);
+      });
+    }
+  }
+});
+</script>
+  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

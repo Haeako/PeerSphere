@@ -4,66 +4,975 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz Hấp Dẫn</title>
-  <link rel="stylesheet" href="/static/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Background chính của trang */
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     body {
       background: linear-gradient(135deg, #fff8f0, #ffeecf);
-      position: relative;
+      font-family: 'Nunito', sans-serif;
       min-height: 100vh;
-      margin: 0;
-      overflow: hidden;
+      padding: 0;
+      color: #4B5563;
     }
-    /* Quiz container */
-    .quiz-container {
+    
+    /* Main container for proper layout */
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
       position: relative;
-      z-index: 2;
-      margin: 150px auto;
-      max-width: 600px;
-      background: #f6f1ec;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding-top: 70px; /* Space for fixed navbar */
+      padding-bottom: 30px;
     }
-    /* Style cho emoji trang trí */
-    .emoji {
+    
+    /* Fixed navigation bar */
+    .quiz-nav-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #6366F1, #8B5CF6);
+      padding: 15px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .quiz-nav-title {
+      color: white;
+      font-weight: bold;
+      font-size: 1.2em;
+      margin: 0;
+    }
+    
+    .quiz-exit-btn {
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #6366F1;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      font-size: 0.9em;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .quiz-exit-btn:hover {
+      background-color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Quiz container with proper positioning */
+    .quiz-container-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+      position: relative;
+      padding: 20px;
+      z-index: 2; /* Above decorative elements */
+    }
+    
+    .quiz-container {
+      width: 100%;
+      max-width: 650px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+    
+    /* Decorative emoji positioning */
+    .decorative-elements {
       position: absolute;
-      font-size: 2rem;
-      animation: float 4s ease-in-out infinite;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
       z-index: 1;
     }
+    
+    .emoji {
+      position: absolute;
+      font-size: 2.5rem;
+      animation: float 4s ease-in-out infinite;
+      opacity: 0.7;
+    }
+    
     .emoji-top-left {
-      top: 20px;
-      left: 20px;
+      top: 100px;
+      left: 5%;
     }
+    
     .emoji-top-right {
-      top: 20px;
-      right: 20px;
+      top: 120px;
+      right: 5%;
     }
+    
     .emoji-bottom-left {
       bottom: 50px;
-      left: 20px;
+      left: 8%;
     }
+    
     .emoji-bottom-right {
-      bottom: 50px;
-      right: 20px;
+      bottom: 80px;
+      right: 8%;
     }
+    
     @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(5deg); }
+    }
+    
+    /* Quiz title */
+    .quiz-title {
+      font-size: 1.6em;
+      color: #4B5563;
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-align: center;
+    }
+    
+    /* Progress bar */
+    .progress-container {
+      margin-bottom: 25px;
+      background-color: #F3F4F6;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 8px;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #6366F1, #8B5CF6);
+      border-radius: 10px;
+      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .progress-text {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9em;
+      color: #6B7280;
+      margin-top: 8px;
+    }
+    
+    /* Question */
+    .question-title {
+      font-size: 1.3em;
+      font-weight: 700;
+      margin-bottom: 25px;
+      color: #1F2937;
+      line-height: 1.5;
+    }
+    
+    /* Options container */
+    .options-container {
+      margin-bottom: 25px;
+    }
+    
+    /* Style for option labels with colors */
+    .option-label {
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+      border-radius: 12px;
+      border-left: 5px solid;
+      background: white;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Colors for each option */
+    .option-label:nth-child(1) {
+      border-color: #3B82F6; /* Blue */
+      background: linear-gradient(to right, rgba(59, 130, 246, 0.05), white);
+    }
+
+    .option-label:nth-child(2) {
+      border-color: #F59E0B; /* Orange */
+      background: linear-gradient(to right, rgba(245, 158, 11, 0.05), white);
+    }
+
+    .option-label:nth-child(3) {
+      border-color: #10B981; /* Green */
+      background: linear-gradient(to right, rgba(16, 185, 129, 0.05), white);
+    }
+
+    .option-label:nth-child(4) {
+      border-color: #EC4899; /* Pink */
+      background: linear-gradient(to right, rgba(236, 72, 153, 0.05), white);
+    }
+
+    /* Hover effects */
+    .option-label:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .option-label:nth-child(1):hover {
+      background: linear-gradient(to right, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
+    }
+
+    .option-label:nth-child(2):hover {
+      background: linear-gradient(to right, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
+    }
+
+    .option-label:nth-child(3):hover {
+      background: linear-gradient(to right, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+    }
+
+    .option-label:nth-child(4):hover {
+      background: linear-gradient(to right, rgba(236, 72, 153, 0.1), rgba(236, 72, 153, 0.05));
+    }
+
+    /* Radio button styling */
+    .option-label input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+    }
+
+    .option-label input[type="radio"] + .option-text {
+      padding-left: 35px;
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
+      transition: all 0.2s ease;
+    }
+
+    /* Letter indicators (A, B, C, D) */
+    .option-label:nth-child(1) .option-text:after {
+      content: "A";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      background: #3B82F6;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: bold;
+      z-index: 5;
+    }
+
+    .option-label:nth-child(2) .option-text:after {
+      content: "B";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      background: #F59E0B;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: bold;
+      z-index: 5;
+    }
+
+    .option-label:nth-child(3) .option-text:after {
+      content: "C";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      background: #10B981;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: bold;
+      z-index: 5;
+    }
+
+    .option-label:nth-child(4) .option-text:after {
+      content: "D";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      background: #EC4899;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: bold;
+      z-index: 5;
+    }
+    
+    /* Selected state for options */
+    .option-label:nth-child(1) input[type="radio"]:checked ~ .option-text,
+    .option-label:nth-child(1):has(input[type="radio"]:checked) {
+      background: linear-gradient(to right, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.05));
+      border-color: #3B82F6;
+      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+      font-weight: 600;
+      color: #3B82F6;
+    }
+
+    .option-label:nth-child(2) input[type="radio"]:checked ~ .option-text,
+    .option-label:nth-child(2):has(input[type="radio"]:checked) {
+      background: linear-gradient(to right, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.05));
+      border-color: #F59E0B;
+      box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
+      font-weight: 600;
+      color: #F59E0B;
+    }
+
+    .option-label:nth-child(3) input[type="radio"]:checked ~ .option-text,
+    .option-label:nth-child(3):has(input[type="radio"]:checked) {
+      background: linear-gradient(to right, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05));
+      border-color: #10B981;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
+      font-weight: 600;
+      color: #10B981;
+    }
+
+    .option-label:nth-child(4) input[type="radio"]:checked ~ .option-text,
+    .option-label:nth-child(4):has(input[type="radio"]:checked) {
+      background: linear-gradient(to right, rgba(236, 72, 153, 0.15), rgba(236, 72, 153, 0.05));
+      border-color: #EC4899;
+      box-shadow: 0 2px 8px rgba(236, 72, 153, 0.2);
+      font-weight: 600;
+      color: #EC4899;
+    }
+    
+    /* Navigation buttons */
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #E5E7EB;
+    }
+    
+    .btn-nav,
+    .btn-submit {
+      background-color: #6366F1;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1em;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .btn-nav.btn-prev {
+      background-color: white;
+      color: #6B7280;
+      border: 1px solid #E5E7EB;
+    }
+    
+    .btn-nav:hover,
+    .btn-submit:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(99, 102, 241, 0.3);
+    }
+    
+    .btn-nav.btn-prev:hover {
+      background-color: #F9FAFB;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-nav:active,
+    .btn-submit:active {
+      transform: translateY(-1px);
+    }
+    
+    /* When there's only the next button */
+    .nav-buttons:not(:has(#prevBtn)) {
+      justify-content: flex-end;
+    }
+    
+    .single-button {
+      justify-content: flex-end;
+    }
+    
+    /* Exit modal */
+    .exit-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(5px);
+    }
+    
+    .exit-modal.active {
+      display: flex;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .exit-modal-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 450px;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      animation: scaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    .exit-modal-title {
+      font-size: 1.5em;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #1F2937;
+    }
+    
+    .exit-modal-text {
+      margin-bottom: 25px;
+      color: #6B7280;
+    }
+    
+    .exit-modal-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .exit-modal-button {
+      padding: 12px 0;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      font-weight: 600;
+      width: 100%;
+    }
+    
+    .exit-modal-button.cancel {
+      background-color: #F3F4F6;
+      color: #4B5563;
+    }
+    
+    .exit-modal-button.confirm-home {
+      background-color: #EF4444;
+      color: white;
+    }
+    
+    .exit-modal-button.confirm-chat {
+      background-color: #6366F1;
+      color: white;
+    }
+    
+    .exit-modal-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes scaleIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    
+    .shake {
+      animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+    }
+    
+    @keyframes shake {
+      10%, 90% { transform: translate3d(-1px, 0, 0); }
+      20%, 80% { transform: translate3d(2px, 0, 0); }
+      30%, 50%, 70% { transform: translate3d(-3px, 0, 0); }
+      40%, 60% { transform: translate3d(3px, 0, 0); }
+    }
+    
+    /* Error message */
+    .error-message {
+      color: #EF4444;
+      background-color: rgba(239, 68, 68, 0.1);
+      padding: 12px 15px;
+      border-radius: 10px;
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .error-message svg {
+      margin-right: 10px;
+      flex-shrink: 0;
+    }
+    
+    /* Spinner animation */
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .quiz-container {
+        padding: 20px;
+      }
+      
+      .quiz-nav-bar {
+        padding: 12px 15px;
+      }
+      
+      .quiz-nav-title {
+        font-size: 1.1em;
+      }
+      
+      .quiz-exit-btn {
+        padding: 6px 12px;
+        font-size: 0.8em;
+      }
+      
+      .emoji {
+        font-size: 1.8rem;
+      }
+      
+      .btn-nav, .btn-submit {
+        padding: 10px 15px;
+        font-size: 0.9em;
+      }
+      
+      .exit-modal-buttons {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Các emoji trang trí xung quanh quiz container -->
-  <div class="emoji emoji-top-left">😥</div>
-  <div class="emoji emoji-top-right">✨</div>
-  <div class="emoji emoji-bottom-left">🫀</div>
-  <div class="emoji emoji-bottom-right">🌟</div>
-
-  <div id="quiz-container" class="quiz-container">
-    <!-- Nội dung quiz sẽ được load vào đây -->
+  <div class="main-container">
+    <!-- Top navigation bar -->
+    <div class="quiz-nav-bar">
+      <h2 class="quiz-nav-title">Trắc nghiệm áp lực đồng trang lứa</h2>
+      <div class="quiz-nav-buttons">
+        <button class="quiz-exit-btn" onclick="showExitModal()">
+          <span>Quay lại</span>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Decorative elements container -->
+    <div class="decorative-elements">
+      <div class="emoji emoji-top-left">😥</div>
+      <div class="emoji emoji-top-right">✨</div>
+      <div class="emoji emoji-bottom-left">🫀</div>
+      <div class="emoji emoji-bottom-right">🌟</div>
+    </div>
+    
+    <!-- Quiz container wrapper -->
+    <div class="quiz-container-wrapper">
+      <div id="quiz-container" class="quiz-container">
+        <!-- Quiz content will be loaded here -->
+      </div>
+    </div>
   </div>
-  <script src="/static/scripts/quiz.js"></script>
+  
+  <!-- Exit confirmation modal -->
+  <div class="exit-modal" id="exitModal">
+    <div class="exit-modal-content">
+      <h3 class="exit-modal-title">Bạn có chắc chắn muốn rời đi?</h3>
+      <p class="exit-modal-text">Tiến trình làm bài trắc nghiệm sẽ không được lưu.</p>
+      <div class="exit-modal-buttons">
+        <button class="exit-modal-button cancel" onclick="hideExitModal()">Tiếp tục làm bài</button>
+        <button class="exit-modal-button confirm-home" onclick="exitToHome()">Về trang chủ</button>
+        <button class="exit-modal-button confirm-chat" onclick="exitToChat()">Đến trò chuyện</button>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+  let currentQuestion = 0;
+  let answers = {};
+  let questions = [];
+  let originalQuizQuestions = {}; // Lưu câu hỏi gốc
+  let isTransitioning = false;
+
+  // Hàm load câu hỏi
+  async function loadQuestions() {
+    try {
+      const quizContainer = document.getElementById('quiz-container');
+      
+      // Hiệu ứng đang tải
+      quizContainer.innerHTML = `
+        <div style="text-align: center; padding: 30px;">
+          <div style="width: 40px; height: 40px; border: 4px solid rgba(99, 102, 241, 0.3); border-radius: 50%; border-top-color: #6366F1; animation: spin 1s linear infinite; margin: 0 auto 20px;"></div>
+          <p style="color: #6B7280;">Đang tải câu hỏi...</p>
+        </div>
+      `;
+      
+      // Lấy câu hỏi đã trộn
+      const response = await fetch('/api/questions');
+      if (!response.ok) throw new Error('Không thể tải câu hỏi từ server');
+      
+      // Lấy câu hỏi gốc
+      const originalResponse = await fetch('/api/original-questions');
+      if (!originalResponse.ok) throw new Error('Không thể tải câu hỏi gốc từ server');
+      originalQuizQuestions = await originalResponse.json();
+      
+      let data = await response.json();
+      
+      // Chuyển đổi object thành mảng nếu cần
+      if (!Array.isArray(data)) {
+        data = Object.keys(data)
+                 .sort((a, b) => a - b)
+                 .map(key => data[key]);
+      }
+      
+      questions = data;
+      
+      // Hiển thị câu hỏi đầu tiên
+      showQuestion();
+      
+    } catch (error) {
+      document.getElementById('quiz-container').innerHTML = `
+        <div style="text-align: center; padding: 30px;">
+          <div style="color: #EF4444; font-size: 40px; margin-bottom: 20px;">⚠️</div>
+          <h3 style="margin-bottom: 10px; color: #1F2937;">Đã xảy ra lỗi</h3>
+          <p style="color: #6B7280; margin-bottom: 20px;">${error.message}</p>
+          <button onclick="location.reload()" style="background: #6366F1; color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer;">Thử lại</button>
+        </div>
+      `;
+    }
+  }
+
+  // Hiển thị câu hỏi
+  function showQuestion() {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    
+    const quizContainer = document.getElementById('quiz-container');
+    
+    // Nếu hết câu hỏi, hiển thị nút nộp bài
+    if (currentQuestion >= questions.length) {
+      const completionContent = `
+        <div style="text-align: center; padding: 30px;">
+          <div style="font-size: 50px; margin-bottom: 20px;">🎉</div>
+          <h3 style="font-size: 1.5em; margin-bottom: 15px; color: #1F2937;">Chúc mừng! Bạn đã hoàn thành bài trắc nghiệm</h3>
+          <p style="color: #6B7280; margin-bottom: 30px;">Nhấn nút bên dưới để xem kết quả của bạn</p>
+          <button onclick="submitQuiz()" class="btn-submit" style="margin: 0 auto; display: inline-flex;">Xem kết quả</button>
+        </div>
+      `;
+      
+      // Fade out current content, then show completion
+      quizContainer.style.opacity = '0';
+      quizContainer.style.transform = 'translateY(10px)';
+      quizContainer.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+      
+      setTimeout(() => {
+        quizContainer.innerHTML = completionContent;
+        quizContainer.style.opacity = '1';
+        quizContainer.style.transform = 'translateY(0)';
+        isTransitioning = false;
+      }, 300);
+      
+      return;
+    }
+
+    const q = questions[currentQuestion];
+    
+    // Tính phần trăm tiến độ
+    const progressPercent = ((currentQuestion + 1) / questions.length) * 100;
+    
+    // Tạo HTML cho các option
+    const optionsHTML = Object.entries(q.options).map(([key, value]) => {
+      const isChecked = answers[q.id] === key ? 'checked' : '';
+      return `
+        <label class="option-label">
+          <input type="radio" name="answer" value="${key}" ${isChecked}>
+          <span class="option-text">${value}</span>
+        </label>
+      `;
+    }).join('');
+
+    // Kiểm tra xem có phải câu hỏi đầu tiên không để thêm class cho nút
+    const isFirstQuestion = currentQuestion === 0;
+    const navButtonsClass = isFirstQuestion ? 'nav-buttons single-button' : 'nav-buttons';
+
+    // Tạo HTML cho câu hỏi
+    const questionContent = `
+      <div class="quiz-title">Câu hỏi ${currentQuestion + 1}/${questions.length}</div>
+      
+      <div class="progress-container">
+        <div class="progress-bar" style="width: 0%"></div>
+        <div class="progress-text">
+          <span>Tiến trình</span>
+          <span>${currentQuestion + 1}/${questions.length}</span>
+        </div>
+      </div>
+      
+      <h3 class="question-title">${q.question}</h3>
+      
+      <div class="options-container">
+        ${optionsHTML}
+      </div>
+      
+      <div class="${navButtonsClass}">
+        ${currentQuestion > 0 ? '<button id="prevBtn" class="btn-nav btn-prev">Trước</button>' : ''}
+        <button id="nextBtn" class="btn-nav">${currentQuestion === questions.length - 1 ? 'Hoàn thành' : 'Tiếp theo'}</button>
+      </div>
+    `;
+    
+    // Transition with fade effect
+    quizContainer.style.opacity = '0';
+    quizContainer.style.transform = 'translateY(10px)';
+    quizContainer.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+    
+    setTimeout(() => {
+      quizContainer.innerHTML = questionContent;
+      quizContainer.style.opacity = '1';
+      quizContainer.style.transform = 'translateY(0)';
+      
+      // Animate progress bar
+      setTimeout(() => {
+        document.querySelector('.progress-bar').style.width = `${progressPercent}%`;
+      }, 100);
+      
+      // Setup listeners
+      setupListeners();
+      isTransitioning = false;
+    }, 300);
+  }
+
+  // Setup event listeners for buttons and options
+  function setupListeners() {
+    // Previous button
+    const prevBtn = document.getElementById('prevBtn');
+    if (prevBtn) {
+      prevBtn.addEventListener('click', prevQuestion);
+    }
+    
+    // Next button
+    const nextBtn = document.getElementById('nextBtn');
+    if (nextBtn) {
+      nextBtn.addEventListener('click', nextQuestion);
+    }
+    
+    // Option selection
+    const options = document.querySelectorAll('.option-label');
+    options.forEach(option => {
+      option.addEventListener('click', function() {
+        // Automatically check radio button when label is clicked
+        const radio = this.querySelector('input[type="radio"]');
+        if (radio) {
+          radio.checked = true;
+        }
+      });
+    });
+  }
+  
+  // Go to previous question
+  function prevQuestion() {
+    if (isTransitioning || currentQuestion <= 0) return;
+    currentQuestion--;
+    showQuestion();
+  }
+  
+  // Go to next question
+  function nextQuestion() {
+    if (isTransitioning) return;
+    
+    // Check if an option is selected
+    const selected = document.querySelector('input[name="answer"]:checked');
+    if (!selected) {
+      // Shake animation for options container
+      const optionsContainer = document.querySelector('.options-container');
+      optionsContainer.classList.add('shake');
+      
+      setTimeout(() => {
+        optionsContainer.classList.remove('shake');
+      }, 500);
+      
+      // Show error message
+      if (!document.querySelector('.error-message')) {
+        const errorMsg = document.createElement('div');
+        errorMsg.className = 'error-message';
+        errorMsg.innerHTML = `
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M12 8V12M12 16H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" 
+              stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Vui lòng chọn một câu trả lời để tiếp tục
+        `;
+        
+        document.querySelector('.options-container').insertAdjacentElement('afterend', errorMsg);
+        
+        // Auto-remove after 3 seconds
+        setTimeout(() => {
+          errorMsg.style.opacity = '0';
+          errorMsg.style.transform = 'translateY(-10px)';
+          errorMsg.style.transition = 'all 0.3s ease';
+          
+          setTimeout(() => {
+            if (errorMsg.parentNode) {
+              errorMsg.remove();
+            }
+          }, 300);
+        }, 3000);
+      }
+      
+      return;
+    }
+    
+    // Store answer
+    const q = questions[currentQuestion];
+    answers[q.id] = selected.value;
+    
+    // Move to next question
+    currentQuestion++;
+    showQuestion();
+  }
+
+  // Submit quiz function
+  window.submitQuiz = 
+  async function submitQuiz() {
+  try {
+    const payload = {
+      answers: Object.entries(answers).map(([originalQuestionId, selectedAnswer]) => {
+        // Tìm câu hỏi gốc 
+        const originalQuestion = originalQuizQuestions[originalQuestionId];
+        
+        // Tìm nội dung đáp án tương ứng với key đã chọn
+        const answerText = originalQuestion.options[selectedAnswer];
+        
+        return {
+          question_id: parseInt(originalQuestionId),  // Giữ nguyên ID gốc
+          answer: answerText  // Gửi nội dung đáp án
+        };
+      })
+    };
+
+    const response = await fetch('/api/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Error Response:', errorText);
+      throw new Error(errorText || 'Nộp bài không thành công');
+    }
+
+    const result = await response.json();
+    
+    // Lưu thông tin chi tiết vào localStorage
+    if (result.detailed_scores) {
+      localStorage.setItem('detailedScores', JSON.stringify(result.detailed_scores));
+    }
+    if (result.detailed_answers) {
+      localStorage.setItem('detailedAnswers', JSON.stringify(result.detailed_answers));
+    }
+    
+    // Chuyển hướng hoặc xử lý kết quả
+    window.location.href = `/result?score=${result.total_score}&assessment=${encodeURIComponent(result.assessment)}&detailed_scores=${encodeURIComponent(JSON.stringify(result.detailed_scores))}&detailed_answers=${encodeURIComponent(JSON.stringify(result.detailed_answers))}`;
+  } catch (err) {
+    console.error('Error submitting quiz:', err);
+    alert(err.message);
+  }
+}
+
+  // Start loading questions
+  loadQuestions();
+
+  // Keyboard shortcut handling
+  document.addEventListener('keydown', function(event) {
+    // Prevent default action for specific keys to avoid unwanted browser behaviors
+    const preventDefaultKeys = ['ArrowLeft', 'ArrowRight', 'Enter', 'Space', 'Escape'];
+    if (preventDefaultKeys.includes(event.key)) {
+      event.preventDefault();
+    }
+
+    // Shortcut logic
+    if (!isTransitioning) {
+      switch(event.key) {
+        case 'ArrowRight':
+        case 'Enter':
+        case ' ':  // Space key
+          // Simulate Next/Submit button
+          if (currentQuestion < questions.length) {
+            nextQuestion();
+          } else {
+            submitQuiz();
+          }
+          break;
+        
+        case 'ArrowLeft':
+          // Previous question
+          if (currentQuestion > 0) {
+            prevQuestion();
+          }
+          break;
+        
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+          // Select options using number keys (1-4)
+          const optionIndex = parseInt(event.key) - 1;
+          const options = document.querySelectorAll('.option-label input[type="radio"]');
+          if (options[optionIndex]) {
+            options[optionIndex].checked = true;
+          }
+          break;
+        
+        case 'Escape':
+          // Show exit modal
+          showExitModal();
+          break;
+      }
+    }
+  });
+});
+  </script>
 </body>
 </html>

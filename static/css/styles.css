@@ -1,65 +1,400 @@
-/* Đặt font và màu nền tổng thể */
+/* Import animations */
+@import url('animations.css');
+
+/* Base styles */
 body {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #fff8f0;
-    margin: 0;
-    padding: 20px;
-    color: #4d3e3e;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #fff8f0, #ffeecf);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  color: #4d3e3e;
+}
+
+/* Global container styling */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Quiz container */
+.quiz-container {
+  max-width: 600px;
+  margin: 50px auto;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Question styling */
+.question-title {
+  font-size: 1.4em;
+  margin-bottom: 20px;
+  color: #3a3a3a;
+  font-weight: 600;
+}
+
+/* Options container */
+.options-container {
+  margin-bottom: 25px;
+}
+
+/* Option styling */
+.option-label {
+  display: block;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 8px;
+  background: #f9f9f9;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.option-label:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Radio button styling */
+.option-label input[type="radio"] {
+  opacity: 0;
+  position: absolute;
+}
+
+.option-label input[type="radio"]:checked + .option-text {
+  font-weight: 600;
+  color: #f4a460;
+}
+
+.option-label input[type="radio"]:checked + .option-text:before {
+  content: "✓ ";
+}
+
+/* Selected option */
+.option-label input[type="radio"]:checked {
+  background: #fff2e6;
+  border-color: #f4a460;
+  box-shadow: 0 2px 8px rgba(244, 164, 96, 0.2);
+}
+
+/* Navigation buttons */
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn-nav,
+.btn-submit {
+  background-color: #f4a460;
+  border: none;
+  color: white;
+  padding: 12px 25px;
+  font-size: 1em;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-nav:hover,
+.btn-submit:hover {
+  background-color: #e08a3c;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-nav:active,
+.btn-submit:active {
+  transform: translateY(-1px);
+}
+
+/* Progress bar */
+.progress-container {
+  margin-bottom: 20px;
+}
+
+.progress {
+  height: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(to right, #f4a460, #e08a3c);
+  width: 0;
+  transition: width 0.8s ease;
+  border-radius: 5px;
+}
+
+/* Error messages */
+.error {
+  color: #e74c3c;
+  text-align: center;
+  margin: 15px 0;
+  padding: 10px;
+  background-color: rgba(231, 76, 60, 0.1);
+  border-radius: 5px;
+}
+
+.error-message {
+  color: #e74c3c;
+  margin-top: 10px;
+  font-size: 0.9em;
+}
+
+/* Loading animations */
+.loading-animation,
+.loading-submission,
+.success-submission,
+.error-submission {
+  text-align: center;
+  padding: 40px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(244, 164, 96, 0.3);
+  border-radius: 50%;
+  border-top-color: #f4a460;
+  margin: 0 auto 20px auto;
+  animation: rotate 1s linear infinite;
+}
+
+/* Success icon */
+.success-icon {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  background-color: #2ecc71;
+  color: white;
+  font-size: 30px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  animation: pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Error icon */
+.error-icon {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  background-color: #e74c3c;
+  color: white;
+  font-size: 30px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+/* Animations for slide transitions */
+.slide-out-left {
+  animation: slideOutLeft 0.3s forwards;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.3s forwards;
+}
+
+.slide-out-right {
+  animation: slideOutRight 0.3s forwards;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.3s forwards;
+}
+
+@keyframes slideOutLeft {
+  to {
+    transform: translateX(-50px);
+    opacity: 0;
   }
-  
-  /* Khung chứa quiz */
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  to {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Additional animation for error feedback */
+.shake {
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-3px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(3px, 0, 0);
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0);
+  }
+  70% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Floating emoji animations for quiz page */
+.emoji {
+  position: absolute;
+  font-size: 2rem;
+  animation: float 4s ease-in-out infinite;
+  z-index: 1;
+  opacity: 0.7;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Chat page styles */
+.chat-box {
+  transition: all 0.3s ease;
+}
+
+.message {
+  animation: fadeIn 0.5s ease forwards;
+  transition: all 0.3s ease;
+}
+
+.user-message {
+  animation: slideInLeft 0.5s ease forwards;
+}
+
+.bot-message {
+  animation: slideInRight 0.5s ease forwards;
+}
+
+/* Enhanced typing indicator */
+.typing-indicator {
+  padding: 10px 15px;
+  background-color: #f1f1f1;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  width: fit-content;
+}
+
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #666;
+  animation: bounce 1.3s linear infinite;
+  margin-right: 3px;
+}
+
+/* Home page enhancements */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.03) 100%);
+  pointer-events: none;
+}
+
+/* Enhanced result page styles */
+.result-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.score-circle {
+  position: relative;
+}
+
+.score-circle:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle at center, rgba(244, 164, 96, 0.2) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  animation: pulse 3s infinite;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
   .quiz-container {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #fff2e6;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 90%;
   }
   
-  /* Tiêu đề câu hỏi */
-  .question-title {
-    font-size: 1.4em;
-    margin-bottom: 20px;
-  }
-  
-  /* Container cho lựa chọn */
-  .options-container {
-    margin-bottom: 20px;
-  }
-  
-  /* Style cho các nhãn lựa chọn */
-  .option-label {
-    font-size: 1.1em;
-    cursor: pointer;
-  }
-  
-  /* Nút điều hướng */
-  .nav-buttons {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .btn-nav,
-  .btn-submit {
-    background-color: #f4a460;
-    border: none;
-    color: white;
+  .btn-nav, .btn-submit {
     padding: 10px 20px;
-    font-size: 1em;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 0.9em;
   }
   
-  .btn-nav:hover,
-  .btn-submit:hover {
-    background-color: #e08a3c;
+  .option-label {
+    padding: 12px;
   }
   
-  /* Thông báo lỗi */
-  .error {
-    color: red;
-    text-align: center;
+  .question-title {
+    font-size: 1.2em;
   }
   
+  .emoji {
+    font-size: 1.5rem;
+  }
+}

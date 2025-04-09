@@ -1,0 +1,294 @@
+/* Enhanced animations for home page */
+
+/* Base animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  @keyframes scaleIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  
+  @keyframes floatAnimation {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  @keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Page enter animation */
+  .page-enter {
+    animation: fadeIn 1s ease;
+  }
+  
+  /* Hero section animations */
+  .hero-section {
+    position: relative;
+    overflow: hidden;
+    background-size: 200% 200%;
+    animation: gradientFlow 15s ease infinite;
+  }
+  
+  .hero-section:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.03) 100%);
+    pointer-events: none;
+  }
+  
+  .hero-section h1 {
+    animation: slideUp 1s ease;
+    transform-origin: center bottom;
+  }
+  
+  .hero-section .lead {
+    animation: slideUp 1s ease 0.3s backwards;
+  }
+  
+  .hero-section .btn {
+    transform-origin: center;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .hero-section .btn:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+  }
+  
+  .hero-section .btn:active {
+    transform: scale(0.98) translateY(-2px);
+  }
+  
+  /* Floating decoration elements */
+  .floating-element {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.5;
+    animation: floatAnimation 6s ease-in-out infinite;
+  }
+  
+  .float-1 {
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+  }
+  
+  .float-2 {
+    top: 15%;
+    right: 10%;
+    animation-delay: 1s;
+  }
+  
+  .float-3 {
+    bottom: 15%;
+    left: 15%;
+    animation-delay: 2s;
+  }
+  
+  .float-4 {
+    bottom: 10%;
+    right: 15%;
+    animation-delay: 3s;
+  }
+  
+  /* Card hover effects */
+  .feature-card, .statistics-card {
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 6px 12px rgba(255, 0, 0, 0.08);
+  }
+  
+  .feature-card:hover, .statistics-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  }
+  
+  .feature-card:active, .statistics-card:active {
+    transform: translateY(-5px) scale(0.99);
+  }
+  
+  .feature-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    transition: height 0.3s ease;
+  }
+  
+  .feature-card:hover:before {
+    height: 7px;
+  }
+  
+  /* Feature icon animations */
+  .feature-icon {
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .feature-card:hover .feature-icon {
+    transform: scale(1.2) rotate(5deg);
+  }
+  
+  /* Button hover animations */
+  .btn {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      rgba(255,255,255,0) 0%, 
+      rgba(255,255,255,0.4) 50%, 
+      rgba(255,255,255,0) 100%);
+    transition: all 0.5s ease;
+  }
+  
+  .btn:hover:after {
+    left: 100%;
+  }
+  
+  /* Statistics card animation */
+  .statistics-card h3 {
+    background-size: 200% auto;
+    animation: gradientFlow 3s ease infinite;
+  }
+  
+  /* About section parallax effect */
+  .about-section {
+    position: relative;
+    background-size: 200% 200%;
+    animation: gradientFlow 15s ease infinite;
+  }
+  
+  /* Scroll reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+  }
+  
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* CTA section animation */
+  .cta-section {
+    position: relative;
+    overflow: hidden;
+    background-size: 200% 200%;
+    animation: gradientFlow 10s ease infinite;
+  }
+  
+  .cta-section:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: pulse 10s ease infinite;
+  }
+  
+  /* Cursor trail effect */
+  .cursor-trail {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: screen;
+  }
+  
+  /* Page preloader */
+  .preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #EEF2FF, #ff88cf);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.8s, visibility 0.8s;
+  }
+  
+  .loader {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  /* Navbar animation */
+  .navbar {
+    transition: all 0.3s ease;
+  }
+  
+  .navbar.scrolled {
+    background-color: rgba(99, 102, 241, 0.95) !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  
+  .navbar-brand {
+    transition: all 0.3s ease;
+  }
+  
+  .navbar.scrolled .navbar-brand {
+    transform: scale(0.9);
+  }
+  
+  /* Mobile enhancements */
+  @media (max-width: 768px) {
+    .feature-card:hover, .statistics-card:hover {
+      transform: translateY(-5px) scale(1.01);
+    }
+    
+    .hero-section .btn:hover {
+      transform: scale(1.03) translateY(-3px);
+    }
+  }
