@@ -18,5 +18,17 @@ PeerSpheer website được xây dựng nên với 2 tính năng chính để h�
 Đây là một con trí tuệ nhân tạo được nhóm xây dựng với khả năng như một chuyên gia tâm lý, có thể trò chuyện và tâm sự với người dùng như một người bạn. Ngoài ra, chatbot cũng có kiến thức về lĩnh vực tâm lý và sẵn sàng trả lời những câu hỏi mà người dùng thắc mắc.
 ![image](https://github.com/user-attachments/assets/101a2cc6-bfe4-420f-8a69-aacae87867f9)
 
+
+
+### SET UP
+Version Python: ```3.12.x```
+Cài đặt gói:  
+
+```pip install -r requirements.txt```
+
+Chạy chương trình:
+
+```uvicorn main:app --reload```
 > Cuối cùng, nhóm thực hiện hy vọng các bạn sẽ enjoy hết mức với con web của chúng mình 
+=======
 
