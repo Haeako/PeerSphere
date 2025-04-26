@@ -1,6 +1,8 @@
 from google import genai
+import os
+
+api_key = os.environ["API_KEY"]
 # Chatbot setup
-api_key = "INSERT HERE"
 #hehe
 class GeminiChatBot:
     def __init__(self):
