@@ -5,3 +5,14 @@ Chắc hẳn ai trong chúng ta cũng từng chịu rất nhiều áp lực. Nh�
 > Nhóm thực hiện project này đã từng trải qua cảm giác đó và hiểu được việc hiểu bản thân đang mắc kẹt ở tình trạng này ở hướng tốt hay xấu và giải pháp để cải thiện bản thân.
 
 # 📖 Nội Dung
+
+### SET UP
+Version Python: ```3.12.x```
+Cài đặt gói:  
+
+```pip install -r requirements.txt```
+
+Chạy chương trình:
+
+```uvicorn main:app --reload```
+

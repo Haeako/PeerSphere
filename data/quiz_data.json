@@ -1,0 +1,303 @@
+{
+  "1": {
+    "question": "Bạn thấy bạn bè đạt học bổng danh giá, còn mình thì không. Bạn sẽ làm gì?",
+    "options": {
+      "A": "Chúc mừng họ và xem đó là động lực để cố gắng hơn.",
+      "B": "So sánh bản thân với họ và cảm thấy áp lực nhưng vẫn cố gắng.",
+      "C": "Trách bản thân vì không đủ giỏi và cảm thấy thất vọng.",
+      "D": "Nghĩ rằng họ chỉ may mắn và không thực sự giỏi hơn mình."
+    },
+    "scores": {
+      "Chúc mừng họ và xem đó là động lực để cố gắng hơn.": 3,
+      "So sánh bản thân với họ và cảm thấy áp lực nhưng vẫn cố gắng.": 2,
+      "Trách bản thân vì không đủ giỏi và cảm thấy thất vọng.": 1,
+      "Nghĩ rằng họ chỉ may mắn và không thực sự giỏi hơn mình.": 0
+    }
+  },
+  "2": {
+    "question": "Bạn bè của bạn đang tham gia nhiều hoạt động ngoại khóa và đạt được nhiều thành tựu. Bạn sẽ phản ứng thế nào?",
+    "options": {
+      "A": "Tôi sẽ cân nhắc tham gia nếu thấy phù hợp với bản thân.",
+      "B": "Cảm thấy một chút áp lực nhưng vẫn theo đuổi mục tiêu của mình.",
+      "C": "Vội vàng đăng ký nhiều hoạt động để không bị thua kém.",
+      "D": "Cảm thấy tự ti và không muốn tham gia bất kỳ hoạt động nào."
+    },
+    "scores": {
+      "Tôi sẽ cân nhắc tham gia nếu thấy phù hợp với bản thân.": 3,
+      "Cảm thấy một chút áp lực nhưng vẫn theo đuổi mục tiêu của mình.": 2,
+      "Vội vàng đăng ký nhiều hoạt động để không bị thua kém.": 1,
+      "Cảm thấy tự ti và không muốn tham gia bất kỳ hoạt động nào.": 0
+    }
+  },
+  "3": {
+    "question": "Khi thấy bạn bè khoe cuộc sống \"sang chảnh\" , bạn sẽ làm gì?",
+    "options": {
+      "A": "Hiểu rằng đó chỉ là một phần cuộc sống của họ và không ảnh hưởng đến mình.",
+      "B": "Cảm thấy hơi chạnh lòng nhưng không để nó ảnh hưởng đến tâm trạng.",
+      "C": "Bắt đầu so sánh cuộc sống của mình với họ và cảm thấy áp lực.",
+      "D": "Cố gắng tạo ra một hình ảnh hào nhoáng trên mạng xã hội để không bị tụt lại."
+    },
+    "scores": {
+      "Hiểu rằng đó chỉ là một phần cuộc sống của họ và không ảnh hưởng đến mình.": 3,
+      "Cảm thấy hơi chạnh lòng nhưng không để nó ảnh hưởng đến tâm trạng.": 2,
+      "Bắt đầu so sánh cuộc sống của mình với họ và cảm thấy áp lực.": 1,
+      "Cố gắng tạo ra một hình ảnh hào nhoáng trên mạng xã hội để không bị tụt lại.": 0
+    }
+  },
+  "4": {
+    "question": "Gia đình bạn thường so sánh bạn với con của bạn bè họ. Bạn sẽ phản ứng thế nào?",
+    "options": {
+      "A": "Hiểu rằng mỗi người có một con đường riêng và tập trung vào mục tiêu của mình.",
+      "B": "Thấy hơi áp lực nhưng vẫn cố gắng phát triển bản thân.",
+      "C": "Cảm thấy tổn thương và tự trách bản thân.",
+      "D": "Phản ứng tiêu cực, cãi lại hoặc tránh xa gia đình."
+    },
+    "scores": {
+      "Hiểu rằng mỗi người có một con đường riêng và tập trung vào mục tiêu của mình.": 3,
+      "Thấy hơi áp lực nhưng vẫn cố gắng phát triển bản thân.": 2,
+      "Cảm thấy tổn thương và tự trách bản thân.": 1,
+      "Phản ứng tiêu cực, cãi lại hoặc tránh xa gia đình.": 0
+    }
+  },
+  "5": {
+    "question": "Khi bạn bè xung quanh đều có việc làm thêm, bạn sẽ làm gì?",
+    "options": {
+      "A": "Tìm hiểu xem có công việc nào phù hợp với mình không.",
+      "B": "Học cách quản lý thời gian tốt hơn để có thể vừa học vừa làm.",
+      "C": "Cảm thấy áp lực và tìm việc ngay cả khi chưa sẵn sàng.",
+      "D": "Nghĩ rằng mình vô dụng vì không có việc làm thêm."
+    },
+    "scores": {
+      "Tìm hiểu xem có công việc nào phù hợp với mình không.": 3,
+      "Học cách quản lý thời gian tốt hơn để có thể vừa học vừa làm.": 2,
+      "Cảm thấy áp lực và tìm việc ngay cả khi chưa sẵn sàng.": 1,
+      "Nghĩ rằng mình vô dụng vì không có việc làm thêm.": 0
+    }
+  },
+  "6": {
+    "question": "Bạn nhận được một lời mời tham gia vào một nhóm bạn sành điệu nhưng phải chi tiêu nhiều tiền. Bạn sẽ quyết định thế nào?",
+    "options": {
+      "A": "Chỉ tham gia nếu không ảnh hưởng đến tài chính cá nhân.",
+      "B": "Thỉnh thoảng đi cùng nhưng kiểm soát chi tiêu hợp lý.",
+      "C": "Cố gắng chạy theo để không bị lạc lõng.",
+      "D": "Vay tiền hoặc tiêu quá mức để theo kịp họ."
+    },
+    "scores": {
+      "Chỉ tham gia nếu không ảnh hưởng đến tài chính cá nhân.": 3,
+      "Thỉnh thoảng đi cùng nhưng kiểm soát chi tiêu hợp lý.": 2,
+      "Cố gắng chạy theo để không bị lạc lõng.": 1,
+      "Vay tiền hoặc tiêu quá mức để theo kịp họ.": 0
+    }
+  },
+  "7": {
+    "question": "Bạn có một người bạn đạt nhiều thành công và luôn muốn bạn làm theo họ. Bạn sẽ làm gì?",
+    "options": {
+      "A": "Học hỏi từ họ nhưng vẫn giữ vững con đường riêng của mình.",
+      "B": "Cảm thấy áp lực nhưng vẫn cố gắng theo đuổi điều mình thích.",
+      "C": "Thay đổi hoàn toàn để giống họ, dù không thực sự thích.",
+      "D": "Cắt đứt quan hệ vì cảm thấy bị áp đặt."
+    },
+    "scores": {
+      "Học hỏi từ họ nhưng vẫn giữ vững con đường riêng của mình.": 3,
+      "Cảm thấy áp lực nhưng vẫn cố gắng theo đuổi điều mình thích.": 2,
+      "Thay đổi hoàn toàn để giống họ, dù không thực sự thích.": 1,
+      "Cắt đứt quan hệ vì cảm thấy bị áp đặt.": 0
+    }
+  },
+  "8": {
+    "question": "Khi thấy bạn bè có người yêu, bạn sẽ phản ứng thế nào?",
+    "options": {
+      "A": "Vẫn tận hưởng cuộc sống độc thân và chờ duyên đến.",
+      "B": "Có chút mong muốn nhưng không để nó trở thành áp lực.",
+      "C": "Cảm thấy lạc lõng và vội vàng tìm người yêu để không bị tụt lại.",
+      "D": "Cho rằng mình kém cỏi vì vẫn còn độc thân."
+    },
+    "scores": {
+      "Vẫn tận hưởng cuộc sống độc thân và chờ duyên đến.": 3,
+      "Có chút mong muốn nhưng không để nó trở thành áp lực.": 2,
+      "Cảm thấy lạc lõng và vội vàng tìm người yêu để không bị tụt lại.": 1,
+      "Cho rằng mình kém cỏi vì vẫn còn độc thân.": 0
+    }
+  },
+  "9": {
+    "question": "Bạn thấy có người tốt hơn bạn về kỹ năng mà bạn luôn tự tin. Bạn sẽ làm gì?",
+    "options": {
+      "A": "Cố gắng học hỏi và cải thiện kỹ năng của bản thân.",
+      "B": "Tập trung vào điểm mạnh của mình thay vì so sánh.",
+      "C": "Cảm thấy tự ti và nghĩ rằng mình không thể giỏi như họ.",
+      "D": "Bỏ cuộc vì cho rằng mình không có năng khiếu."
+    },
+    "scores": {
+      "Cố gắng học hỏi và cải thiện kỹ năng của bản thân.": 3,
+      "Tập trung vào điểm mạnh của mình thay vì so sánh.": 2,
+      "Cảm thấy tự ti và nghĩ rằng mình không thể giỏi như họ.": 1,
+      "Bỏ cuộc vì cho rằng mình không có năng khiếu.": 0
+    }
+  },
+  "10": {
+    "question": "Nếu một người bạn liên tục khoe khoang về thành tích của họ, bạn sẽ phản ứng thế nào?",
+    "options": {
+      "A": "Chúc mừng họ và không để nó ảnh hưởng đến mình.",
+      "B": "Lắng nghe nhưng không quá quan tâm.",
+      "C": "Cảm thấy ghen tị và khó chịu.",
+      "D": "Cắt đứt liên lạc với họ vì cảm thấy bị áp lực."
+    },
+    "scores": {
+      "Chúc mừng họ và không để nó ảnh hưởng đến mình.": 3,
+      "Lắng nghe nhưng không quá quan tâm.": 2,
+      "Cảm thấy ghen tị và khó chịu.": 1,
+      "Cắt đứt liên lạc với họ vì cảm thấy bị áp lực.": 0
+    }
+  },
+  "11": {
+    "question": "Bạn bè của bạn đang làm một chuyến du lịch lớn, bạn cảm thấy thế nào?",
+    "options": {
+      "A": "Tôi hiểu rằng mỗi người có sự lựa chọn riêng và không cảm thấy bị áp lực.",
+      "B": "Cảm thấy hơi tiếc nuối nhưng không để ảnh hưởng đến tâm trạng.",
+      "C": "Cảm thấy tự ti vì không thể tham gia và bắt đầu lo lắng.",
+      "D": "Cố gắng vay tiền hoặc tiêu tiền một cách không hợp lý để đi cùng họ."
+    },
+    "scores": {
+      "Tôi hiểu rằng mỗi người có sự lựa chọn riêng và không cảm thấy bị áp lực.": 3,
+      "Cảm thấy hơi tiếc nuối nhưng không để ảnh hưởng đến tâm trạng.": 2,
+      "Cảm thấy tự ti vì không thể tham gia và bắt đầu lo lắng.": 1,
+      "Cố gắng vay tiền hoặc tiêu tiền một cách không hợp lý để đi cùng họ.": 0
+    }
+  },
+  "12": {
+    "question": "Bạn thấy một người bạn của mình có nhiều người theo dõi trên mạng xã hội, bạn cảm thấy thế nào?",
+    "options": {
+      "A": "Tôi vui mừng cho họ và không so sánh với bản thân.",
+      "B": "Cảm thấy hơi ghen tị nhưng không để điều đó ảnh hưởng đến bản thân.",
+      "C": "Cảm thấy áp lực và bắt đầu nghĩ rằng mình không đủ thú vị.",
+      "D": "Cố gắng tìm cách tăng số người theo dõi bằng mọi giá."
+    },
+    "scores": {
+      "Tôi vui mừng cho họ và không so sánh với bản thân.": 3,
+      "Cảm thấy hơi ghen tị nhưng không để điều đó ảnh hưởng đến bản thân.": 2,
+      "Cảm thấy áp lực và bắt đầu nghĩ rằng mình không đủ thú vị.": 1,
+      "Cố gắng tìm cách tăng số người theo dõi bằng mọi giá.": 0
+    }
+  },
+  "15": {
+    "question": "Khi bạn bè đều đã có kế hoạch cho tương lai, bạn sẽ cảm thấy thế nào?",
+    "options": {
+      "A": "Tôi cũng có kế hoạch của riêng mình và cảm thấy tự tin.",
+      "B": "Cảm thấy một chút lo lắng nhưng vẫn duy trì sự kiên định với kế hoạch cá nhân.",
+      "C": "Bắt đầu cảm thấy bối rối và lo lắng vì chưa có kế hoạch rõ ràng.",
+      "D": "Cảm thấy thất vọng và không biết phải làm gì."
+    },
+    "scores": {
+      "Tôi cũng có kế hoạch của riêng mình và cảm thấy tự tin.": 3,
+      "Cảm thấy một chút lo lắng nhưng vẫn duy trì sự kiên định với kế hoạch cá nhân.": 2,
+      "Bắt đầu cảm thấy bối rối và lo lắng vì chưa có kế hoạch rõ ràng.": 1,
+      "Cảm thấy thất vọng và không biết phải làm gì.": 0
+    }
+  },
+  "17": {
+    "question": "Bạn bè của bạn có những mối quan hệ với những người xuất sắc, bạn sẽ làm gì?",
+    "options": {
+      "A": "Tôi vui mừng cho họ và không cảm thấy cần phải cạnh tranh.",
+      "B": "Cảm thấy hơi tự ti nhưng không quá lo lắng.",
+      "C": "Cảm thấy thiếu tự tin và bắt đầu cố gắng làm bạn với nhiều người hơn.",
+      "D": "Cảm thấy áp lực và bắt đầu cố gắng xây dựng mối quan hệ mà không tự nhiên."
+    },
+    "scores": {
+      "Tôi vui mừng cho họ và không cảm thấy cần phải cạnh tranh.": 3,
+      "Cảm thấy hơi tự ti nhưng không quá lo lắng.": 2,
+      "Cảm thấy thiếu tự tin và bắt đầu cố gắng làm bạn với nhiều người hơn.": 1,
+      "Cảm thấy áp lực và bắt đầu cố gắng xây dựng mối quan hệ mà không tự nhiên.": 0
+    }
+  },
+  "19": {
+    "question": "Bạn phát hiện ra rằng một người bạn của mình có kỹ năng mà bạn đang cố gắng học, bạn sẽ làm gì?",
+    "options": {
+      "A": "Cố gắng học hỏi và cải thiện kỹ năng của mình mà không so sánh quá nhiều.",
+      "B": "Cảm thấy áp lực nhưng vẫn kiên trì phát triển kỹ năng của mình.",
+      "C": "Cảm thấy tự ti và nghĩ rằng mình không thể học được như họ.",
+      "D": "Cảm thấy thất vọng và bỏ cuộc vì nghĩ rằng mình không có khả năng."
+    },
+    "scores": {
+      "Cố gắng học hỏi và cải thiện kỹ năng của mình mà không so sánh quá nhiều.": 3,
+      "Cảm thấy áp lực nhưng vẫn kiên trì phát triển kỹ năng của mình.": 2,
+      "Cảm thấy tự ti và nghĩ rằng mình không thể học được như họ.": 1,
+      "Cảm thấy thất vọng và bỏ cuộc vì nghĩ rằng mình không có khả năng.": 0
+    }
+  },
+  "21": {
+    "question": "Bạn bè của bạn luôn có những chuyến du lịch thú vị, bạn cảm thấy thế nào?",
+    "options": {
+      "A": "Tôi vui mừng cho họ và không cảm thấy thiếu thốn.",
+      "B": "Cảm thấy hơi tiếc vì không thể tham gia, nhưng không để nó ảnh hưởng đến tâm trạng.",
+      "C": "Bắt đầu cảm thấy buồn vì không có cơ hội như họ.",
+      "D": "Cảm thấy rất áp lực và tự trách mình vì không có đủ tiền để đi."
+    },
+    "scores": {
+      "Tôi vui mừng cho họ và không cảm thấy thiếu thốn.": 3,
+      "Cảm thấy hơi tiếc vì không thể tham gia, nhưng không để nó ảnh hưởng đến tâm trạng.": 2,
+      "Bắt đầu cảm thấy buồn vì không có cơ hội như họ.": 1,
+      "Cảm thấy rất áp lực và tự trách mình vì không có đủ tiền để đi.": 0
+    }
+  },
+  "22": {
+    "question": "Bạn thấy bạn bè luôn mặc những bộ đồ thời trang mới nhất, bạn sẽ phản ứng thế nào?",
+    "options": {
+      "A": "Tôi chấp nhận rằng mỗi người có phong cách riêng và không cảm thấy thiếu thốn.",
+      "B": "Cảm thấy hơi ghen tị nhưng không để điều đó làm thay đổi cảm xúc của mình.",
+      "C": "Cảm thấy áp lực và nghĩ rằng mình phải mua sắm mới để theo kịp họ.",
+      "D": "Cố gắng vay tiền hoặc chi tiêu quá mức để mua những bộ đồ tương tự."
+    },
+    "scores": {
+      "Tôi chấp nhận rằng mỗi người có phong cách riêng và không cảm thấy thiếu thốn.": 3,
+      "Cảm thấy hơi ghen tị nhưng không để điều đó làm thay đổi cảm xúc của mình.": 2,
+      "Cảm thấy áp lực và nghĩ rằng mình phải mua sắm mới để theo kịp họ.": 1,
+      "Cố gắng vay tiền hoặc chi tiêu quá mức để mua những bộ đồ tương tự.": 0
+    }
+  },
+  "23": {
+    "question": "Bạn bè của bạn đạt được thành tích cao trong việc học tập, thi cử. Bạn sẽ làm gì?",
+    "options": {
+      "A": "Chúc mừng họ và tự hào về họ.",
+      "B": "Cảm thấy một chút áp lực nhưng không để nó ảnh hưởng đến mình.",
+      "C": "Cảm thấy tự ti vì mình chưa đạt được như họ.",
+      "D": "Cảm thấy thất vọng và nghĩ rằng mình không thể đạt được điều đó."
+    },
+    "scores": {
+      "Chúc mừng họ và tự hào về họ.": 3,
+      "Cảm thấy một chút áp lực nhưng không để nó ảnh hưởng đến mình.": 2,
+      "Cảm thấy tự ti vì mình chưa đạt được như họ.": 1,
+      "Cảm thấy thất vọng và nghĩ rằng mình không thể đạt được điều đó.": 0
+    }
+  },
+
+  "26": {
+    "question": "Bạn nhận thấy bạn bè của bạn làm việc ở những công ty lớn, bạn sẽ làm gì?",
+    "options": {
+      "A": "Tôi tự hào về họ và không cảm thấy bị áp lực.",
+      "B": "Cảm thấy hơi áp lực nhưng không để nó làm thay đổi mục tiêu của mình.",
+      "C": "Cảm thấy lo lắng và bắt đầu suy nghĩ về việc thay đổi công việc.",
+      "D": "Cảm thấy thất vọng và nghĩ rằng mình không thể làm được như họ."
+    },
+    "scores": {
+      "Tôi tự hào về họ và không cảm thấy bị áp lực.": 3,
+      "Cảm thấy hơi áp lực nhưng không để nó làm thay đổi mục tiêu của mình.": 2,
+      "Cảm thấy lo lắng và bắt đầu suy nghĩ về việc thay đổi công việc.": 1,
+      "Cảm thấy thất vọng và nghĩ rằng mình không thể làm được như họ.": 0
+    }
+  },
+  "27": {
+    "question": "Khi bạn bè của bạn bắt đầu có những thành công trong công việc hoặc học tập, bạn sẽ làm gì?",
+    "options": {
+      "A": "Tôi cảm thấy tự hào và học hỏi từ họ.",
+      "B": "Cảm thấy áp lực nhưng vẫn cố gắng theo đuổi mục tiêu của mình.",
+      "C": "Cảm thấy bị tụt lại phía sau và tự trách bản thân.",
+      "D": "Cảm thấy quá áp lực và bỏ cuộc vì nghĩ rằng mình không thể làm được."
+    },
+    "scores": {
+      "Tôi cảm thấy tự hào và học hỏi từ họ.": 3,
+      "Cảm thấy áp lực nhưng vẫn cố gắng theo đuổi mục tiêu của mình.": 2,
+      "Cảm thấy bị tụt lại phía sau và tự trách bản thân.": 1,
+      "Cảm thấy quá áp lực và bỏ cuộc vì nghĩ rằng mình không thể làm được.": 0
+    }
+  }
+}
