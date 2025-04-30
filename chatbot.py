@@ -1,7 +1,7 @@
 from google import genai
 import os
 
-api_key = "os.environ"
+api_key = os.environ["API_KEY"]
 # Chatbot setup
 #hehe
 class GeminiChatBot:
