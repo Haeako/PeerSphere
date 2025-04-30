@@ -19,7 +19,16 @@ def load_quiz_data() -> Dict[int, dict]:
     # chuyển key string -> int
     return {int(k): v for k, v in data.items()}
 
-# Chọn ngẫu nhiên ân số câu hỏi (mặc định 10)
+# Xáo trộn thứ tự đáp án cho một câu hỏi
+def shuffle_options(options: Dict[str, str]) -> Dict[str, str]:
+    # Lấy các cặp key-value
+    items = list(options.items())
+    # Xáo trộn thứ tự các cặp
+    random.shuffle(items)
+    # Tạo dictionary mới với thứ tự đã xáo trộn
+    return dict(items)
+
+# Chọn ngẫu nhiên ân số câu hỏi (mặc định 10) và xáo trộn đáp án
 def get_randomized_questions(limit: int = 10) -> Dict[int, Dict[str, Any]]:
     quiz_data: Dict[str, dict] = load_quiz_data()
     
@@ -32,11 +41,15 @@ def get_randomized_questions(limit: int = 10) -> Dict[int, Dict[str, Any]]:
     out: Dict[int, Dict[str, Any]] = {}
     for idx, orig_id in enumerate(selected_ids, start=1):
         q = quiz_data[orig_id]
+        
+        # Xáo trộn thứ tự đáp án
+        shuffled_options = shuffle_options(q["options"])
+        
         out[idx] = {
             "id": idx,
             "original_id": int(orig_id),      
             "question": q["question"],
-            "options": q["options"],
+            "options": shuffled_options,  # Sử dụng đáp án đã xáo trộn
             "scores": q.get("scores", {})     
         }
     

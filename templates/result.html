@@ -817,129 +817,49 @@
   </div>
   
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-  let detailedScores = null;
-  let detailedAnswers = null;
-  
-  const storedScores = localStorage.getItem('detailedScores');
-  const storedAnswers = localStorage.getItem('detailedAnswers');
-  
-  if (storedScores) {
-    try {
-      detailedScores = JSON.parse(storedScores);
-    } catch (e) {
-      console.error('Error parsing stored scores:', e);
-    }
-  }
-  
-  if (storedAnswers) {
-    try {
-      detailedAnswers = JSON.parse(storedAnswers);
-    } catch (e) {
-      console.error('Error parsing stored answers:', e);
-    }
-  }
-  
-  const urlParams = new URLSearchParams(window.location.search);
-  const urlDetailedScores = urlParams.get('detailed_scores');
-  const urlDetailedAnswers = urlParams.get('detailed_answers');
-  
-  if (urlDetailedScores) {
-    try {
-      detailedScores = JSON.parse(decodeURIComponent(urlDetailedScores));
-    } catch (e) {
-      console.error('Error parsing URL scores:', e);
-    }
-  }
-  
-  if (urlDetailedAnswers) {
-    try {
-      detailedAnswers = JSON.parse(decodeURIComponent(urlDetailedAnswers));
-    } catch (e) {
-      console.error('Error parsing URL answers:', e);
-    }
-  }
-  
-  let originalQuestions = {};
-  fetch('/api/original-questions')
-    .then(response => response.json())
-    .then(questions => {
-      originalQuestions = questions;
-      renderDetailedScores(originalQuestions);
-    })
-    .catch(error => console.error('Lỗi lấy câu hỏi gốc:', error));
-
-    // Hàm để hiển thị/ẩn lời khuyên
-function toggleAdvice(level) {
-  const advicePanel = document.getElementById(`advice-${level}`);
-  
-  // Nếu panel này đang active, chỉ cần ẩn nó đi
-  if (advicePanel.classList.contains('active')) {
-    advicePanel.classList.remove('active');
-    return;
-  }
-  
-  // Ẩn tất cả các panel lời khuyên khác
-  const allPanels = document.querySelectorAll('.advice-panel');
-  allPanels.forEach(panel => {
-    if (panel.id !== `advice-${level}`) {
-      panel.classList.remove('active');
-    }
-  });
-  
-  // Hiển thị panel được chọn
-  advicePanel.classList.add('active');
-}
-
-// Khi tải trang, mở panel lời khuyên tương ứng với điểm số
-document.addEventListener('DOMContentLoaded', function() {
-  // Tạo hiệu ứng chậm cho các panel advice 
-  const activePanel = document.querySelector('.advice-panel.active');
-  if (activePanel) {
-    // Thêm một chút delay để đảm bảo animation hoạt động tốt
-    setTimeout(() => {
-      activePanel.style.opacity = '1';
-      activePanel.style.transform = 'translateY(0)';
-    }, 800); // Delay sau khi các animation khác đã hoàn thành
-  }
-});
-  
-  function renderDetailedScores(originalQuestions) {
-    const tableBody = document.getElementById('scoresTableBody');
-    if (tableBody && detailedScores && detailedAnswers && originalQuestions) {
-      Object.entries(detailedScores).forEach(([id, score]) => {
-        const row = document.createElement('tr');
-        
-        const questionCell = document.createElement('td');
-        questionCell.textContent = `Câu ${id}`;
-        row.appendChild(questionCell);
-        
-        const originalQuestion = originalQuestions[id];
-        const answerKey = detailedAnswers[id];
-        const answerText = originalQuestion.options[answerKey];
-        
-        const answerCell = document.createElement('td');
-        answerCell.textContent = `${answerKey}`;
-        row.appendChild(answerCell);
-        
-        const scoreCell = document.createElement('td');
-        const scoreSpan = document.createElement('span');
-        scoreSpan.className = `score-value ${
-          score === 3 ? 'high' : 
-          score === 2 ? 'medium' : 
-          score === 1 ? 'low' : 'very-low'
-        }`;
-        scoreSpan.textContent = score;
-        
-        scoreCell.appendChild(scoreSpan);
-        row.appendChild(scoreCell);
-        
-        tableBody.appendChild(row);
-      });
-    }
-  }
-});
-</script>
+        document.addEventListener('DOMContentLoaded', function() {
+      let detailedScores = null;
+      let detailedAnswers = null;
+      // Load scores
+      const s = localStorage.getItem('detailedScores');
+      if (s) { try { detailedScores = JSON.parse(s); } catch {} }
+      const a = localStorage.getItem('detailedAnswers');
+      if (a) { try { detailedAnswers = JSON.parse(a); } catch {} }
+      // URL override
+      const params = new URLSearchParams(window.location.search);
+      const us = params.get('detailed_scores');
+      const ua = params.get('detailed_answers');
+      if (us) { try { detailedScores = JSON.parse(decodeURIComponent(us)); } catch {} }
+      if (ua) { try { detailedAnswers = JSON.parse(decodeURIComponent(ua)); } catch {} }
+      function renderDetailedScores() {
+        const tbody = document.getElementById('scoresTableBody');
+        if (!tbody || !detailedScores) return;
+        let idx = 1;
+        Object.entries(detailedScores).forEach(([id, score]) => {
+          const letter = detailedAnswers && detailedAnswers[id] ? detailedAnswers[id] : '';
+          const tr = document.createElement('tr');
+          // Question number
+          const tdQ = document.createElement('td'); tdQ.textContent = `Câu ${idx++}`;
+          // Answer letter
+          const tdA = document.createElement('td'); tdA.textContent = letter;
+          // Score
+          const tdS = document.createElement('td');
+          const span = document.createElement('span');
+          span.className = `score-value ${
+            score === 3 ? 'high' : score === 2 ? 'medium' : score === 1 ? 'low' : 'very-low'
+          }`;
+          span.textContent = score;
+          tdS.appendChild(span);
+          // Append
+          tr.appendChild(tdQ);
+          tr.appendChild(tdA);
+          tr.appendChild(tdS);
+          tbody.appendChild(tr);
+        });
+      }
+      renderDetailedScores();
+    });
+  </script>
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

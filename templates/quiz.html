@@ -629,7 +629,10 @@
   </div>
   
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    // Đoạn mã JavaScript để hiển thị và xử lý câu hỏi với đáp án đã trộn
+// Chèn vào file quiz.html hoặc tệp JavaScript riêng
+
+document.addEventListener("DOMContentLoaded", function() {
   let currentQuestion = 0;
   let answers = {};
   let questions = [];
@@ -649,11 +652,11 @@
         </div>
       `;
       
-      // Lấy câu hỏi đã trộn
+      // Lấy câu hỏi đã trộn (câu hỏi và đáp án đã được trộn từ server)
       const response = await fetch('/api/questions');
       if (!response.ok) throw new Error('Không thể tải câu hỏi từ server');
       
-      // Lấy câu hỏi gốc
+      // Lấy câu hỏi gốc để tham chiếu khi nộp bài
       const originalResponse = await fetch('/api/original-questions');
       if (!originalResponse.ok) throw new Error('Không thể tải câu hỏi gốc từ server');
       originalQuizQuestions = await originalResponse.json();
@@ -723,6 +726,7 @@
     const progressPercent = ((currentQuestion + 1) / questions.length) * 100;
     
     // Tạo HTML cho các option
+    // Đây là phần quan trọng - hiển thị các đáp án đã được trộn từ server
     const optionsHTML = Object.entries(q.options).map(([key, value]) => {
       const isChecked = answers[q.id] === key ? 'checked' : '';
       return `
@@ -872,57 +876,63 @@
   }
 
   // Submit quiz function
-  window.submitQuiz = 
-  async function submitQuiz() {
-  try {
-    const payload = {
-      answers: Object.entries(answers).map(([originalQuestionId, selectedAnswer]) => {
-        // Tìm câu hỏi gốc 
-        const originalQuestion = originalQuizQuestions[originalQuestionId];
-        
-        // Tìm nội dung đáp án tương ứng với key đã chọn
-        const answerText = originalQuestion.options[selectedAnswer];
-        
-        return {
-          question_id: parseInt(originalQuestionId),  // Giữ nguyên ID gốc
-          answer: answerText  // Gửi nội dung đáp án
-        };
-      })
-    };
+  window.submitQuiz = async function submitQuiz() {
+    try {
+      const payload = {
+        answers: Object.entries(answers).map(([questionId, selectedAnswer]) => {
+          // Tìm câu hỏi trong danh sách câu hỏi đã trộn
+          const question = questions.find(q => q.id == questionId);
+          
+          if (!question) {
+            throw new Error(`Không tìm thấy câu hỏi với ID=${questionId}`);
+          }
+          
+          // Lấy ID gốc để gửi đến server
+          const originalId = question.original_id;
+          
+          // Lấy nội dung đáp án được chọn
+          const answerText = question.options[selectedAnswer];
+          
+          return {
+            question_id: originalId,
+            answer: answerText
+          };
+        })
+      };
 
-    const response = await fetch('/api/submit', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload)
-    });
+      const response = await fetch('/api/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
+      });
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Error Response:', errorText);
-      throw new Error(errorText || 'Nộp bài không thành công');
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Error Response:', errorText);
+        throw new Error(errorText || 'Nộp bài không thành công');
+      }
+
+      const result = await response.json();
+      
+      // Lưu thông tin chi tiết vào localStorage
+      if (result.detailed_scores) {
+        localStorage.setItem('detailedScores', JSON.stringify(result.detailed_scores));
+      }
+      if (result.detailed_answers) {
+        localStorage.setItem('detailedAnswers', JSON.stringify(result.detailed_answers));
+      }
+      
+      // Chuyển hướng hoặc xử lý kết quả
+      window.location.href = `/result?score=${result.total_score}&assessment=${encodeURIComponent(result.assessment)}&detailed_scores=${encodeURIComponent(JSON.stringify(result.detailed_scores))}&detailed_answers=${encodeURIComponent(JSON.stringify(result.detailed_answers))}`;
+    } catch (err) {
+      console.error('Error submitting quiz:', err);
+      alert(err.message);
     }
+  };
 
-    const result = await response.json();
-    
-    // Lưu thông tin chi tiết vào localStorage
-    if (result.detailed_scores) {
-      localStorage.setItem('detailedScores', JSON.stringify(result.detailed_scores));
-    }
-    if (result.detailed_answers) {
-      localStorage.setItem('detailedAnswers', JSON.stringify(result.detailed_answers));
-    }
-    
-    // Chuyển hướng hoặc xử lý kết quả
-    window.location.href = `/result?score=${result.total_score}&assessment=${encodeURIComponent(result.assessment)}&detailed_scores=${encodeURIComponent(JSON.stringify(result.detailed_scores))}&detailed_answers=${encodeURIComponent(JSON.stringify(result.detailed_answers))}`;
-  } catch (err) {
-    console.error('Error submitting quiz:', err);
-    alert(err.message);
-  }
-}
-
-  // Start loading questions
+  // Khởi tạo và bắt đầu load câu hỏi
   loadQuestions();
 
   // Keyboard shortcut handling
