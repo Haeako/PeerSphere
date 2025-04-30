@@ -196,7 +196,7 @@
             let ws;
             // Connect to WebSocket
             function connectWebSocket() {
-                ws = new WebSocket(`ws://${window.location.host}/ws/chat`);
+                ws = new WebSocket(`wss://${window.location.host}/ws/chat`);
                 
                 ws.onopen = function() {
                     console.log('WebSocket connected');
