@@ -666,7 +666,6 @@ document.addEventListener("DOMContentLoaded", function() {
       // Chuyển đổi object thành mảng nếu cần
       if (!Array.isArray(data)) {
         data = Object.keys(data)
-                 .sort((a, b) => a - b)
                  .map(key => data[key]);
       }
       

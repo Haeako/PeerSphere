@@ -30,29 +30,30 @@ def shuffle_options(options: Dict[str, str]) -> Dict[str, str]:
 
 # Chọn ngẫu nhiên ân số câu hỏi (mặc định 10) và xáo trộn đáp án
 def get_randomized_questions(limit: int = 10) -> Dict[int, Dict[str, Any]]:
-    quiz_data: Dict[str, dict] = load_quiz_data()
-    
-    all_ids = sorted(quiz_data.keys(), key=lambda x: int(x))
-    
+    quiz_data: Dict[int, dict] = load_quiz_data()
+
+    # Lấy tất cả org_id, rồi xáo trộn
+    all_ids = list(quiz_data.keys())
     random.shuffle(all_ids)
-    
+
+    # Lấy ngẫu nhiên limit câu
     selected_ids = all_ids[:min(limit, len(all_ids))]
-    
+
+    # Sau đó sắp xếp lại theo org_id tăng dần
+    selected_ids.sort()
+
     out: Dict[int, Dict[str, Any]] = {}
     for idx, orig_id in enumerate(selected_ids, start=1):
         q = quiz_data[orig_id]
-        
-        # Xáo trộn thứ tự đáp án
         shuffled_options = shuffle_options(q["options"])
-        
         out[idx] = {
             "id": idx,
-            "original_id": int(orig_id),      
+            "original_id": orig_id,
             "question": q["question"],
-            "options": shuffled_options,  # Sử dụng đáp án đã xáo trộn
-            "scores": q.get("scores", {})     
+            "options": shuffled_options,
+            "scores": q.get("scores", {})
         }
-    
+
     return out
 
 # Khởi tạo FastAPI
