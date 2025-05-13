@@ -9,6 +9,7 @@ import json
 import random
 from pathlib import Path
 from chatbot import GeminiChatBot
+import asyncio
 
 QUIZ_DATA_PATH = Path("data/quiz_data.json")
 
@@ -140,7 +141,15 @@ async def websocket_chat(ws: WebSocket):
     try:
         while True:
             data = await ws.receive_text()
-            await manager.send(chatbot.responses(data), ws)
+            response = chatbot.responses(data)
+            
+            # Gửi từng ký tự một để tạo hiệu ứng gõ
+            for char in response:
+                await ws.send_text(char)
+                await asyncio.sleep(0.015) 
+            
+            # Gửi ký tự đặc biệt để đánh dấu kết thúc tin nhắn
+            await ws.send_text("\n<message_end>")
     except WebSocketDisconnect:
         manager.disconnect(ws)
 
