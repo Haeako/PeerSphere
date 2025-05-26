@@ -11,11 +11,59 @@ from pathlib import Path
 from chatbot import GeminiChatBot
 import asyncio
 
-QUIZ_DATA_PATH = Path("data/quiz_data.json")
+# Cấu hình các file JSON tương ứng với từng option
+JSON_FILES = {
+    "peer_pressure": "data/peer_pressure_quiz.json",
+    "academic_stress": "data/academic_stress_quiz.json", 
+    "social_anxiety": "data/social_anxiety_quiz.json",
+    "self_esteem": "data/self_esteem_quiz.json",
+    "depression": "data/depression_quiz.json"
+}
 
-# Hàm load dữ liệu từ JSON
-def load_quiz_data() -> Dict[int, dict]:
-    with open(QUIZ_DATA_PATH, "r", encoding="utf-8") as f:
+# Assessment ranges cho từng loại quiz
+ASSESSMENT_CONFIGS = {
+    "peer_pressure": [
+        {"min": 25, "max": 30, "assessment": "Bạn kiểm soát rất tốt áp lực đồng trang lứa."},
+        {"min": 18, "max": 24, "assessment": "Bạn có một số áp lực nhưng vẫn giữ được sự cân bằng."},
+        {"min": 10, "max": 17, "assessment": "Bạn đang bị ảnh hưởng đáng kể bởi áp lực đồng trang lứa."},
+        {"min": 0,  "max": 9,  "assessment": "Bạn có thể đang chịu áp lực lớn và cần tìm cách giải tỏa."}
+    ],
+    "academic_stress": [
+        {"min": 25, "max": 30, "assessment": "Bạn quản lý áp lực học tập rất tốt."},
+        {"min": 18, "max": 24, "assessment": "Bạn có thể điều chỉnh áp lực học tập khá hiệu quả."},
+        {"min": 10, "max": 17, "assessment": "Bạn đang gặp khó khăn với áp lực học tập."},
+        {"min": 0,  "max": 9,  "assessment": "Bạn đang chịu áp lực học tập rất lớn, cần tìm sự hỗ trợ."}
+    ],
+    "social_anxiety": [
+        {"min": 25, "max": 30, "assessment": "Bạn tự tin trong các tình huống xã hội."},
+        {"min": 18, "max": 24, "assessment": "Bạn có một ít lo lắng xã hội nhưng vẫn kiểm soát được."},
+        {"min": 10, "max": 17, "assessment": "Bạn thường xuyên cảm thấy lo lắng trong các tình huống xã hội."},
+        {"min": 0,  "max": 9,  "assessment": "Bạn có thể đang gặp phải lo âu xã hội nghiêm trọng."}
+    ],
+    "self_esteem": [
+        {"min": 25, "max": 30, "assessment": "Bạn có lòng tự trọng tốt và tích cực."},
+        {"min": 18, "max": 24, "assessment": "Bạn có lòng tự trọng ổn định."},
+        {"min": 10, "max": 17, "assessment": "Lòng tự trọng của bạn cần được cải thiện."},
+        {"min": 0,  "max": 9,  "assessment": "Bạn có thể đang thiếu tự tin và cần hỗ trợ."}
+    ],
+    "depression": [
+        {"min": 25, "max": 30, "assessment": "Tâm trạng của bạn rất tích cực và ổn định."},
+        {"min": 18, "max": 24, "assessment": "Bạn có tâm trạng khá tốt với một vài thăng trầm nhỏ."},
+        {"min": 10, "max": 17, "assessment": "Bạn có thể đang trải qua một số khó khăn về tâm trạng."},
+        {"min": 0,  "max": 9,  "assessment": "Bạn có thể đang gặp vấn đề nghiêm trọng về tâm trạng, nên tìm sự hỗ trợ."}
+    ]
+}
+
+# Hàm load dữ liệu từ JSON với option
+def load_quiz_data(quiz_type: str = "peer_pressure") -> Dict[int, dict]:
+    if quiz_type not in JSON_FILES:
+        raise ValueError(f"Quiz type '{quiz_type}' không được hỗ trợ. Các loại có sẵn: {list(JSON_FILES.keys())}")
+    
+    file_path = Path(JSON_FILES[quiz_type])
+    if not file_path.exists():
+        raise FileNotFoundError(f"File {file_path} không tồn tại.")
+    
+    with open(file_path, "r", encoding="utf-8") as f:
         data = json.load(f)
     # chuyển key string -> int
     return {int(k): v for k, v in data.items()}
@@ -29,9 +77,9 @@ def shuffle_options(options: Dict[str, str]) -> Dict[str, str]:
     # Tạo dictionary mới với thứ tự đã xáo trộn
     return dict(items)
 
-# Chọn ngẫu nhiên ân số câu hỏi (mặc định 10) và xáo trộn đáp án
-def get_randomized_questions(limit: int = 10) -> Dict[int, Dict[str, Any]]:
-    quiz_data: Dict[int, dict] = load_quiz_data()
+# Chọn ngẫu nhiên số câu hỏi (mặc định 10) và xáo trộn đáp án
+def get_randomized_questions(quiz_type: str = "peer_pressure", limit: int = 10) -> Dict[int, Dict[str, Any]]:
+    quiz_data: Dict[int, dict] = load_quiz_data(quiz_type)
 
     # Lấy tất cả org_id, rồi xáo trộn
     all_ids = list(quiz_data.keys())
@@ -52,10 +100,15 @@ def get_randomized_questions(limit: int = 10) -> Dict[int, Dict[str, Any]]:
             "original_id": orig_id,
             "question": q["question"],
             "options": shuffled_options,
-            "scores": q.get("scores", {})
+            "scores": q.get("scores", {}),
+            "quiz_type": quiz_type
         }
 
     return out
+
+# Lấy assessment ranges theo quiz type
+def get_assessment_ranges(quiz_type: str) -> List[Dict]:
+    return ASSESSMENT_CONFIGS.get(quiz_type, ASSESSMENT_CONFIGS["peer_pressure"])
 
 # Khởi tạo FastAPI
 app = FastAPI(title="PeerSphere💗 - Student Support Platform")
@@ -70,23 +123,17 @@ class QuizAnswer(BaseModel):
 
 class QuizSubmission(BaseModel):
     answers: List[QuizAnswer]
+    quiz_type: Optional[str] = "peer_pressure"  # Thêm quiz_type vào submission
 
 class QuizResult(BaseModel):
     total_score: int
     assessment: str
     detailed_scores: Dict[int, int]
     detailed_answers: Optional[Dict[int, str]] = None
+    quiz_type: str
 
 class ChatMessage(BaseModel):
     message: str
-
-# Khoảng điểm đánh giá
-assessment_ranges = [
-    {"min": 25, "max": 30, "assessment": "Bạn kiểm soát rất tốt áp lực đồng trang lứa."},
-    {"min": 18, "max": 24, "assessment": "Bạn có một số áp lực nhưng vẫn giữ được sự cân bằng."},
-    {"min": 10, "max": 17, "assessment": "Bạn đang bị ảnh hưởng đáng kể bởi áp lực đồng trang lứa."},
-    {"min": 0,  "max": 9,  "assessment": "Bạn có thể đang chịu áp lực lớn và cần tìm cách giải tỏa."}
-]
 
 # Quản lý WebSocket chat
 class ConnectionManager:
@@ -112,21 +159,51 @@ async def home(request: Request):
     return templates.TemplateResponse("home.html", {"request": request})
 
 @app.get("/quiz", response_class=HTMLResponse)
-async def quiz_page(request: Request):
-    return templates.TemplateResponse("quiz.html", {"request": request})
+async def quiz_page(request: Request, quiz_type: str = "peer_pressure"):
+    # Kiểm tra quiz_type hợp lệ
+    if quiz_type not in JSON_FILES:
+        raise HTTPException(status_code=400, detail=f"Quiz type '{quiz_type}' không được hỗ trợ")
+    
+    return templates.TemplateResponse("quiz.html", {
+        "request": request, 
+        "quiz_type": quiz_type,
+        "available_types": list(JSON_FILES.keys())
+    })
 
 @app.get("/chat", response_class=HTMLResponse)
 async def chat_page(request: Request):
     return templates.TemplateResponse("chat.html", {"request": request})
 
 # --- API Endpoints ---
+@app.get("/api/quiz-types")
+async def get_quiz_types():
+    """Lấy danh sách các loại quiz có sẵn"""
+    return {
+        "available_types": list(JSON_FILES.keys()),
+        "descriptions": {
+            "peer_pressure": "Đánh giá áp lực đồng trang lứa",
+            "academic_stress": "Đánh giá áp lực học tập", 
+            "social_anxiety": "Đánh giá lo âu xã hội",
+            "self_esteem": "Đánh giá lòng tự trọng",
+            "depression": "Đánh giá tình trạng tâm lý"
+        }
+    }
+
 @app.get("/api/original-questions")
-async def original_questions():
-    return load_quiz_data()
+async def original_questions(quiz_type: str = "peer_pressure"):
+    """Lấy câu hỏi gốc theo loại quiz"""
+    try:
+        return load_quiz_data(quiz_type)
+    except (ValueError, FileNotFoundError) as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 @app.get("/api/questions")
-async def api_questions():
-    return JSONResponse(content=get_randomized_questions())
+async def api_questions(quiz_type: str = "peer_pressure", limit: int = 10):
+    """Lấy câu hỏi đã được xáo trộn theo loại quiz"""
+    try:
+        return JSONResponse(content=get_randomized_questions(quiz_type, limit))
+    except (ValueError, FileNotFoundError) as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 @app.post("/api/chat", response_model=dict)
 async def api_chat(msg: ChatMessage):
@@ -155,7 +232,13 @@ async def websocket_chat(ws: WebSocket):
 
 @app.post("/api/submit", response_model=QuizResult)
 async def submit_quiz(submission: QuizSubmission):
-    quiz_data = load_quiz_data()
+    quiz_type = submission.quiz_type or "peer_pressure"
+    
+    try:
+        quiz_data = load_quiz_data(quiz_type)
+    except (ValueError, FileNotFoundError) as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    
     total = 0
     detailed_scores: Dict[int,int] = {}
     detailed_answers: Dict[int,str] = {}
@@ -165,7 +248,7 @@ async def submit_quiz(submission: QuizSubmission):
         chosen_text = ans.answer
 
         if qid not in quiz_data:
-            raise HTTPException(400, f"Câu hỏi ID={qid} không tồn tại.")
+            raise HTTPException(400, f"Câu hỏi ID={qid} không tồn tại trong quiz '{quiz_type}'.")
 
         question = quiz_data[qid]
         # Kiểm tra đáp án hợp lệ
@@ -184,7 +267,8 @@ async def submit_quiz(submission: QuizSubmission):
         letter = next(k for k,v in question["options"].items() if v == chosen_text)
         detailed_answers[qid] = letter
 
-    # Đánh giá tổng thể
+    # Đánh giá tổng thể theo quiz type
+    assessment_ranges = get_assessment_ranges(quiz_type)
     assessment = ""
     for r in assessment_ranges:
         if r["min"] <= total <= r["max"]:            
@@ -195,14 +279,20 @@ async def submit_quiz(submission: QuizSubmission):
         total_score=total,
         assessment=assessment,
         detailed_scores=detailed_scores,
-        detailed_answers=detailed_answers
+        detailed_answers=detailed_answers,
+        quiz_type=quiz_type
     )
 
 @app.get("/result", response_class=HTMLResponse)
-async def result_page(request: Request, score: int, assessment: str):
+async def result_page(request: Request, score: int, assessment: str, quiz_type: str = "peer_pressure"):
     return templates.TemplateResponse(
         "result.html",
-        {"request": request, "score": score, "assessment": assessment}
+        {
+            "request": request, 
+            "score": score, 
+            "assessment": assessment,
+            "quiz_type": quiz_type
+        }
     )
 
 if __name__ == "__main__":
