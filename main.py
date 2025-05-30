@@ -88,16 +88,17 @@ def get_randomized_questions(quiz_type: str = "overview", limit: int = 10) -> Di
     # Lấy ngẫu nhiên limit câu
     selected_ids = all_ids[:min(limit, len(all_ids))]
 
-    # Sau đó sắp xếp lại theo org_id tăng dần
-    selected_ids.sort()
+    # BỎ DÒNG NÀY NẾU MUỐN THỨ TỰ CÂU HỎI CHỌN RA CŨNG NGẪU NHIÊN
+    # selected_ids.sort() # <<<< BỎ DÒNG NÀY
 
     out: Dict[int, Dict[str, Any]] = {}
+    # idx sẽ là 1, 2, 3,... theo thứ tự trong selected_ids (đã được shuffle hoặc shuffle rồi sort)
     for idx, orig_id in enumerate(selected_ids, start=1):
         q = quiz_data[orig_id]
         shuffled_options = shuffle_options(q["options"])
         out[idx] = {
-            "id": idx,
-            "original_id": orig_id,
+            "id": idx, # Đây là ID mới của câu hỏi trong quiz hiện tại (1, 2, 3,...)
+            "original_id": orig_id, # Đây là ID gốc của câu hỏi trong file JSON
             "question": q["question"],
             "options": shuffled_options,
             "scores": q.get("scores", {}),
