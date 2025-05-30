@@ -1,0 +1,92 @@
+[
+  {
+    "question": "Khi bạn bè bàn về việc chọn phong cách sống lành mạnh (ăn uống, tập luyện, nghỉ ngơi), bạn cảm thấy thế nào?",
+    "options": {
+      "A": {"text": "Tôi tôn trọng và thoải mái với lựa chọn riêng của mình.", "score": 3},
+      "B": {"text": "Tôi hơi áp lực nhưng vẫn giữ phong cách riêng.", "score": 2},
+      "C": {"text": "Tôi cảm thấy bị áp lực phải thay đổi.", "score": 1},
+      "D": {"text": "Tôi thấy rất áp lực và khó chấp nhận bản thân.", "score": 0}
+    }
+  },
+  {
+    "question": "Khi bạn bè nói về việc đi du lịch, trải nghiệm mới, bạn phản ứng thế nào?",
+    "options": {
+      "A": {"text": "Tôi vui và thích khám phá theo cách riêng mình.", "score": 3},
+      "B": {"text": "Tôi hơi áp lực nhưng cố gắng hòa nhập.", "score": 2},
+      "C": {"text": "Tôi cảm thấy khó khăn và lo lắng vì không có điều kiện giống họ.", "score": 1},
+      "D": {"text": "Tôi cảm thấy bị tụt lại phía sau và tự ti.", "score": 0}
+    }
+  },
+  {
+    "question": "Bạn có cảm thấy áp lực khi bạn bè có lối sống tiết kiệm hoặc chi tiêu khác bạn?",
+    "options": {
+      "A": {"text": "Tôi tôn trọng và không cảm thấy áp lực.", "score": 3},
+      "B": {"text": "Tôi hơi bối rối nhưng không để ảnh hưởng.", "score": 2},
+      "C": {"text": "Tôi cảm thấy khó chịu và muốn thay đổi để phù hợp.", "score": 1},
+      "D": {"text": "Tôi cảm thấy bị ép buộc và căng thẳng.", "score": 0}
+    }
+  },
+  {
+    "question": "Khi bạn bè bàn về việc ưu tiên công việc hay thời gian rảnh, bạn nghĩ gì?",
+    "options": {
+      "A": {"text": "Tôi tự do quyết định theo sở thích và nhu cầu của mình.", "score": 3},
+      "B": {"text": "Tôi hơi áp lực nhưng vẫn giữ quan điểm.", "score": 2},
+      "C": {"text": "Tôi cảm thấy khó khăn khi phải lựa chọn theo nhóm.", "score": 1},
+      "D": {"text": "Tôi thấy áp lực và không thoải mái.", "score": 0}
+    }
+  },
+  {
+    "question": "Khi bạn bè chọn phong cách sống ưa thích các hoạt động xã hội hoặc giải trí, bạn cảm thấy sao?",
+    "options": {
+      "A": {"text": "Tôi thoải mái làm theo cách của mình.", "score": 3},
+      "B": {"text": "Tôi hơi áp lực nhưng không để tâm nhiều.", "score": 2},
+      "C": {"text": "Tôi cảm thấy áp lực và lo lắng.", "score": 1},
+      "D": {"text": "Tôi thấy cô lập và khó chịu.", "score": 0}
+    }
+  },
+  {
+    "question": "Bạn cảm thấy thế nào khi bạn bè có thói quen sử dụng mạng xã hội hoặc công nghệ khác với bạn?",
+    "options": {
+      "A": {"text": "Tôi thoải mái với cách mình sử dụng, không áp lực.", "score": 3},
+      "B": {"text": "Tôi hơi áp lực nhưng chấp nhận được.", "score": 2},
+      "C": {"text": "Tôi thấy bị áp lực phải theo xu hướng.", "score": 1},
+      "D": {"text": "Tôi cảm thấy bị lạc lõng và áp lực.", "score": 0}
+    }
+  },
+  {
+    "question": "Khi bạn bè chia sẻ quan điểm sống hoặc giá trị cá nhân, bạn phản ứng thế nào?",
+    "options": {
+      "A": {"text": "Tôi tôn trọng và không cảm thấy áp lực.", "score": 3},
+      "B": {"text": "Tôi có chút áp lực nhưng không quá lo lắng.", "score": 2},
+      "C": {"text": "Tôi cảm thấy khó chịu và bối rối.", "score": 1},
+      "D": {"text": "Tôi cảm thấy bị xa lánh và áp lực lớn.", "score": 0}
+    }
+  },
+  {
+    "question": "Bạn nghĩ sao về việc thay đổi phong cách sống để hòa nhập với nhóm bạn?",
+    "options": {
+      "A": {"text": "Tôi tự nguyện và thoải mái khi thay đổi nếu cần.", "score": 3},
+      "B": {"text": "Tôi hơi áp lực nhưng cố gắng duy trì sự cân bằng.", "score": 2},
+      "C": {"text": "Tôi thấy áp lực và khó thích nghi.", "score": 1},
+      "D": {"text": "Tôi rất áp lực và không muốn thay đổi.", "score": 0}
+    }
+  },
+  {
+    "question": "Khi bạn bè có phong cách sống hướng ngoại hoặc năng động hơn bạn, bạn cảm thấy thế nào?",
+    "options": {
+      "A": {"text": "Tôi thoải mái với cá tính riêng của mình.", "score": 3},
+      "B": {"text": "Tôi hơi áp lực nhưng không để tâm nhiều.", "score": 2},
+      "C": {"text": "Tôi cảm thấy bị áp lực và ghen tị.", "score": 1},
+      "D": {"text": "Tôi cảm thấy tự ti và cô đơn.", "score": 0}
+    }
+  },
+  {
+    "question": "Bạn nghĩ thế nào về việc phải theo phong cách sống “chuẩn mực” mà bạn bè hoặc xã hội đề ra?",
+    "options": {
+      "A": {"text": "Tôi không bị ảnh hưởng và tự tin là chính mình.", "score": 3},
+      "B": {"text": "Tôi có chút áp lực nhưng không quá nghiêm trọng.", "score": 2},
+      "C": {"text": "Tôi cảm thấy áp lực và đôi khi lo lắng.", "score": 1},
+      "D": {"text": "Tôi rất áp lực và không thoải mái với bản thân.", "score": 0}
+    }
+  }
+]
