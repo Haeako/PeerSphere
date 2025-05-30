@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz Hấp Dẫn</title>
   <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     /* Reset and base styles */
     * {
@@ -14,22 +14,42 @@
       box-sizing: border-box;
     }
     
+    :root {
+      --primary-color: #6366F1;
+      --primary-color-dark: #4F46E5;
+      --secondary-color: #8B5CF6;
+      --text-dark: #1F2937;
+      --text-medium: #4B5563;
+      --text-light: #6B7280;
+      --bg-light: #fff8f0;
+      --bg-lighter: #ffeecf;
+      --white: #FFFFFF;
+      --gray-100: #F9FAFB;
+      --gray-200: #F3F4F6;
+      --gray-300: #E5E7EB;
+      --gray-400: #D1D5DB;
+      --danger-color: #EF4444;
+      --warning-color: #F59E0B;
+      --success-color: #10B981;
+      --pink-color: #EC4899;
+      --blue-color: #3B82F6;
+    }
+
     body {
-      background: linear-gradient(135deg, #fff8f0, #ffeecf);
+      background: linear-gradient(135deg, var(--bg-light), var(--bg-lighter));
       font-family: 'Nunito', sans-serif;
       min-height: 100vh;
-      padding: 0;
-      color: #4B5563;
+      color: var(--text-medium);
+      line-height: 1.6;
     }
     
-    /* Main container for proper layout */
     .main-container {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
       position: relative;
-      padding-top: 70px; /* Space for fixed navbar */
-      padding-bottom: 30px;
+      padding-top: 75px; /* Space for fixed navbar */
+      padding-bottom: 40px;
     }
     
     /* Fixed navigation bar */
@@ -38,64 +58,182 @@
       top: 0;
       left: 0;
       width: 100%;
-      background: linear-gradient(90deg, #6366F1, #8B5CF6);
-      padding: 15px 25px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      padding: 18px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      z-index: 100;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
     
     .quiz-nav-title {
-      color: white;
-      font-weight: bold;
-      font-size: 1.2em;
-      margin: 0;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.3em;
     }
     
     .quiz-exit-btn {
-      background-color: rgba(255, 255, 255, 0.9);
-      color: #6366F1;
+      background-color: rgba(255, 255, 255, 0.95);
+      color: var(--primary-color);
       border: none;
-      padding: 8px 18px;
-      border-radius: 20px;
+      padding: 9px 20px;
+      border-radius: 25px;
       cursor: pointer;
       transition: all 0.3s ease;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.9em;
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 8px;
+      text-decoration: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
     
     .quiz-exit-btn:hover {
-      background-color: white;
+      background-color: var(--white);
       transform: translateY(-2px);
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    .quiz-exit-btn svg {
+        width: 16px;
+        height: 16px;
     }
     
     /* Quiz container with proper positioning */
     .quiz-container-wrapper {
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start; /* Align items to the top */
       flex-grow: 1;
       position: relative;
-      padding: 20px;
+      padding: 30px 20px;
       z-index: 2; /* Above decorative elements */
     }
     
-    .quiz-container {
-      width: 100%;
-      max-width: 650px;
-      background: white;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      position: relative;
+    #quiz-selection-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 800px; 
+        padding: 20px;
+    }
+
+    .quiz-selection-title {
+        font-size: 2em;
+        color: var(--text-dark);
+        font-weight: 800;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .quiz-options-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        width: 100%;
+        gap: 20px; /* Spacing between cards */
+    }
+
+    .quiz-type-option {
+        background: var(--white);
+        padding: 25px 30px;
+        border-radius: 16px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-left: 6px solid transparent;
+        display: flex;
+        align-items: center;
+        text-align: left;
+        width: 100%;
+        max-width: 650px; /* Max width for each card */
+    }
+
+    .quiz-type-option:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
     }
     
+    .quiz-type-option.active-option:nth-child(1) { border-color: var(--blue-color); }
+    .quiz-type-option.active-option:nth-child(2) { border-color: var(--warning-color); }
+    .quiz-type-option.active-option:nth-child(3) { border-color: var(--success-color); }
+    .quiz-type-option.active-option:nth-child(4) { border-color: var(--pink-color); }
+    .quiz-type-option.active-option:nth-child(5) { border-color: var(--secondary-color); }
+
+
+    .quiz-type-option.disabled-option {
+        border-color: var(--gray-400);
+        cursor: not-allowed;
+        opacity: 0.6;
+        background-color: var(--gray-100);
+    }
+     .quiz-type-option.disabled-option:hover {
+        transform: none;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    .quiz-type-emoji {
+        font-size: 2.5rem; 
+        margin-right: 25px;
+        line-height: 1;
+    }
+    
+    .quiz-type-content {
+        flex-grow: 1;
+    }
+
+    .quiz-type-name {
+        font-size: 1.3em; 
+        font-weight: 700;  
+        color: var(--text-dark);
+        margin-bottom: 6px;
+    }
+    
+    .quiz-type-description {
+        font-size: 0.9em; 
+        color: var(--text-light);
+        line-height: 1.5;
+    }
+
+    .quiz-type-arrow {
+        font-size: 1.6rem;
+        color: var(--gray-400);
+        margin-left: 20px;
+        transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+    .quiz-type-option:hover .quiz-type-arrow {
+        transform: translateX(5px);
+    }
+
+    .quiz-type-option.active-option:nth-child(1):hover .quiz-type-arrow { color: var(--blue-color); }
+    .quiz-type-option.active-option:nth-child(2):hover .quiz-type-arrow { color: var(--warning-color); }
+    .quiz-type-option.active-option:nth-child(3):hover .quiz-type-arrow { color: var(--success-color); }
+    .quiz-type-option.active-option:nth-child(4):hover .quiz-type-arrow { color: var(--pink-color); }
+    .quiz-type-option.active-option:nth-child(5):hover .quiz-type-arrow { color: var(--secondary-color); }
+    .quiz-type-option.disabled-option:hover .quiz-type-arrow { color: var(--gray-400); transform: none; }
+
+
+    .quiz-container {
+      width: 100%;
+      max-width: 700px;
+      background: var(--white);
+      padding: 35px 40px;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      position: relative;
+      opacity: 0; /* For fade-in animation */
+      transform: translateY(20px); /* For slide-in animation */
+    }
+    
+    .quiz-container.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+
     /* Decorative emoji positioning */
     .decorative-elements {
       position: absolute;
@@ -110,325 +248,269 @@
     
     .emoji {
       position: absolute;
-      font-size: 2.5rem;
-      animation: float 4s ease-in-out infinite;
-      opacity: 0.7;
+      font-size: 3rem;
+      animation: float 6s ease-in-out infinite alternate;
+      opacity: 0.6;
     }
     
-    .emoji-top-left {
-      top: 100px;
-      left: 5%;
-    }
-    
-    .emoji-top-right {
-      top: 120px;
-      right: 5%;
-    }
-    
-    .emoji-bottom-left {
-      bottom: 50px;
-      left: 8%;
-    }
-    
-    .emoji-bottom-right {
-      bottom: 80px;
-      right: 8%;
-    }
+    .emoji-top-left { top: 15%; left: 5%; animation-delay: 0s; }
+    .emoji-top-right { top: 20%; right: 5%; animation-delay: -1.5s; }
+    .emoji-bottom-left { bottom: 10%; left: 8%; animation-delay: -3s; }
+    .emoji-bottom-right { bottom: 15%; right: 8%; animation-delay: -4.5s; }
     
     @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-15px) rotate(5deg); }
+      0% { transform: translateY(0px) rotate(-5deg); }
+      100% { transform: translateY(-25px) rotate(5deg); }
     }
     
     /* Quiz title */
     .quiz-title {
-      font-size: 1.6em;
-      color: #4B5563;
-      margin-bottom: 20px;
-      font-weight: 700;
+      font-size: 1.1em;
+      color: var(--text-light);
+      margin-bottom: 10px;
+      font-weight: 600;
       text-align: center;
     }
     
     /* Progress bar */
     .progress-container {
-      margin-bottom: 25px;
-      background-color: #F3F4F6;
+      margin-bottom: 30px;
+    }
+    .progress-bar-wrapper {
+      background-color: var(--gray-200);
       border-radius: 10px;
       overflow: hidden;
-      height: 8px;
+      height: 10px;
+      margin-bottom: 8px;
     }
     
     .progress-bar {
       height: 100%;
-      background: linear-gradient(90deg, #6366F1, #8B5CF6);
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
       border-radius: 10px;
-      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     .progress-text {
       display: flex;
       justify-content: space-between;
       font-size: 0.9em;
-      color: #6B7280;
-      margin-top: 8px;
+      color: var(--text-light);
+      font-weight: 600;
     }
     
     /* Question */
     .question-title {
-      font-size: 1.3em;
+      font-size: 1.4em;
       font-weight: 700;
-      margin-bottom: 25px;
-      color: #1F2937;
+      margin-bottom: 30px;
+      color: var(--text-dark);
       line-height: 1.5;
+      text-align: center;
     }
     
     /* Options container */
     .options-container {
-      margin-bottom: 25px;
+      margin-bottom: 30px;
+      display: grid;
+      gap: 15px;
     }
     
-    /* Style for option labels with colors */
     .option-label {
       display: flex;
       align-items: center;
-      padding: 15px 20px;
+      padding: 18px 22px;
       border-radius: 12px;
       border-left: 5px solid;
-      background: white;
+      background: var(--white);
       cursor: pointer;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
-      margin-bottom: 12px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
     }
 
-    /* Colors for each option */
-    .option-label:nth-child(1) {
-      border-color: #3B82F6; /* Blue */
-      background: linear-gradient(to right, rgba(59, 130, 246, 0.05), white);
-    }
+    .option-label:nth-child(1) { border-color: var(--blue-color); }
+    .option-label:nth-child(2) { border-color: var(--warning-color); }
+    .option-label:nth-child(3) { border-color: var(--success-color); }
+    .option-label:nth-child(4) { border-color: var(--pink-color); }
 
-    .option-label:nth-child(2) {
-      border-color: #F59E0B; /* Orange */
-      background: linear-gradient(to right, rgba(245, 158, 11, 0.05), white);
-    }
-
-    .option-label:nth-child(3) {
-      border-color: #10B981; /* Green */
-      background: linear-gradient(to right, rgba(16, 185, 129, 0.05), white);
-    }
-
-    .option-label:nth-child(4) {
-      border-color: #EC4899; /* Pink */
-      background: linear-gradient(to right, rgba(236, 72, 153, 0.05), white);
-    }
-
-    /* Hover effects */
     .option-label:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     }
 
-    .option-label:nth-child(1):hover {
-      background: linear-gradient(to right, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
-    }
+    .option-label:nth-child(1):hover { background: linear-gradient(to right, rgba(59, 130, 246, 0.08), var(--white)); }
+    .option-label:nth-child(2):hover { background: linear-gradient(to right, rgba(245, 158, 11, 0.08), var(--white)); }
+    .option-label:nth-child(3):hover { background: linear-gradient(to right, rgba(16, 185, 129, 0.08), var(--white)); }
+    .option-label:nth-child(4):hover { background: linear-gradient(to right, rgba(236, 72, 153, 0.08), var(--white)); }
 
-    .option-label:nth-child(2):hover {
-      background: linear-gradient(to right, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
-    }
-
-    .option-label:nth-child(3):hover {
-      background: linear-gradient(to right, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
-    }
-
-    .option-label:nth-child(4):hover {
-      background: linear-gradient(to right, rgba(236, 72, 153, 0.1), rgba(236, 72, 153, 0.05));
-    }
-
-    /* Radio button styling */
     .option-label input[type="radio"] {
       position: absolute;
       opacity: 0;
+      width: 0;
+      height: 0;
     }
 
-    .option-label input[type="radio"] + .option-text {
-      padding-left: 35px;
+    .option-text {
+      padding-left: 40px;
       position: relative;
       cursor: pointer;
       display: inline-block;
       transition: all 0.2s ease;
+      font-weight: 600;
+      color: var(--text-medium);
+      width: 100%;
     }
 
-    /* Letter indicators (A, B, C, D) */
-    .option-label:nth-child(1) .option-text:after {
-      content: "A";
+    .option-text::before { /* Custom radio button indicator circle */
+      content: "";
       position: absolute;
       left: 0;
       top: 50%;
       transform: translateY(-50%);
-      width: 24px;
-      height: 24px;
-      background: #3B82F6;
-      color: white;
+      width: 22px;
+      height: 22px;
+      border: 2px solid var(--gray-300);
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      font-weight: bold;
-      z-index: 5;
-    }
-
-    .option-label:nth-child(2) .option-text:after {
-      content: "B";
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 24px;
-      height: 24px;
-      background: #F59E0B;
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      font-weight: bold;
-      z-index: 5;
-    }
-
-    .option-label:nth-child(3) .option-text:after {
-      content: "C";
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 24px;
-      height: 24px;
-      background: #10B981;
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      font-weight: bold;
-      z-index: 5;
-    }
-
-    .option-label:nth-child(4) .option-text:after {
-      content: "D";
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 24px;
-      height: 24px;
-      background: #EC4899;
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      font-weight: bold;
-      z-index: 5;
+      transition: all 0.2s ease;
     }
     
+    .option-text::after { /* Custom radio button indicator dot */
+      content: "";
+      position: absolute;
+      left: 7px; /* (22-8)/2 + 2px border offset for parent */
+      top: 50%;
+      transform: translateY(-50%) scale(0);
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      transition: all 0.2s ease;
+    }
+    
+    /* Letter indicators (A, B, C, D) - using ::after on .option-label itself for positioning */
+    .option-label .option-indicator {
+      position: absolute;
+      left: -2px; /* Slightly overlap for visual effect with border */
+      top: 50%;
+      transform: translateY(-50%);
+      width: 28px;
+      height: 28px;
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: bold;
+      z-index: 5;
+      line-height: 1; /* Ensure text is centered */
+    }
+
+    .option-label:nth-child(1) .option-indicator { background: var(--blue-color); }
+    .option-label:nth-child(2) .option-indicator { background: var(--warning-color); }
+    .option-label:nth-child(3) .option-indicator { background: var(--success-color); }
+    .option-label:nth-child(4) .option-indicator { background: var(--pink-color); }
+    
     /* Selected state for options */
-    .option-label:nth-child(1) input[type="radio"]:checked ~ .option-text,
+    .option-label input[type="radio"]:checked + .option-text::before {
+      border-width: 3px;
+    }
+    .option-label input[type="radio"]:checked + .option-text::after {
+      transform: translateY(-50%) scale(1);
+    }
+
+    .option-label:nth-child(1) input[type="radio"]:checked + .option-text::before { border-color: var(--blue-color); }
+    .option-label:nth-child(1) input[type="radio"]:checked + .option-text::after { background-color: var(--blue-color); }
     .option-label:nth-child(1):has(input[type="radio"]:checked) {
-      background: linear-gradient(to right, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.05));
-      border-color: #3B82F6;
-      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
-      font-weight: 600;
-      color: #3B82F6;
+      background: linear-gradient(to right, rgba(59, 130, 246, 0.12), var(--white));
+      box-shadow: 0 3px 10px rgba(59, 130, 246, 0.2);
     }
+    .option-label:nth-child(1) input[type="radio"]:checked + .option-text { color: var(--blue-color); font-weight: 700; }
 
-    .option-label:nth-child(2) input[type="radio"]:checked ~ .option-text,
+
+    .option-label:nth-child(2) input[type="radio"]:checked + .option-text::before { border-color: var(--warning-color); }
+    .option-label:nth-child(2) input[type="radio"]:checked + .option-text::after { background-color: var(--warning-color); }
     .option-label:nth-child(2):has(input[type="radio"]:checked) {
-      background: linear-gradient(to right, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.05));
-      border-color: #F59E0B;
-      box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
-      font-weight: 600;
-      color: #F59E0B;
+      background: linear-gradient(to right, rgba(245, 158, 11, 0.12), var(--white));
+      box-shadow: 0 3px 10px rgba(245, 158, 11, 0.2);
     }
+    .option-label:nth-child(2) input[type="radio"]:checked + .option-text { color: var(--warning-color); font-weight: 700; }
 
-    .option-label:nth-child(3) input[type="radio"]:checked ~ .option-text,
+    .option-label:nth-child(3) input[type="radio"]:checked + .option-text::before { border-color: var(--success-color); }
+    .option-label:nth-child(3) input[type="radio"]:checked + .option-text::after { background-color: var(--success-color); }
     .option-label:nth-child(3):has(input[type="radio"]:checked) {
-      background: linear-gradient(to right, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05));
-      border-color: #10B981;
-      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
-      font-weight: 600;
-      color: #10B981;
+      background: linear-gradient(to right, rgba(16, 185, 129, 0.12), var(--white));
+      box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
     }
+    .option-label:nth-child(3) input[type="radio"]:checked + .option-text { color: var(--success-color); font-weight: 700; }
 
-    .option-label:nth-child(4) input[type="radio"]:checked ~ .option-text,
+    .option-label:nth-child(4) input[type="radio"]:checked + .option-text::before { border-color: var(--pink-color); }
+    .option-label:nth-child(4) input[type="radio"]:checked + .option-text::after { background-color: var(--pink-color); }
     .option-label:nth-child(4):has(input[type="radio"]:checked) {
-      background: linear-gradient(to right, rgba(236, 72, 153, 0.15), rgba(236, 72, 153, 0.05));
-      border-color: #EC4899;
-      box-shadow: 0 2px 8px rgba(236, 72, 153, 0.2);
-      font-weight: 600;
-      color: #EC4899;
+      background: linear-gradient(to right, rgba(236, 72, 153, 0.12), var(--white));
+      box-shadow: 0 3px 10px rgba(236, 72, 153, 0.2);
     }
+    .option-label:nth-child(4) input[type="radio"]:checked + .option-text { color: var(--pink-color); font-weight: 700; }
     
     /* Navigation buttons */
     .nav-buttons {
       display: flex;
       justify-content: space-between;
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 1px solid #E5E7EB;
+      margin-top: 35px;
+      padding-top: 25px;
+      border-top: 1px solid var(--gray-300);
     }
     
-    .btn-nav,
-    .btn-submit {
-      background-color: #6366F1;
-      color: white;
+    .btn-nav, .btn-submit {
+      background-color: var(--primary-color);
+      color: var(--white);
       border: none;
-      padding: 12px 25px;
+      padding: 14px 28px;
       font-size: 1em;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
       transition: all 0.3s ease;
-      font-weight: 600;
-      display: flex;
+      font-weight: 700;
+      display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      box-shadow: 0 4px 10px rgba(99,102,241,0.2);
+    }
+     .btn-nav svg, .btn-submit svg {
+        width: 18px; height: 18px;
     }
     
     .btn-nav.btn-prev {
-      background-color: white;
-      color: #6B7280;
-      border: 1px solid #E5E7EB;
+      background-color: var(--white);
+      color: var(--text-light);
+      border: 2px solid var(--gray-300);
+      box-shadow: none;
     }
     
-    .btn-nav:hover,
-    .btn-submit:hover {
+    .btn-nav:hover, .btn-submit:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(99, 102, 241, 0.3);
+      background-color: var(--primary-color-dark);
+      box-shadow: 0 7px 15px rgba(99, 102, 241, 0.3);
     }
     
     .btn-nav.btn-prev:hover {
-      background-color: #F9FAFB;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      background-color: var(--gray-100);
+      border-color: var(--gray-400);
+      color: var(--text-medium);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
     
-    .btn-nav:active,
-    .btn-submit:active {
+    .btn-nav:active, .btn-submit:active {
       transform: translateY(-1px);
+      box-shadow: 0 2px 5px rgba(99,102,241,0.2);
+    }
+    .btn-nav.btn-prev:active {
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
     
-    /* When there's only the next button */
-    .nav-buttons:not(:has(#prevBtn)) {
-      justify-content: flex-end;
-    }
-    
-    .single-button {
-      justify-content: flex-end;
-    }
+    .nav-buttons:not(:has(#prevBtn)) { justify-content: flex-end; }
+    .single-button { justify-content: flex-end; }
     
     /* Exit modal */
     .exit-modal {
@@ -438,152 +520,216 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 1000;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 2000;
       justify-content: center;
       align-items: center;
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(8px);
     }
     
     .exit-modal.active {
       display: flex;
-      animation: fadeIn 0.3s ease;
+      animation: fadeIn 0.3s ease-out;
     }
     
     .exit-modal-content {
-      background-color: white;
-      padding: 30px;
-      border-radius: 16px;
+      background-color: var(--white);
+      padding: 35px;
+      border-radius: 20px;
       width: 90%;
-      max-width: 450px;
+      max-width: 480px;
       text-align: center;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-      animation: scaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+      animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     
     .exit-modal-title {
-      font-size: 1.5em;
+      font-size: 1.6em;
       font-weight: 700;
-      margin-bottom: 15px;
-      color: #1F2937;
+      margin-bottom: 18px;
+      color: var(--text-dark);
     }
     
     .exit-modal-text {
-      margin-bottom: 25px;
-      color: #6B7280;
+      margin-bottom: 30px;
+      color: var(--text-light);
+      font-size: 1.05em;
     }
     
     .exit-modal-buttons {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
     
     .exit-modal-button {
-      padding: 12px 0;
-      border-radius: 10px;
+      padding: 14px 0;
+      border-radius: 12px;
       cursor: pointer;
       transition: all 0.3s ease;
       border: none;
-      font-weight: 600;
+      font-weight: 700;
+      font-size: 1em;
       width: 100%;
     }
     
     .exit-modal-button.cancel {
-      background-color: #F3F4F6;
-      color: #4B5563;
+      background-color: var(--gray-200);
+      color: var(--text-medium);
+    }
+    .exit-modal-button.cancel:hover {
+      background-color: var(--gray-300);
+      transform: translateY(-2px);
     }
     
     .exit-modal-button.confirm-home {
-      background-color: #EF4444;
-      color: white;
+      background-color: var(--danger-color);
+      color: var(--white);
+    }
+    .exit-modal-button.confirm-home:hover {
+      background-color: #D92626; /* Darker red */
+      transform: translateY(-2px);
+       box-shadow: 0 4px 12px rgba(239,68,68,0.2);
     }
     
     .exit-modal-button.confirm-chat {
-      background-color: #6366F1;
-      color: white;
+      background-color: var(--primary-color);
+      color: var(--white);
     }
-    
-    .exit-modal-button:hover {
+     .exit-modal-button.confirm-chat:hover {
+      background-color: var(--primary-color-dark);
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 12px rgba(99,102,241,0.2);
     }
     
     /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes scaleIn { from { transform: scale(0.9) translateY(10px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
     
-    @keyframes scaleIn {
-      from { transform: scale(0.9); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-    
-    .shake {
-      animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
-    }
-    
+    .shake { animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both; }
     @keyframes shake {
       10%, 90% { transform: translate3d(-1px, 0, 0); }
       20%, 80% { transform: translate3d(2px, 0, 0); }
-      30%, 50%, 70% { transform: translate3d(-3px, 0, 0); }
-      40%, 60% { transform: translate3d(3px, 0, 0); }
+      30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+      40%, 60% { transform: translate3d(4px, 0, 0); }
     }
     
     /* Error message */
     .error-message {
-      color: #EF4444;
-      background-color: rgba(239, 68, 68, 0.1);
-      padding: 12px 15px;
+      color: var(--danger-color);
+      background-color: rgba(239, 68, 68, 0.08);
+      padding: 14px 18px;
       border-radius: 10px;
-      margin: 15px 0;
+      margin: 20px 0 0; /* Display below options */
       display: flex;
       align-items: center;
       animation: fadeIn 0.3s ease;
+      font-weight: 600;
+      border: 1px solid rgba(239, 68, 68, 0.2);
     }
     
     .error-message svg {
-      margin-right: 10px;
+      margin-right: 12px;
       flex-shrink: 0;
+      stroke: var(--danger-color);
     }
     
     /* Spinner animation */
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+    .loading-spinner-container {
+      text-align: center;
+      padding: 50px 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(99, 102, 241, 0.2);
+      border-top-color: var(--primary-color);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 25px;
+    }
+    .loading-spinner-container p {
+      color: var(--text-light);
+      font-weight: 600;
+      font-size: 1.1em;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
     
+    .completion-screen {
+        text-align: center;
+        padding: 40px 30px;
+        animation: fadeIn 0.5s ease-out;
+    }
+    .completion-screen .emoji-celebrate {
+        font-size: 60px;
+        margin-bottom: 25px;
+        display: inline-block;
+        animation: tada 1s ease;
+    }
+    @keyframes tada {
+        0% {transform: scale(1);}
+        10%, 20% {transform: scale(0.9) rotate(-3deg);}
+        30%, 50%, 70%, 90% {transform: scale(1.1) rotate(3deg);}
+        40%, 60%, 80% {transform: scale(1.1) rotate(-3deg);}
+        100% {transform: scale(1) rotate(0);}
+    }
+    .completion-screen h3 {
+        font-size: 1.8em;
+        margin-bottom: 18px;
+        color: var(--text-dark);
+        font-weight: 700;
+    }
+    .completion-screen p {
+        color: var(--text-light);
+        margin-bottom: 35px;
+        font-size: 1.1em;
+    }
+
+
     /* Responsive adjustments */
     @media (max-width: 768px) {
-      .quiz-container {
-        padding: 20px;
-      }
+      .main-container { padding-top: 65px; padding-bottom: 20px; }
+      .quiz-nav-bar { padding: 15px 20px; }
+      .quiz-nav-title { font-size: 1.1em; }
+      .quiz-exit-btn { padding: 8px 16px; font-size: 0.85em; }
       
-      .quiz-nav-bar {
-        padding: 12px 15px;
-      }
-      
-      .quiz-nav-title {
-        font-size: 1.1em;
-      }
-      
-      .quiz-exit-btn {
-        padding: 6px 12px;
-        font-size: 0.8em;
-      }
-      
-      .emoji {
-        font-size: 1.8rem;
-      }
-      
-      .btn-nav, .btn-submit {
-        padding: 10px 15px;
-        font-size: 0.9em;
-      }
-      
-      .exit-modal-buttons {
-        flex-direction: column;
-      }
+      .quiz-container-wrapper { padding: 20px 15px; }
+      #quiz-selection-container { padding: 10px; max-width: 100%;}
+      .quiz-selection-title { font-size: 1.6em; margin-bottom: 30px; }
+      .quiz-type-option { padding: 20px; max-width: 100%; }
+      .quiz-type-emoji { font-size: 2.2rem; margin-right: 15px; }
+      .quiz-type-name { font-size: 1.15em; }
+      .quiz-type-description { font-size: 0.8em; }
+      .quiz-type-arrow { font-size: 1.3rem; }
+
+      .quiz-container { padding: 25px 20px; border-radius: 16px; }
+      .question-title { font-size: 1.25em; margin-bottom: 25px; }
+      .option-label { padding: 16px 18px; }
+      .option-text { padding-left: 35px; font-size: 0.95em; }
+      .option-label .option-indicator { width: 24px; height: 24px; font-size: 12px;}
+      .option-text::before { width: 20px; height: 20px; }
+      .option-text::after { left: 6px; width: 8px; height: 8px; }
+
+
+      .nav-buttons { flex-direction: column-reverse; gap: 15px; }
+      .btn-nav, .btn-submit { width: 100%; padding: 15px; justify-content: center; }
+      .nav-buttons:not(:has(#prevBtn)) { flex-direction: column; } /* Ensure single button is also full width */
+
+      .emoji { font-size: 2.2rem; }
+      .emoji-top-left { top: 10%; left: 3%; }
+      .emoji-top-right { top: 12%; right: 3%; }
+      .emoji-bottom-left { bottom: 5%; left: 6%; }
+      .emoji-bottom-right { bottom: 8%; right: 6%; }
+
+      .exit-modal-content { padding: 30px 25px; border-radius: 16px; }
+      .exit-modal-title { font-size: 1.4em; }
+      .exit-modal-text { font-size: 1em; }
+      .loading-spinner-container { padding: 30px 20px;}
+      .loading-spinner { width: 40px; height: 40px;}
     }
   </style>
 </head>
@@ -591,15 +737,17 @@
   <div class="main-container">
     <!-- Top navigation bar -->
     <div class="quiz-nav-bar">
-      <h2 class="quiz-nav-title">Trắc nghiệm áp lực đồng trang lứa</h2>
+      <h2 class="quiz-nav-title" id="quizNavMainTitle">Trắc nghiệm áp lực đồng trang lứa</h2>
       <div class="quiz-nav-buttons">
-        <a href="/" class="quiz-exit-btn">
-          <span>Quay lại</span>
-        </a>
+        <button class="quiz-exit-btn" id="navBackBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+          </svg>
+          <span>Thoát</span>
+        </button>
       </div>
     </div>
     
-    <!-- Decorative elements container -->
     <div class="decorative-elements">
       <div class="emoji emoji-top-left">😥</div>
       <div class="emoji emoji-top-right">✨</div>
@@ -607,93 +755,155 @@
       <div class="emoji emoji-bottom-right">🌟</div>
     </div>
     
-    <!-- Quiz container wrapper -->
     <div class="quiz-container-wrapper">
-      <div id="quiz-container" class="quiz-container">
-        <!-- Quiz content will be loaded here -->
+      <div id="quiz-selection-container">
+        <h2 class="quiz-selection-title">Chọn loại trắc nghiệm bạn muốn thực hiện:</h2>
+        <div class="quiz-options-list" id="quizOptionsList">
+          <!-- Quiz options will be dynamically inserted here -->
+        </div>
+      </div>
+      <div class="quiz-container" id="quiz-container" style="display: none;">
+          <!-- Quiz content will be loaded here -->
       </div>
     </div>
   </div>
   
-  <!-- Exit confirmation modal -->
   <div class="exit-modal" id="exitModal">
     <div class="exit-modal-content">
-      <h3 class="exit-modal-title">Bạn có chắc chắn muốn rời đi?</h3>
-      <p class="exit-modal-text">Tiến trình làm bài trắc nghiệm sẽ không được lưu.</p>
+      <h3 class="exit-modal-title">Bạn chắc chắn muốn rời đi?</h3>
+      <p class="exit-modal-text">Tiến trình làm bài trắc nghiệm hiện tại sẽ không được lưu lại.</p>
       <div class="exit-modal-buttons">
         <button class="exit-modal-button cancel" onclick="hideExitModal()">Tiếp tục làm bài</button>
-        <button class="exit-modal-button confirm-home" onclick="exitToHome()">Về trang chủ</button>
         <button class="exit-modal-button confirm-chat" onclick="exitToChat()">Đến trò chuyện</button>
+        <button class="exit-modal-button confirm-home" onclick="exitToHome()">Về trang chủ</button>
       </div>
     </div>
   </div>
   
   <script>
-    // Đoạn mã JavaScript để hiển thị và xử lý câu hỏi với đáp án đã trộn
-// Chèn vào file quiz.html hoặc tệp JavaScript riêng
-
 document.addEventListener("DOMContentLoaded", function() {
   let currentQuestion = 0;
   let answers = {};
   let questions = [];
-  let originalQuizQuestions = {}; // Lưu câu hỏi gốc
+  let originalQuizQuestions = {}; 
   let isTransitioning = false;
+  let selectedQuizType = null;
+  let selectedQuizName = '';
 
-  // Hàm load câu hỏi
+  const quizTypesData = [
+    { key: 'overview', name: 'Áp Lực Học Tập', emoji: '🎓', description: 'Đánh giá mức độ căng thẳng liên quan đến kết quả học tập và kỳ vọng.', active: true },
+    { key: 'nghinh', name: 'Áp Lực Về Ngoại Hình', emoji: '💅', description: 'Khám phá ảnh hưởng của tiêu chuẩn ngoại hình từ bạn bè và xã hội.', active: true },
+    { key: 'hobby', name: 'Áp Lực Sở Thích & Thói Quen', emoji: '🎨', description: 'Tìm hiểu về áp lực phải theo đuổi sở thích hoặc thói quen giống bạn bè.', active: true },
+    { key: 'finace', name: 'Áp Lực Về Tài Chính', emoji: '💰', description: 'Đo lường mức độ lo lắng về vấn đề tài chính cá nhân so với bạn bè.', active: true },
+    { key: 'lifestyle', name: 'Áp Lực Về Phong Cách Sống', emoji: '✨', description: 'Đánh giá áp lực liên quan đến việc duy trì một phong cách sống nhất định.', active: true}
+  ];
+
+  const quizSelectionContainer = document.getElementById('quiz-selection-container');
+  const quizContainer = document.getElementById('quiz-container');
+  const quizOptionsList = document.getElementById('quizOptionsList');
+  const quizNavMainTitle = document.getElementById('quizNavMainTitle');
+
+  // *** KHAI BÁO VÀ GẮN EVENT CHO NÚT THOÁT ***
+  const navBackBtn = document.getElementById('navBackBtn'); 
+  if (navBackBtn) { // Kiểm tra xem nút có tồn tại không trước khi gắn listener
+    navBackBtn.addEventListener('click', (event) => {
+      event.preventDefault(); // Quan trọng nếu nút là <a>, cũng tốt cho <button>
+      showExitModal();
+    });
+  }
+  // *** KẾT THÚC PHẦN NÚT THOÁT ***
+
+  function renderQuizSelection() {
+    quizOptionsList.innerHTML = ''; // Clear previous options
+    quizTypesData.forEach(quizType => {
+      const optionDiv = document.createElement('div');
+      optionDiv.className = `quiz-type-option ${quizType.active ? 'active-option' : 'disabled-option'}`;
+      optionDiv.innerHTML = `
+        <div class="quiz-type-emoji">${quizType.emoji}</div>
+        <div class="quiz-type-content">
+            <div class="quiz-type-name">${quizType.name}</div>
+            ${quizType.description ? `<div class="quiz-type-description">${quizType.description}</div>` : ''}
+        </div>
+        <div class="quiz-type-arrow">➔</div>
+      `;
+      if (quizType.active) {
+        optionDiv.addEventListener('click', () => selectQuizType(quizType.key, quizType.name));
+      }
+      quizOptionsList.appendChild(optionDiv);
+    });
+    quizSelectionContainer.style.display = 'flex';
+    quizContainer.style.display = 'none';
+    quizNavMainTitle.textContent = 'Trắc nghiệm áp lực đồng trang lứa';
+  }
+
+  function selectQuizType(typeKey, typeName) {
+    selectedQuizType = typeKey;
+    selectedQuizName = typeName;
+    
+    quizNavMainTitle.textContent = `Trắc nghiệm ${typeName}`;
+    quizSelectionContainer.style.display = 'none';
+    quizContainer.style.display = 'block';
+    quizContainer.innerHTML = ''; // Clear previous quiz content
+    resetQuizState();
+    loadQuestions();
+  }
+  
+  function resetQuizState() {
+    currentQuestion = 0;
+    answers = {};
+    questions = [];
+    originalQuizQuestions = {};
+    isTransitioning = false;
+  }
+
   async function loadQuestions() {
+    if (!selectedQuizType) return;
+
     try {
-      const quizContainer = document.getElementById('quiz-container');
-      
-      // Hiệu ứng đang tải
       quizContainer.innerHTML = `
         <div style="text-align: center; padding: 30px;">
-          <div style="width: 40px; height: 40px; border: 4px solid rgba(99, 102, 241, 0.3); border-radius: 50%; border-top-color: #6366F1; animation: spin 1s linear infinite; margin: 0 auto 20px;"></div>
+          <div style="width: 40px; height: 40px; border: 4px solid rgba(99, 102, 241, 0.3); border-top-color: #6366F1; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px;"></div>
           <p style="color: #6B7280;">Đang tải câu hỏi...</p>
         </div>
       `;
       
-      // Lấy câu hỏi đã trộn (câu hỏi và đáp án đã được trộn từ server)
-      const response = await fetch('/api/questions');
+      const response = await fetch(`/api/questions?quiz_type=${selectedQuizType}`);
       if (!response.ok) throw new Error('Không thể tải câu hỏi từ server');
       
-      // Lấy câu hỏi gốc để tham chiếu khi nộp bài
-      const originalResponse = await fetch('/api/original-questions');
+      const originalResponse = await fetch(`/api/original-questions?quiz_type=${selectedQuizType}`);
       if (!originalResponse.ok) throw new Error('Không thể tải câu hỏi gốc từ server');
       originalQuizQuestions = await originalResponse.json();
       
       let data = await response.json();
       
-      // Chuyển đổi object thành mảng nếu cần
-      if (!Array.isArray(data)) {
-        data = Object.keys(data)
-                 .map(key => data[key]);
+      if (!data || (Array.isArray(data) && data.length === 0) || (typeof data === 'object' && Object.keys(data).length === 0) ) {
+        throw new Error('Không có câu hỏi nào cho loại trắc nghiệm này hoặc nội dung đang được cập nhật.');
       }
-      
+
+      if (!Array.isArray(data)) {
+        data = Object.keys(data).map(key => data[key]);
+      }
       questions = data;
-      
-      // Hiển thị câu hỏi đầu tiên
       showQuestion();
       
     } catch (error) {
-      document.getElementById('quiz-container').innerHTML = `
+      quizContainer.innerHTML = `
         <div style="text-align: center; padding: 30px;">
           <div style="color: #EF4444; font-size: 40px; margin-bottom: 20px;">⚠️</div>
           <h3 style="margin-bottom: 10px; color: #1F2937;">Đã xảy ra lỗi</h3>
           <p style="color: #6B7280; margin-bottom: 20px;">${error.message}</p>
-          <button onclick="location.reload()" style="background: #6366F1; color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer;">Thử lại</button>
+          <button onclick="renderQuizSelectionScreen()" style="background: #6366F1; color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer;">Chọn lại Quiz</button>
         </div>
       `;
     }
   }
+  window.renderQuizSelectionScreen = renderQuizSelection;
 
-  // Hiển thị câu hỏi
+
   function showQuestion() {
     if (isTransitioning) return;
     isTransitioning = true;
     
-    const quizContainer = document.getElementById('quiz-container');
-    
-    // Nếu hết câu hỏi, hiển thị nút nộp bài
     if (currentQuestion >= questions.length) {
       const completionContent = `
         <div style="text-align: center; padding: 30px;">
@@ -704,7 +914,6 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
       `;
       
-      // Fade out current content, then show completion
       quizContainer.style.opacity = '0';
       quizContainer.style.transform = 'translateY(10px)';
       quizContainer.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
@@ -715,17 +924,12 @@ document.addEventListener("DOMContentLoaded", function() {
         quizContainer.style.transform = 'translateY(0)';
         isTransitioning = false;
       }, 300);
-      
       return;
     }
 
     const q = questions[currentQuestion];
-    
-    // Tính phần trăm tiến độ
     const progressPercent = ((currentQuestion + 1) / questions.length) * 100;
     
-    // Tạo HTML cho các option
-    // Đây là phần quan trọng - hiển thị các đáp án đã được trộn từ server
     const optionsHTML = Object.entries(q.options).map(([key, value]) => {
       const isChecked = answers[q.id] === key ? 'checked' : '';
       return `
@@ -736,14 +940,11 @@ document.addEventListener("DOMContentLoaded", function() {
       `;
     }).join('');
 
-    // Kiểm tra xem có phải câu hỏi đầu tiên không để thêm class cho nút
     const isFirstQuestion = currentQuestion === 0;
     const navButtonsClass = isFirstQuestion ? 'nav-buttons single-button' : 'nav-buttons';
 
-    // Tạo HTML cho câu hỏi
     const questionContent = `
       <div class="quiz-title">Câu hỏi ${currentQuestion + 1}/${questions.length}</div>
-      
       <div class="progress-container">
         <div class="progress-bar" style="width: 0%"></div>
         <div class="progress-text">
@@ -751,20 +952,14 @@ document.addEventListener("DOMContentLoaded", function() {
           <span>${currentQuestion + 1}/${questions.length}</span>
         </div>
       </div>
-      
       <h3 class="question-title">${q.question}</h3>
-      
-      <div class="options-container">
-        ${optionsHTML}
-      </div>
-      
+      <div class="options-container">${optionsHTML}</div>
       <div class="${navButtonsClass}">
         ${currentQuestion > 0 ? '<button id="prevBtn" class="btn-nav btn-prev">Trước</button>' : ''}
         <button id="nextBtn" class="btn-nav">${currentQuestion === questions.length - 1 ? 'Hoàn thành' : 'Tiếp theo'}</button>
       </div>
     `;
     
-    // Transition with fade effect
     quizContainer.style.opacity = '0';
     quizContainer.style.transform = 'translateY(10px)';
     quizContainer.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
@@ -773,213 +968,162 @@ document.addEventListener("DOMContentLoaded", function() {
       quizContainer.innerHTML = questionContent;
       quizContainer.style.opacity = '1';
       quizContainer.style.transform = 'translateY(0)';
-      
-      // Animate progress bar
       setTimeout(() => {
-        document.querySelector('.progress-bar').style.width = `${progressPercent}%`;
+        const progressBar = document.querySelector('.progress-bar');
+        if(progressBar) progressBar.style.width = `${progressPercent}%`;
       }, 100);
-      
-      // Setup listeners
       setupListeners();
       isTransitioning = false;
     }, 300);
   }
 
-  // Setup event listeners for buttons and options
   function setupListeners() {
-    // Previous button
     const prevBtn = document.getElementById('prevBtn');
-    if (prevBtn) {
-      prevBtn.addEventListener('click', prevQuestion);
-    }
+    if (prevBtn) prevBtn.addEventListener('click', prevQuestion);
     
-    // Next button
     const nextBtn = document.getElementById('nextBtn');
-    if (nextBtn) {
-      nextBtn.addEventListener('click', nextQuestion);
-    }
+    if (nextBtn) nextBtn.addEventListener('click', nextQuestion);
     
-    // Option selection
     const options = document.querySelectorAll('.option-label');
     options.forEach(option => {
       option.addEventListener('click', function() {
-        // Automatically check radio button when label is clicked
         const radio = this.querySelector('input[type="radio"]');
-        if (radio) {
-          radio.checked = true;
-        }
+        if (radio) radio.checked = true;
       });
     });
   }
   
-  // Go to previous question
   function prevQuestion() {
     if (isTransitioning || currentQuestion <= 0) return;
     currentQuestion--;
     showQuestion();
   }
   
-  // Go to next question
   function nextQuestion() {
     if (isTransitioning) return;
     
-    // Check if an option is selected
     const selected = document.querySelector('input[name="answer"]:checked');
     if (!selected) {
-      // Shake animation for options container
       const optionsContainer = document.querySelector('.options-container');
-      optionsContainer.classList.add('shake');
-      
+      if(optionsContainer) optionsContainer.classList.add('shake');
       setTimeout(() => {
-        optionsContainer.classList.remove('shake');
+        if(optionsContainer) optionsContainer.classList.remove('shake');
       }, 500);
       
-      // Show error message
       if (!document.querySelector('.error-message')) {
         const errorMsg = document.createElement('div');
         errorMsg.className = 'error-message';
         errorMsg.innerHTML = `
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 8V12M12 16H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" 
               stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           Vui lòng chọn một câu trả lời để tiếp tục
         `;
-        
-        document.querySelector('.options-container').insertAdjacentElement('afterend', errorMsg);
-        
-        // Auto-remove after 3 seconds
+        const optionsCont = document.querySelector('.options-container');
+        if(optionsCont) optionsCont.insertAdjacentElement('afterend', errorMsg);
         setTimeout(() => {
           errorMsg.style.opacity = '0';
           errorMsg.style.transform = 'translateY(-10px)';
           errorMsg.style.transition = 'all 0.3s ease';
-          
-          setTimeout(() => {
-            if (errorMsg.parentNode) {
-              errorMsg.remove();
-            }
-          }, 300);
+          setTimeout(() => { if (errorMsg.parentNode) errorMsg.remove(); }, 300);
         }, 3000);
       }
-      
       return;
     }
     
-    // Store answer
     const q = questions[currentQuestion];
     answers[q.id] = selected.value;
-    
-    // Move to next question
     currentQuestion++;
     showQuestion();
   }
 
-  // Submit quiz function
   window.submitQuiz = async function submitQuiz() {
     try {
       const payload = {
+        quiz_type: selectedQuizType, 
         answers: Object.entries(answers).map(([questionId, selectedAnswer]) => {
-          // Tìm câu hỏi trong danh sách câu hỏi đã trộn
           const question = questions.find(q => q.id == questionId);
-          
-          if (!question) {
-            throw new Error(`Không tìm thấy câu hỏi với ID=${questionId}`);
-          }
-          
-          // Lấy ID gốc để gửi đến server
+          if (!question) throw new Error(`Không tìm thấy câu hỏi với ID=${questionId}`);
           const originalId = question.original_id;
-          
-          // Lấy nội dung đáp án được chọn
           const answerText = question.options[selectedAnswer];
-          
-          return {
-            question_id: originalId,
-            answer: answerText
-          };
+          return { question_id: originalId, answer: answerText };
         })
       };
 
       const response = await fetch('/api/submit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
 
       if (!response.ok) {
         const errorText = await response.text();
-        console.error('Error Response:', errorText);
         throw new Error(errorText || 'Nộp bài không thành công');
       }
 
       const result = await response.json();
+      if (result.detailed_scores) localStorage.setItem('detailedScores', JSON.stringify(result.detailed_scores));
+      if (result.detailed_answers) localStorage.setItem('detailedAnswers', JSON.stringify(result.detailed_answers));
       
-      // Lưu thông tin chi tiết vào localStorage
-      if (result.detailed_scores) {
-        localStorage.setItem('detailedScores', JSON.stringify(result.detailed_scores));
-      }
-      if (result.detailed_answers) {
-        localStorage.setItem('detailedAnswers', JSON.stringify(result.detailed_answers));
-      }
-      
-      // Chuyển hướng hoặc xử lý kết quả
       window.location.href = `/result?score=${result.total_score}&assessment=${encodeURIComponent(result.assessment)}&detailed_scores=${encodeURIComponent(JSON.stringify(result.detailed_scores))}&detailed_answers=${encodeURIComponent(JSON.stringify(result.detailed_answers))}`;
     } catch (err) {
       console.error('Error submitting quiz:', err);
-      alert(err.message);
+      alert(`Lỗi nộp bài: ${err.message}`);
     }
   };
 
-  // Khởi tạo và bắt đầu load câu hỏi
-  loadQuestions();
+window.showExitModal = function() {
+    document.getElementById('exitModal').classList.add('active');
+  };
+  window.hideExitModal = function() {
+    document.getElementById('exitModal').classList.remove('active');
+  };
+  window.exitToHome = function() {
+    window.location.href = '/';
+  };
+  window.exitToChat = function() {
+    window.location.href = '/chat';
+  };
+  // Initial render
+  renderQuizSelection();
 
-  // Keyboard shortcut handling
   document.addEventListener('keydown', function(event) {
-    // Prevent default action for specific keys to avoid unwanted browser behaviors
-    const preventDefaultKeys = ['ArrowLeft', 'ArrowRight', 'Enter', 'Space', 'Escape'];
-    if (preventDefaultKeys.includes(event.key)) {
+    const activeElement = document.activeElement;
+    if (activeElement && (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA')) {
+        return;
+    }
+
+    const preventDefaultKeys = ['ArrowLeft', 'ArrowRight', 'Enter', ' ', 'Escape'];
+    if (preventDefaultKeys.includes(event.key) && quizContainer.style.display === 'block') { 
       event.preventDefault();
     }
 
-    // Shortcut logic
-    if (!isTransitioning) {
+    if (quizContainer.style.display === 'block' && !isTransitioning) { 
       switch(event.key) {
         case 'ArrowRight':
         case 'Enter':
-        case ' ':  // Space key
-          // Simulate Next/Submit button
-          if (currentQuestion < questions.length) {
-            nextQuestion();
-          } else {
+        case ' ': 
+          const nextBtn = document.getElementById('nextBtn');
+          if (nextBtn) {
+            nextBtn.click();
+          } else if (currentQuestion >= questions.length) { 
             submitQuiz();
           }
           break;
-        
         case 'ArrowLeft':
-          // Previous question
-          if (currentQuestion > 0) {
-            prevQuestion();
-          }
+          const prevBtn = document.getElementById('prevBtn');
+          if (prevBtn) prevBtn.click();
           break;
-        
-        case '1':
-        case '2':
-        case '3':
-        case '4':
-          // Select options using number keys (1-4)
+        case '1': case '2': case '3': case '4':
           const optionIndex = parseInt(event.key) - 1;
-          const options = document.querySelectorAll('.option-label input[type="radio"]');
-          if (options[optionIndex]) {
-            options[optionIndex].checked = true;
-          }
-          break;
-        
-        case 'Escape':
-          // Show exit modal
-          showExitModal();
+          const radioOptions = document.querySelectorAll('.option-label input[type="radio"]');
+          if (radioOptions[optionIndex]) radioOptions[optionIndex].checked = true;
           break;
       }
+    }
+    if (event.key === 'Escape') { 
+        showExitModal();
     }
   });
 });

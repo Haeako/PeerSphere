@@ -616,10 +616,57 @@
             </div>
         </div>
     </section>
+        <div class="text-white py-4 foot-bar">
+            <div class="container box">
+                <div class="content">
+                    <p>© 2025 PeerSphere. Tất cả quyền được bảo lưu.
+                        <br>Được phát triển bởi nhóm sinh viên trường Đại học Công nghệ Thông tin.
+                    </p>
+                </div>
+            </div>
+        </div>
 
-    <!-- Phần cta-section đã cập nhật -->
-    <section class="cta-section">
-        <div class="container">
-            <h2 class="mb-4">Sẵn sàng bắt đầu hành trình phát triển?</h2>
-            <p>Chỉ mất vài phút để đánh giá mức độ áp lực và nhận được hỗ trợ phù hợp với nhu cầu của riêng bạn</p>
-            <a href="/quiz" class="btn btn
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <script>
+        // Hiệu ứng hiển thị phần tử khi cuộn trang
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.feature-card, .statistics-card, .testimonial-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+           
+                
+                link.addEventListener('animationend', function() {
+                    this.classList.remove('animate__animated', 'animate__pulse');
+                });
+            });
+    </script>
+    <script>
+        // Tạo hiệu ứng sóng chuyển động
+        document.addEventListener('DOMContentLoaded', function() {
+            const wave = document.querySelector('.wave');
+            let position = 0;
+            
+            function animateWave() {
+                position -= 1;
+                wave.style.backgroundPositionX = position + 'px';
+                requestAnimationFrame(animateWave);
+            }
+            
+            animateWave();
+        });
+    </script>
+</body>
+</html>
