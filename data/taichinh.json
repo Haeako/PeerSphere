@@ -1,0 +1,152 @@
+{
+  "1": {
+    "question": "Khi bạn nghe bạn bè nói về việc họ tự mua sắm đồ dùng cá nhân hoặc thiết bị điện tử đắt tiền, bạn cảm thấy thế nào?",
+    "options": {
+      "A": "Tôi cảm thấy vui và không bị ảnh hưởng.",
+      "B": "Tôi thấy hơi áp lực nhưng vẫn kiểm soát được.",
+      "C": "Tôi thấy chán nản vì không có đủ tiền để mua như họ.",
+      "D": "Tôi cảm thấy tủi thân và tự ti về khả năng tài chính của mình."
+    },
+    "scores": {
+      "Tôi cảm thấy vui và không bị ảnh hưởng.": 3,
+      "Tôi thấy hơi áp lực nhưng vẫn kiểm soát được.": 2,
+      "Tôi thấy chán nản vì không có đủ tiền để mua như họ.": 1,
+      "Tôi cảm thấy tủi thân và tự ti về khả năng tài chính của mình.": 0
+    }
+  },
+  "2": {
+    "question": "Khi bạn bè bàn về việc đi du lịch hay tham gia các hoạt động giải trí tốn kém, bạn nghĩ gì?",
+    "options": {
+      "A": "Tôi nghĩ họ có quyền tận hưởng và không cảm thấy áp lực.",
+      "B": "Tôi cảm thấy có chút áp lực nhưng không để ý nhiều.",
+      "C": "Tôi thấy buồn vì không đủ tiền tham gia như họ.",
+      "D": "Tôi cảm thấy bị loại trừ và lo lắng về bản thân mình."
+    },
+    "scores": {
+      "Tôi nghĩ họ có quyền tận hưởng và không cảm thấy áp lực.": 3,
+      "Tôi cảm thấy có chút áp lực nhưng không để ý nhiều.": 2,
+      "Tôi thấy buồn vì không đủ tiền tham gia như họ.": 1,
+      "Tôi cảm thấy bị loại trừ và lo lắng về bản thân mình.": 0
+    }
+  },
+  "3": {
+    "question": "Khi bạn được hỏi về khả năng chi trả cho việc học thêm hoặc các khóa kỹ năng, bạn phản ứng thế nào?",
+    "options": {
+      "A": "Tôi sẵn sàng và không cảm thấy áp lực gì.",
+      "B": "Tôi hơi lo lắng nhưng cố gắng không để ảnh hưởng đến mình.",
+      "C": "Tôi cảm thấy áp lực vì không đủ tiền để đầu tư.",
+      "D": "Tôi nghĩ rằng mình sẽ luôn bị thua kém bạn bè về tài chính."
+    },
+    "scores": {
+      "Tôi sẵn sàng và không cảm thấy áp lực gì.": 3,
+      "Tôi hơi lo lắng nhưng cố gắng không để ảnh hưởng đến mình.": 2,
+      "Tôi cảm thấy áp lực vì không đủ tiền để đầu tư.": 1,
+      "Tôi nghĩ rằng mình sẽ luôn bị thua kém bạn bè về tài chính.": 0
+    }
+  },
+  "4": {
+    "question": "Bạn cảm thấy thế nào khi bạn bè bàn luận về việc mua xe máy hoặc xe đạp điện?",
+    "options": {
+      "A": "Tôi không cảm thấy áp lực và thấy đó là chuyện riêng của mỗi người.",
+      "B": "Tôi hơi áp lực nhưng không để nó ảnh hưởng đến tâm trạng.",
+      "C": "Tôi thấy ghen tị và tự ti về khả năng tài chính của mình.",
+      "D": "Tôi nghĩ mình sẽ không bao giờ có thể mua được như họ."
+    },
+    "scores": {
+      "Tôi không cảm thấy áp lực và thấy đó là chuyện riêng của mỗi người.": 3,
+      "Tôi hơi áp lực nhưng không để nó ảnh hưởng đến tâm trạng.": 2,
+      "Tôi thấy ghen tị và tự ti về khả năng tài chính của mình.": 1,
+      "Tôi nghĩ mình sẽ không bao giờ có thể mua được như họ.": 0
+    }
+  },
+  "5": {
+    "question": "Khi bạn bè nói về việc đầu tư hoặc kiếm thêm thu nhập ngoài học, bạn cảm thấy sao?",
+    "options": {
+      "A": "Tôi thấy bình thường, không bị áp lực.",
+      "B": "Tôi cảm thấy có áp lực nhưng không quá lớn.",
+      "C": "Tôi cảm thấy lo lắng vì không biết bắt đầu từ đâu.",
+      "D": "Tôi cảm thấy nản và nghĩ mình kém cỏi hơn bạn bè."
+    },
+    "scores": {
+      "Tôi thấy bình thường, không bị áp lực.": 3,
+      "Tôi cảm thấy có áp lực nhưng không quá lớn.": 2,
+      "Tôi cảm thấy lo lắng vì không biết bắt đầu từ đâu.": 1,
+      "Tôi cảm thấy nản và nghĩ mình kém cỏi hơn bạn bè.": 0
+    }
+  },
+  "6": {
+    "question": "Khi bạn thấy bạn bè có điều kiện chi tiêu thoải mái, bạn cảm thấy thế nào?",
+    "options": {
+      "A": "Tôi vui vì bạn bè có cuộc sống tốt, không bị ảnh hưởng.",
+      "B": "Tôi hơi áp lực nhưng không để ý nhiều.",
+      "C": "Tôi buồn và cảm thấy thiếu thốn.",
+      "D": "Tôi tự ti và lo sợ không thể theo kịp họ."
+    },
+    "scores": {
+      "Tôi vui vì bạn bè có cuộc sống tốt, không bị ảnh hưởng.": 3,
+      "Tôi hơi áp lực nhưng không để ý nhiều.": 2,
+      "Tôi buồn và cảm thấy thiếu thốn.": 1,
+      "Tôi tự ti và lo sợ không thể theo kịp họ.": 0
+    }
+  },
+  "7": {
+    "question": "Khi phải chi trả các khoản phí sinh hoạt cá nhân (ăn uống, đi lại), bạn cảm nhận thế nào khi so sánh với bạn bè?",
+    "options": {
+      "A": "Tôi cảm thấy thoải mái và tự chủ tài chính.",
+      "B": "Tôi có chút lo lắng nhưng vẫn ổn.",
+      "C": "Tôi thấy khó khăn và có áp lực.",
+      "D": "Tôi cảm thấy áp lực lớn và thiếu thốn so với họ."
+    },
+    "scores": {
+      "Tôi cảm thấy thoải mái và tự chủ tài chính.": 3,
+      "Tôi có chút lo lắng nhưng vẫn ổn.": 2,
+      "Tôi thấy khó khăn và có áp lực.": 1,
+      "Tôi cảm thấy áp lực lớn và thiếu thốn so với họ.": 0
+    }
+  },
+  "8": {
+    "question": "Bạn nghĩ gì khi bạn bè bàn về tiền tiêu vặt hàng tháng?",
+    "options": {
+      "A": "Tôi không cảm thấy áp lực, mỗi người có cách chi tiêu khác nhau.",
+      "B": "Tôi hơi áp lực nhưng không để ảnh hưởng đến mối quan hệ.",
+      "C": "Tôi thấy ghen tị và buồn.",
+      "D": "Tôi cảm thấy tủi thân và thua kém."
+    },
+    "scores": {
+      "Tôi không cảm thấy áp lực, mỗi người có cách chi tiêu khác nhau.": 3,
+      "Tôi hơi áp lực nhưng không để ảnh hưởng đến mối quan hệ.": 2,
+      "Tôi thấy ghen tị và buồn.": 1,
+      "Tôi cảm thấy tủi thân và thua kém.": 0
+    }
+  },
+  "9": {
+    "question": "Khi bạn bè nói về việc hỗ trợ tài chính từ gia đình, bạn cảm nhận thế nào?",
+    "options": {
+      "A": "Tôi không thấy áp lực và tôn trọng sự khác biệt.",
+      "B": "Tôi có chút áp lực nhưng không để tâm nhiều.",
+      "C": "Tôi thấy áp lực vì mình không được hỗ trợ nhiều.",
+      "D": "Tôi nghĩ mình kém may mắn và tự ti."
+    },
+    "scores": {
+      "Tôi không thấy áp lực và tôn trọng sự khác biệt.": 3,
+      "Tôi có chút áp lực nhưng không để tâm nhiều.": 2,
+      "Tôi thấy áp lực vì mình không được hỗ trợ nhiều.": 1,
+      "Tôi nghĩ mình kém may mắn và tự ti.": 0
+    }
+  },
+  "10": {
+    "question": "Khi nghe bạn bè kể về việc mua sắm các đồ dùng phục vụ học tập như laptop, điện thoại mới, bạn cảm thấy thế nào?",
+    "options": {
+      "A": "Tôi thấy vui cho bạn bè và không bị áp lực.",
+      "B": "Tôi hơi áp lực nhưng cố gắng không để ý.",
+      "C": "Tôi cảm thấy ghen tị và chán nản.",
+      "D": "Tôi thấy mình thua kém và không bằng họ."
+    },
+    "scores": {
+      "Tôi thấy vui cho bạn bè và không bị áp lực.": 3,
+      "Tôi hơi áp lực nhưng cố gắng không để ý.": 2,
+      "Tôi cảm thấy ghen tị và chán nản.": 1,
+      "Tôi thấy mình thua kém và không bằng họ.": 0
+    }
+  }
+}

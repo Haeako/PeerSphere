@@ -1,0 +1,152 @@
+{
+  "1": {
+    "question": "Khi bạn bè có sở thích mới mà bạn chưa từng thử, bạn cảm thấy thế nào?",
+    "options": {
+      "A": "Tôi thấy tò mò và thoải mái với sự khác biệt.",
+      "B": "Tôi hơi áp lực nhưng vẫn muốn thử.",
+      "C": "Tôi cảm thấy lạc lõng và không chắc mình có nên thử không.",
+      "D": "Tôi thấy bị bỏ rơi và không phù hợp với nhóm bạn."
+    },
+    "scores": {
+      "Tôi thấy tò mò và thoải mái với sự khác biệt.": 3,
+      "Tôi hơi áp lực nhưng vẫn muốn thử.": 2,
+      "Tôi cảm thấy lạc lõng và không chắc mình có nên thử không.": 1,
+      "Tôi thấy bị bỏ rơi và không phù hợp với nhóm bạn.": 0
+    }
+  },
+  "2": {
+    "question": "Khi bạn bè thường xuyên tham gia các hoạt động hoặc thói quen khác bạn, bạn cảm nhận ra sao?",
+    "options": {
+      "A": "Tôi tôn trọng và không cảm thấy áp lực.",
+      "B": "Tôi hơi áp lực nhưng không để ảnh hưởng tâm trạng.",
+      "C": "Tôi cảm thấy áp lực phải thay đổi để được chấp nhận.",
+      "D": "Tôi thấy mình không được đồng thuận và cô lập."
+    },
+    "scores": {
+      "Tôi tôn trọng và không cảm thấy áp lực.": 3,
+      "Tôi hơi áp lực nhưng không để ảnh hưởng tâm trạng.": 2,
+      "Tôi cảm thấy áp lực phải thay đổi để được chấp nhận.": 1,
+      "Tôi thấy mình không được đồng thuận và cô lập.": 0
+    }
+  },
+  "3": {
+    "question": "Khi bạn bè bàn về thói quen ăn uống hoặc tập luyện đặc biệt, bạn phản ứng thế nào?",
+    "options": {
+      "A": "Tôi thích học hỏi nhưng không bị áp lực phải theo.",
+      "B": "Tôi hơi áp lực nhưng cố gắng thích nghi.",
+      "C": "Tôi cảm thấy khó chịu và bị áp lực.",
+      "D": "Tôi thấy bị gò bó và không thoải mái."
+    },
+    "scores": {
+      "Tôi thích học hỏi nhưng không bị áp lực phải theo.": 3,
+      "Tôi hơi áp lực nhưng cố gắng thích nghi.": 2,
+      "Tôi cảm thấy khó chịu và bị áp lực.": 1,
+      "Tôi thấy bị gò bó và không thoải mái.": 0
+    }
+  },
+  "4": {
+    "question": "Bạn cảm thấy thế nào khi bạn bè có sở thích hoặc phong cách sống khác bạn?",
+    "options": {
+      "A": "Tôi chấp nhận và tôn trọng sự khác biệt.",
+      "B": "Tôi có chút áp lực nhưng vẫn bình thường.",
+      "C": "Tôi lo lắng và muốn thay đổi bản thân để giống họ.",
+      "D": "Tôi cảm thấy cô đơn và bị xa lánh."
+    },
+    "scores": {
+      "Tôi chấp nhận và tôn trọng sự khác biệt.": 3,
+      "Tôi có chút áp lực nhưng vẫn bình thường.": 2,
+      "Tôi lo lắng và muốn thay đổi bản thân để giống họ.": 1,
+      "Tôi cảm thấy cô đơn và bị xa lánh.": 0
+    }
+  },
+  "5": {
+    "question": "Khi bạn bè mời bạn tham gia hoạt động hoặc thói quen mới mà bạn không thích, bạn phản ứng sao?",
+    "options": {
+      "A": "Tôi lịch sự từ chối mà không áp lực.",
+      "B": "Tôi hơi áp lực nhưng vẫn giữ quan điểm.",
+      "C": "Tôi cảm thấy khó xử và áp lực.",
+      "D": "Tôi thấy buồn vì không được đồng thuận."
+    },
+    "scores": {
+      "Tôi lịch sự từ chối mà không áp lực.": 3,
+      "Tôi hơi áp lực nhưng vẫn giữ quan điểm.": 2,
+      "Tôi cảm thấy khó xử và áp lực.": 1,
+      "Tôi thấy buồn vì không được đồng thuận.": 0
+    }
+  },
+  "6": {
+    "question": "Bạn có cảm thấy bị áp lực thay đổi thói quen sinh hoạt để phù hợp với nhóm bạn không?",
+    "options": {
+      "A": "Không, tôi thoải mái với thói quen của mình.",
+      "B": "Có chút áp lực nhưng tôi tự kiểm soát được.",
+      "C": "Tôi cảm thấy áp lực và đôi khi thay đổi theo nhóm.",
+      "D": "Tôi cảm thấy mình không thể là chính mình."
+    },
+    "scores": {
+      "Không, tôi thoải mái với thói quen của mình.": 3,
+      "Có chút áp lực nhưng tôi tự kiểm soát được.": 2,
+      "Tôi cảm thấy áp lực và đôi khi thay đổi theo nhóm.": 1,
+      "Tôi cảm thấy mình không thể là chính mình.": 0
+    }
+  },
+  "7": {
+    "question": "Khi bạn bè khen ngợi sở thích hoặc thói quen của bạn, bạn cảm thấy thế nào?",
+    "options": {
+      "A": "Tôi rất vui và tự tin hơn.",
+      "B": "Tôi vui nhưng vẫn còn chút lo lắng.",
+      "C": "Tôi khó tin và không thoải mái lắm.",
+      "D": "Tôi thấy áp lực và lo lắng hơn."
+    },
+    "scores": {
+      "Tôi rất vui và tự tin hơn.": 3,
+      "Tôi vui nhưng vẫn còn chút lo lắng.": 2,
+      "Tôi khó tin và không thoải mái lắm.": 1,
+      "Tôi thấy áp lực và lo lắng hơn.": 0
+    }
+  },
+  "8": {
+    "question": "Bạn cảm thấy thế nào khi bạn bè nói về việc thay đổi sở thích hoặc thói quen?",
+    "options": {
+      "A": "Tôi thấy đó là sự phát triển bình thường và không áp lực.",
+      "B": "Tôi hơi áp lực nhưng chấp nhận được.",
+      "C": "Tôi lo lắng và khó khăn khi thay đổi.",
+      "D": "Tôi cảm thấy áp lực và sợ mất bản sắc."
+    },
+    "scores": {
+      "Tôi thấy đó là sự phát triển bình thường và không áp lực.": 3,
+      "Tôi hơi áp lực nhưng chấp nhận được.": 2,
+      "Tôi lo lắng và khó khăn khi thay đổi.": 1,
+      "Tôi cảm thấy áp lực và sợ mất bản sắc.": 0
+    }
+  },
+  "9": {
+    "question": "Khi bạn bè dành nhiều thời gian cho sở thích cá nhân, bạn có cảm thấy áp lực?",
+    "options": {
+      "A": "Không, tôi thấy đó là điều tốt.",
+      "B": "Có chút áp lực nhưng tôi không để tâm nhiều.",
+      "C": "Tôi thấy bị áp lực và ghen tị.",
+      "D": "Tôi thấy bị bỏ rơi và cô đơn."
+    },
+    "scores": {
+      "Không, tôi thấy đó là điều tốt.": 3,
+      "Có chút áp lực nhưng tôi không để tâm nhiều.": 2,
+      "Tôi thấy bị áp lực và ghen tị.": 1,
+      "Tôi thấy bị bỏ rơi và cô đơn.": 0
+    }
+  },
+  "10": {
+    "question": "Bạn nghĩ sao về việc mình phải có sở thích hoặc thói quen giống bạn bè để được chấp nhận?",
+    "options": {
+      "A": "Tôi không nghĩ vậy và tự tin là chính mình.",
+      "B": "Tôi có chút lo lắng nhưng không quá nghiêm trọng.",
+      "C": "Tôi cảm thấy áp lực và cố gắng thay đổi.",
+      "D": "Tôi rất áp lực và buồn vì không thể hòa nhập."
+    },
+    "scores": {
+      "Tôi không nghĩ vậy và tự tin là chính mình.": 3,
+      "Tôi có chút lo lắng nhưng không quá nghiêm trọng.": 2,
+      "Tôi cảm thấy áp lực và cố gắng thay đổi.": 1,
+      "Tôi rất áp lực và buồn vì không thể hòa nhập.": 0
+    }
+  }
+}

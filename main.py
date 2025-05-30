@@ -13,49 +13,49 @@ import asyncio
 
 # Cấu hình các file JSON tương ứng với từng option
 JSON_FILES = {
-    "peer_pressure": "data/peer_pressure_quiz.json",
-    "academic_stress": "data/academic_stress_quiz.json", 
-    "social_anxiety": "data/social_anxiety_quiz.json",
-    "self_esteem": "data/self_esteem_quiz.json",
-    "depression": "data/depression_quiz.json"
+    "overview": "data/overview.json",
+    "finace": "data/taichinh.json", 
+    "nghinh": "data/nghinh.json",
+    "hobby": "data/sothich.json",
+    "lifestyle": "data/mck.json"
 }
 
 # Assessment ranges cho từng loại quiz
 ASSESSMENT_CONFIGS = {
-    "peer_pressure": [
+    "overview": [
         {"min": 25, "max": 30, "assessment": "Bạn kiểm soát rất tốt áp lực đồng trang lứa."},
         {"min": 18, "max": 24, "assessment": "Bạn có một số áp lực nhưng vẫn giữ được sự cân bằng."},
         {"min": 10, "max": 17, "assessment": "Bạn đang bị ảnh hưởng đáng kể bởi áp lực đồng trang lứa."},
         {"min": 0,  "max": 9,  "assessment": "Bạn có thể đang chịu áp lực lớn và cần tìm cách giải tỏa."}
     ],
-    "academic_stress": [
-        {"min": 25, "max": 30, "assessment": "Bạn quản lý áp lực học tập rất tốt."},
-        {"min": 18, "max": 24, "assessment": "Bạn có thể điều chỉnh áp lực học tập khá hiệu quả."},
-        {"min": 10, "max": 17, "assessment": "Bạn đang gặp khó khăn với áp lực học tập."},
-        {"min": 0,  "max": 9,  "assessment": "Bạn đang chịu áp lực học tập rất lớn, cần tìm sự hỗ trợ."}
+    "finace": [
+        {"min": 25, "max": 30, "assessment": "Bạn rất tự tin, không bị áp lực về tài chính khi so sánh với bạn bè."},
+        {"min": 18, "max": 24, "assessment": "Bạn có chút áp lực nhưng biết cách kiểm soát và không ảnh hưởng nhiều đến tâm trạng."},
+        {"min": 10, "max": 17, "assessment": "Bạn cảm thấy áp lực khá nhiều về tài chính, đôi khi bị ảnh hưởng tâm lý"},
+        {"min": 0,  "max": 9,  "assessment": "Bạn bị áp lực tài chính đồng trang lứa lớn, có thể ảnh hưởng xấu đến tinh thần và tự tin."}
     ],
-    "social_anxiety": [
-        {"min": 25, "max": 30, "assessment": "Bạn tự tin trong các tình huống xã hội."},
-        {"min": 18, "max": 24, "assessment": "Bạn có một ít lo lắng xã hội nhưng vẫn kiểm soát được."},
-        {"min": 10, "max": 17, "assessment": "Bạn thường xuyên cảm thấy lo lắng trong các tình huống xã hội."},
-        {"min": 0,  "max": 9,  "assessment": "Bạn có thể đang gặp phải lo âu xã hội nghiêm trọng."}
+    "nghinh": [
+        {"min": 27, "max": 30, "assessment": "Bạn rất tự tin về ngoại hình, ít bị áp lực từ bạn bè."},
+        {"min": 20, "max": 26, "assessment": "Bạn có chút áp lực nhưng kiểm soát tốt cảm xúc và hình ảnh của mình."},
+        {"min": 10, "max": 19, "assessment": "Bạn chịu áp lực khá nhiều, có lúc cảm thấy thiếu tự tin về ngoại hình."},
+        {"min": 0,  "max": 9,  "assessment": "Bạn chịu áp lực lớn, có thể ảnh hưởng tiêu cực đến sức khỏe tâm thần."}
     ],
-    "self_esteem": [
-        {"min": 25, "max": 30, "assessment": "Bạn có lòng tự trọng tốt và tích cực."},
-        {"min": 18, "max": 24, "assessment": "Bạn có lòng tự trọng ổn định."},
-        {"min": 10, "max": 17, "assessment": "Lòng tự trọng của bạn cần được cải thiện."},
-        {"min": 0,  "max": 9,  "assessment": "Bạn có thể đang thiếu tự tin và cần hỗ trợ."}
+    "hobby": [
+        {"min": 27, "max": 30, "assessment": "Bạn rất tự tin với sở thích và thói quen của mình, không bị áp lực từ bạn bè."},
+        {"min": 20, "max": 26, "assessment": "Bạn có chút áp lực nhưng kiểm soát tốt và duy trì sự cân bằng."},
+        {"min": 10, "max": 19, "assessment": "Bạn chịu áp lực khá nhiều và đôi khi cảm thấy khó khăn với sự khác biệt."},
+        {"min": 0,  "max": 9,  "assessment": "Bạn bị áp lực lớn, cảm thấy khó hòa nhập và thiếu tự tin với sở thích, thói quen cá nhân."}
     ],
-    "depression": [
-        {"min": 25, "max": 30, "assessment": "Tâm trạng của bạn rất tích cực và ổn định."},
-        {"min": 18, "max": 24, "assessment": "Bạn có tâm trạng khá tốt với một vài thăng trầm nhỏ."},
-        {"min": 10, "max": 17, "assessment": "Bạn có thể đang trải qua một số khó khăn về tâm trạng."},
-        {"min": 0,  "max": 9,  "assessment": "Bạn có thể đang gặp vấn đề nghiêm trọng về tâm trạng, nên tìm sự hỗ trợ."}
+    "lifestyle": [
+        {"min": 25, "max": 30, "assessment": "Bạn rất tự tin với phong cách sống cá nhân, ít bị áp lực từ bạn bè."},
+        {"min": 18, "max": 24, "assessment": "Bạn có chút áp lực nhưng kiểm soát tốt cảm xúc và giữ sự cân bằng."},
+        {"min": 10, "max": 17, "assessment": "Bạn chịu áp lực khá nhiều và đôi khi khó giữ vững bản thân."},
+        {"min": 0,  "max": 9,  "assessment": "Bạn bị áp lực lớn, cảm thấy khó hòa nhập và thiếu tự tin."}
     ]
 }
 
 # Hàm load dữ liệu từ JSON với option
-def load_quiz_data(quiz_type: str = "peer_pressure") -> Dict[int, dict]:
+def load_quiz_data(quiz_type: str = "overview") -> Dict[int, dict]:
     if quiz_type not in JSON_FILES:
         raise ValueError(f"Quiz type '{quiz_type}' không được hỗ trợ. Các loại có sẵn: {list(JSON_FILES.keys())}")
     
@@ -78,7 +78,7 @@ def shuffle_options(options: Dict[str, str]) -> Dict[str, str]:
     return dict(items)
 
 # Chọn ngẫu nhiên số câu hỏi (mặc định 10) và xáo trộn đáp án
-def get_randomized_questions(quiz_type: str = "peer_pressure", limit: int = 10) -> Dict[int, Dict[str, Any]]:
+def get_randomized_questions(quiz_type: str = "overview", limit: int = 10) -> Dict[int, Dict[str, Any]]:
     quiz_data: Dict[int, dict] = load_quiz_data(quiz_type)
 
     # Lấy tất cả org_id, rồi xáo trộn
@@ -108,7 +108,7 @@ def get_randomized_questions(quiz_type: str = "peer_pressure", limit: int = 10) 
 
 # Lấy assessment ranges theo quiz type
 def get_assessment_ranges(quiz_type: str) -> List[Dict]:
-    return ASSESSMENT_CONFIGS.get(quiz_type, ASSESSMENT_CONFIGS["peer_pressure"])
+    return ASSESSMENT_CONFIGS.get(quiz_type, ASSESSMENT_CONFIGS["overview"])
 
 # Khởi tạo FastAPI
 app = FastAPI(title="PeerSphere💗 - Student Support Platform")
@@ -123,7 +123,7 @@ class QuizAnswer(BaseModel):
 
 class QuizSubmission(BaseModel):
     answers: List[QuizAnswer]
-    quiz_type: Optional[str] = "peer_pressure"  # Thêm quiz_type vào submission
+    quiz_type: Optional[str] = "overview"  # Thêm quiz_type vào submission
 
 class QuizResult(BaseModel):
     total_score: int
@@ -159,7 +159,7 @@ async def home(request: Request):
     return templates.TemplateResponse("home.html", {"request": request})
 
 @app.get("/quiz", response_class=HTMLResponse)
-async def quiz_page(request: Request, quiz_type: str = "peer_pressure"):
+async def quiz_page(request: Request, quiz_type: str = "overview"):
     # Kiểm tra quiz_type hợp lệ
     if quiz_type not in JSON_FILES:
         raise HTTPException(status_code=400, detail=f"Quiz type '{quiz_type}' không được hỗ trợ")
@@ -181,16 +181,16 @@ async def get_quiz_types():
     return {
         "available_types": list(JSON_FILES.keys()),
         "descriptions": {
-            "peer_pressure": "Đánh giá áp lực đồng trang lứa",
-            "academic_stress": "Đánh giá áp lực học tập", 
-            "social_anxiety": "Đánh giá lo âu xã hội",
-            "self_esteem": "Đánh giá lòng tự trọng",
-            "depression": "Đánh giá tình trạng tâm lý"
+            "overview": "Đánh giá áp lực đồng trang lứa",
+            "finace": "Đánh giá áp lực về tài chính", 
+            "nghinh": "Đánh giá áp lực về ngoại hình",
+            "hobby": "Đánh giá áp lực về sở thích",
+            "lifestyle": "Đánh giá áp lực về phong cách sống"
         }
     }
 
 @app.get("/api/original-questions")
-async def original_questions(quiz_type: str = "peer_pressure"):
+async def original_questions(quiz_type: str = "overview"):
     """Lấy câu hỏi gốc theo loại quiz"""
     try:
         return load_quiz_data(quiz_type)
@@ -198,7 +198,7 @@ async def original_questions(quiz_type: str = "peer_pressure"):
         raise HTTPException(status_code=400, detail=str(e))
 
 @app.get("/api/questions")
-async def api_questions(quiz_type: str = "peer_pressure", limit: int = 10):
+async def api_questions(quiz_type: str = "overview", limit: int = 10):
     """Lấy câu hỏi đã được xáo trộn theo loại quiz"""
     try:
         return JSONResponse(content=get_randomized_questions(quiz_type, limit))
@@ -232,7 +232,7 @@ async def websocket_chat(ws: WebSocket):
 
 @app.post("/api/submit", response_model=QuizResult)
 async def submit_quiz(submission: QuizSubmission):
-    quiz_type = submission.quiz_type or "peer_pressure"
+    quiz_type = submission.quiz_type or "overview"
     
     try:
         quiz_data = load_quiz_data(quiz_type)
@@ -284,7 +284,7 @@ async def submit_quiz(submission: QuizSubmission):
     )
 
 @app.get("/result", response_class=HTMLResponse)
-async def result_page(request: Request, score: int, assessment: str, quiz_type: str = "peer_pressure"):
+async def result_page(request: Request, score: int, assessment: str, quiz_type: str = "overview"):
     return templates.TemplateResponse(
         "result.html",
         {

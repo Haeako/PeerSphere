@@ -1,0 +1,152 @@
+{
+  "1": {
+    "question": "Khi bạn nhìn thấy bạn bè trông đẹp hơn hoặc ăn mặc hợp mốt hơn bạn, bạn cảm thấy thế nào?",
+    "options": {
+      "A": "Tôi không để ý nhiều và thấy thoải mái.",
+      "B": "Tôi hơi áp lực nhưng không để ảnh hưởng.",
+      "C": "Tôi cảm thấy tự ti và so sánh bản thân.",
+      "D": "Tôi thấy buồn và thất vọng về ngoại hình của mình."
+    },
+    "scores": {
+      "Tôi không để ý nhiều và thấy thoải mái.": 3,
+      "Tôi hơi áp lực nhưng không để ảnh hưởng.": 2,
+      "Tôi cảm thấy tự ti và so sánh bản thân.": 1,
+      "Tôi thấy buồn và thất vọng về ngoại hình của mình.": 0
+    }
+  },
+  "2": {
+    "question": "Khi bạn bè nhận được lời khen về ngoại hình, bạn phản ứng ra sao?",
+    "options": {
+      "A": "Tôi vui mừng cho họ và không cảm thấy áp lực.",
+      "B": "Tôi hơi áp lực nhưng chấp nhận được.",
+      "C": "Tôi ghen tị và lo lắng về ngoại hình của mình.",
+      "D": "Tôi cảm thấy mình kém cỏi và buồn bã."
+    },
+    "scores": {
+      "Tôi vui mừng cho họ và không cảm thấy áp lực.": 3,
+      "Tôi hơi áp lực nhưng chấp nhận được.": 2,
+      "Tôi ghen tị và lo lắng về ngoại hình của mình.": 1,
+      "Tôi cảm thấy mình kém cỏi và buồn bã.": 0
+    }
+  },
+  "3": {
+    "question": "Khi chọn quần áo hoặc trang điểm, bạn có bị áp lực phải theo xu hướng bạn bè không?",
+    "options": {
+      "A": "Tôi tự tin chọn theo phong cách riêng, không áp lực.",
+      "B": "Tôi có chút áp lực nhưng vẫn giữ phong cách của mình.",
+      "C": "Tôi thường hay lo lắng và cố gắng bắt chước bạn bè.",
+      "D": "Tôi cảm thấy áp lực rất lớn và không hài lòng với bản thân."
+    },
+    "scores": {
+      "Tôi tự tin chọn theo phong cách riêng, không áp lực.": 3,
+      "Tôi có chút áp lực nhưng vẫn giữ phong cách của mình.": 2,
+      "Tôi thường hay lo lắng và cố gắng bắt chước bạn bè.": 1,
+      "Tôi cảm thấy áp lực rất lớn và không hài lòng với bản thân.": 0
+    }
+  },
+  "4": {
+    "question": "Khi nhìn vào ảnh trên mạng xã hội của bạn bè, bạn cảm thấy thế nào về ngoại hình mình?",
+    "options": {
+      "A": "Tôi thấy tự tin và không bị ảnh hưởng.",
+      "B": "Tôi có chút áp lực nhưng không quá nhiều.",
+      "C": "Tôi cảm thấy buồn và tự ti.",
+      "D": "Tôi thấy mình không đẹp và rất thất vọng."
+    },
+    "scores": {
+      "Tôi thấy tự tin và không bị ảnh hưởng.": 3,
+      "Tôi có chút áp lực nhưng không quá nhiều.": 2,
+      "Tôi cảm thấy buồn và tự ti.": 1,
+      "Tôi thấy mình không đẹp và rất thất vọng.": 0
+    }
+  },
+  "5": {
+    "question": "Bạn có cảm thấy phải thay đổi ngoại hình (giảm cân, làm đẹp) vì bạn bè làm như vậy?",
+    "options": {
+      "A": "Tôi làm nếu mình muốn, không bị áp lực.",
+      "B": "Tôi hơi áp lực nhưng cố gắng cân bằng.",
+      "C": "Tôi cảm thấy bị bắt buộc và áp lực nhiều.",
+      "D": "Tôi cảm thấy rất áp lực và không hài lòng với bản thân."
+    },
+    "scores": {
+      "Tôi làm nếu mình muốn, không bị áp lực.": 3,
+      "Tôi hơi áp lực nhưng cố gắng cân bằng.": 2,
+      "Tôi cảm thấy bị bắt buộc và áp lực nhiều.": 1,
+      "Tôi cảm thấy rất áp lực và không hài lòng với bản thân.": 0
+    }
+  },
+  "6": {
+    "question": "Khi bạn bè nói về việc tập luyện, chăm sóc da hay làm đẹp, bạn phản ứng thế nào?",
+    "options": {
+      "A": "Tôi tham gia nếu mình thích, không bị áp lực.",
+      "B": "Tôi có chút áp lực nhưng không để ý nhiều.",
+      "C": "Tôi cảm thấy áp lực và lo lắng.",
+      "D": "Tôi cảm thấy áp lực lớn và thiếu tự tin."
+    },
+    "scores": {
+      "Tôi tham gia nếu mình thích, không bị áp lực.": 3,
+      "Tôi có chút áp lực nhưng không để ý nhiều.": 2,
+      "Tôi cảm thấy áp lực và lo lắng.": 1,
+      "Tôi cảm thấy áp lực lớn và thiếu tự tin.": 0
+    }
+  },
+  "7": {
+    "question": "Khi ai đó nhận xét về ngoại hình bạn, bạn cảm thấy sao?",
+    "options": {
+      "A": "Tôi bình tĩnh tiếp nhận, không bị ảnh hưởng tiêu cực.",
+      "B": "Tôi hơi lo lắng nhưng không quá khó chịu.",
+      "C": "Tôi cảm thấy buồn và dễ bị tổn thương.",
+      "D": "Tôi cảm thấy rất tự ti và suy nghĩ nhiều."
+    },
+    "scores": {
+      "Tôi bình tĩnh tiếp nhận, không bị ảnh hưởng tiêu cực.": 3,
+      "Tôi hơi lo lắng nhưng không quá khó chịu.": 2,
+      "Tôi cảm thấy buồn và dễ bị tổn thương.": 1,
+      "Tôi cảm thấy rất tự ti và suy nghĩ nhiều.": 0
+    }
+  },
+  "8": {
+    "question": "Bạn cảm thấy thế nào khi bạn bè bàn về chuyện giảm cân hoặc tăng cân?",
+    "options": {
+      "A": "Tôi không để ý và thấy thoải mái với bản thân.",
+      "B": "Tôi hơi áp lực nhưng không để ảnh hưởng đến tâm trạng.",
+      "C": "Tôi cảm thấy áp lực và lo lắng về cân nặng.",
+      "D": "Tôi rất áp lực và khó chịu với chính mình."
+    },
+    "scores": {
+      "Tôi không để ý và thấy thoải mái với bản thân.": 3,
+      "Tôi hơi áp lực nhưng không để ảnh hưởng đến tâm trạng.": 2,
+      "Tôi cảm thấy áp lực và lo lắng về cân nặng.": 1,
+      "Tôi rất áp lực và khó chịu với chính mình.": 0
+    }
+  },
+  "9": {
+    "question": "Khi bạn bè khen bạn khác về ngoại hình, bạn cảm thấy thế nào?",
+    "options": {
+      "A": "Tôi vui và tự tin hơn về bản thân.",
+      "B": "Tôi vui nhưng vẫn có chút lo lắng.",
+      "C": "Tôi không tin tưởng và lo lắng.",
+      "D": "Tôi cảm thấy áp lực và khó chịu."
+    },
+    "scores": {
+      "Tôi vui và tự tin hơn về bản thân.": 3,
+      "Tôi vui nhưng vẫn có chút lo lắng.": 2,
+      "Tôi không tin tưởng và lo lắng.": 1,
+      "Tôi cảm thấy áp lực và khó chịu.": 0
+    }
+  },
+  "10": {
+    "question": "Bạn cảm nhận thế nào khi phải đối diện với chuẩn mực ngoại hình do bạn bè hoặc xã hội đặt ra?",
+    "options": {
+      "A": "Tôi tự tin với bản thân và không bị áp lực.",
+      "B": "Tôi hơi áp lực nhưng cố gắng duy trì sự tự tin.",
+      "C": "Tôi cảm thấy bị áp lực và không thoải mái.",
+      "D": "Tôi rất áp lực và tự ti, cảm thấy khó chấp nhận bản thân."
+    },
+    "scores": {
+      "Tôi tự tin với bản thân và không bị áp lực.": 3,
+      "Tôi hơi áp lực nhưng cố gắng duy trì sự tự tin.": 2,
+      "Tôi cảm thấy bị áp lực và không thoải mái.": 1,
+      "Tôi rất áp lực và tự ti, cảm thấy khó chấp nhận bản thân.": 0
+    }
+  }
+}
