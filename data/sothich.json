@@ -148,5 +148,156 @@
       "Tôi cảm thấy áp lực và cố gắng thay đổi.": 1,
       "Tôi rất áp lực và buồn vì không thể hòa nhập.": 0
     }
+  },
+  "11": {
+    "question": "Khi bạn thấy bạn bè chia sẻ về sở thích mới trên mạng xã hội, bạn cảm thấy thế nào?",
+    "options": {
+      "A": "Tôi thấy thú vị và không áp lực gì cả.",
+      "B": "Tôi hơi áp lực nhưng không để ý nhiều.",
+      "C": "Tôi cảm thấy áp lực muốn bắt kịp sở thích đó.",
+      "D": "Tôi thấy mình lạc lõng và bị bỏ rơi."
+    },
+    "scores": {
+      "Tôi thấy thú vị và không áp lực gì cả.": 3,
+      "Tôi hơi áp lực nhưng không để ý nhiều.": 2,
+      "Tôi cảm thấy áp lực muốn bắt kịp sở thích đó.": 1,
+      "Tôi thấy mình lạc lõng và bị bỏ rơi.": 0
+    }
+  },
+  "12": {
+    "question": "Bạn có cảm thấy áp lực khi phải theo kịp các xu hướng sở thích mới trong nhóm bạn không?",
+    "options": {
+      "A": "Không, tôi chọn sở thích theo cách riêng của mình.",
+      "B": "Có chút áp lực nhưng tôi cố gắng giữ sự cân bằng.",
+      "C": "Tôi thường xuyên cảm thấy áp lực và mệt mỏi.",
+      "D": "Tôi cảm thấy áp lực đến mức không còn vui khi chơi với bạn."
+    },
+    "scores": {
+      "Không, tôi chọn sở thích theo cách riêng của mình.": 3,
+      "Có chút áp lực nhưng tôi cố gắng giữ sự cân bằng.": 2,
+      "Tôi thường xuyên cảm thấy áp lực và mệt mỏi.": 1,
+      "Tôi cảm thấy áp lực đến mức không còn vui khi chơi với bạn.": 0
+    }
+  },
+  "13": {
+    "question": "Bạn có từng giả vờ thích một sở thích nào đó để không bị cô lập trong nhóm bạn không?",
+    "options": {
+      "A": "Không, tôi luôn trung thực với sở thích của mình.",
+      "B": "Có, nhưng chỉ khi cần thiết và không thường xuyên.",
+      "C": "Tôi thường làm vậy vì sợ bị từ chối.",
+      "D": "Tôi cảm thấy rất áp lực và không thoải mái với việc giả vờ."
+    },
+    "scores": {
+      "Không, tôi luôn trung thực với sở thích của mình.": 3,
+      "Có, nhưng chỉ khi cần thiết và không thường xuyên.": 2,
+      "Tôi thường làm vậy vì sợ bị từ chối.": 1,
+      "Tôi cảm thấy rất áp lực và không thoải mái với việc giả vờ.": 0
+    }
+  },
+  "14": {
+    "question": "Bạn có cảm thấy áp lực khi bạn bè phê bình sở thích hoặc phong cách của bạn không?",
+    "options": {
+      "A": "Tôi chấp nhận phê bình một cách xây dựng và không áp lực.",
+      "B": "Tôi hơi bị ảnh hưởng nhưng vẫn giữ vững quan điểm.",
+      "C": "Tôi cảm thấy bị tổn thương và áp lực thay đổi.",
+      "D": "Tôi cảm thấy bị tấn công và không muốn giao tiếp nữa."
+    },
+    "scores": {
+      "Tôi chấp nhận phê bình một cách xây dựng và không áp lực.": 3,
+      "Tôi hơi bị ảnh hưởng nhưng vẫn giữ vững quan điểm.": 2,
+      "Tôi cảm thấy bị tổn thương và áp lực thay đổi.": 1,
+      "Tôi cảm thấy bị tấn công và không muốn giao tiếp nữa.": 0
+    }
+  },
+  "15": {
+    "question": "Khi nhóm bạn thay đổi sở thích chung, bạn có cảm thấy khó khăn để thích nghi không?",
+    "options": {
+      "A": "Không, tôi dễ dàng thích nghi và không áp lực.",
+      "B": "Có chút khó khăn nhưng tôi cố gắng theo kịp.",
+      "C": "Tôi cảm thấy áp lực và khó chịu với sự thay đổi.",
+      "D": "Tôi cảm thấy bị loại trừ và mất phương hướng."
+    },
+    "scores": {
+      "Không, tôi dễ dàng thích nghi và không áp lực.": 3,
+      "Có chút khó khăn nhưng tôi cố gắng theo kịp.": 2,
+      "Tôi cảm thấy áp lực và khó chịu với sự thay đổi.": 1,
+      "Tôi cảm thấy bị loại trừ và mất phương hướng.": 0
+    }
+  },
+  "16": {
+    "question": "Bạn cảm thấy thế nào khi người khác nói sở thích của bạn là lạc hậu hoặc không hợp thời?",
+    "options": {
+      "A": "Tôi không bận tâm và vẫn tự tin với sở thích của mình.",
+      "B": "Tôi hơi bị ảnh hưởng nhưng không thay đổi.",
+      "C": "Tôi cảm thấy áp lực và muốn thay đổi để hợp xu hướng.",
+      "D": "Tôi buồn và mất tự tin về bản thân."
+    },
+    "scores": {
+      "Tôi không bận tâm và vẫn tự tin với sở thích của mình.": 3,
+      "Tôi hơi bị ảnh hưởng nhưng không thay đổi.": 2,
+      "Tôi cảm thấy áp lực và muốn thay đổi để hợp xu hướng.": 1,
+      "Tôi buồn và mất tự tin về bản thân.": 0
+    }
+  },
+  "17": {
+    "question": "Bạn có từng từ chối tham gia sở thích của nhóm vì không muốn thay đổi thói quen của mình không?",
+    "options": {
+      "A": "Có, tôi luôn ưu tiên sự thoải mái của bản thân.",
+      "B": "Có, nhưng tôi hơi áp lực khi nói không.",
+      "C": "Không, tôi thường cố gắng tham gia dù không thích.",
+      "D": "Không, tôi cảm thấy áp lực phải theo nhóm."
+    },
+    "scores": {
+      "Có, tôi luôn ưu tiên sự thoải mái của bản thân.": 3,
+      "Có, nhưng tôi hơi áp lực khi nói không.": 2,
+      "Không, tôi thường cố gắng tham gia dù không thích.": 1,
+      "Không, tôi cảm thấy áp lực phải theo nhóm.": 0
+    }
+  },
+  "18": {
+    "question": "Bạn có thường cảm thấy mệt mỏi vì phải theo sở thích hoặc thói quen của nhóm bạn không?",
+    "options": {
+      "A": "Không, tôi cảm thấy thoải mái và tự nhiên.",
+      "B": "Có, nhưng tôi vẫn cố gắng giữ quan hệ bạn bè.",
+      "C": "Tôi thường xuyên cảm thấy mệt mỏi và áp lực.",
+      "D": "Tôi cảm thấy kiệt sức và muốn rút lui khỏi nhóm."
+    },
+    "scores": {
+      "Không, tôi cảm thấy thoải mái và tự nhiên.": 3,
+      "Có, nhưng tôi vẫn cố gắng giữ quan hệ bạn bè.": 2,
+      "Tôi thường xuyên cảm thấy mệt mỏi và áp lực.": 1,
+      "Tôi cảm thấy kiệt sức và muốn rút lui khỏi nhóm.": 0
+    }
+  },
+  "19": {
+    "question": "Bạn cảm nhận thế nào về việc bạn bè kỳ vọng bạn thay đổi sở thích để phù hợp hơn với họ?",
+    "options": {
+      "A": "Tôi thấy đó là điều bình thường và không áp lực.",
+      "B": "Tôi hơi áp lực nhưng hiểu ý tốt của bạn bè.",
+      "C": "Tôi cảm thấy áp lực và khó chịu với kỳ vọng đó.",
+      "D": "Tôi thấy bị ép buộc và không thoải mái."
+    },
+    "scores": {
+      "Tôi thấy đó là điều bình thường và không áp lực.": 3,
+      "Tôi hơi áp lực nhưng hiểu ý tốt của bạn bè.": 2,
+      "Tôi cảm thấy áp lực và khó chịu với kỳ vọng đó.": 1,
+      "Tôi thấy bị ép buộc và không thoải mái.": 0
+    }
+  },
+  "20": {
+    "question": "Bạn nghĩ sao về việc giữ vững sở thích cá nhân trong khi vẫn hòa nhập với nhóm bạn?",
+    "options": {
+      "A": "Tôi thấy đó là điều quan trọng và tự hào về điều đó.",
+      "B": "Tôi cố gắng cân bằng giữa sở thích và nhóm bạn.",
+      "C": "Tôi cảm thấy áp lực phải thay đổi để hòa nhập.",
+      "D": "Tôi thấy khó khăn và đôi khi muốn từ bỏ sở thích."
+    },
+    "scores": {
+      "Tôi thấy đó là điều quan trọng và tự hào về điều đó.": 3,
+      "Tôi cố gắng cân bằng giữa sở thích và nhóm bạn.": 2,
+      "Tôi cảm thấy áp lực phải thay đổi để hòa nhập.": 1,
+      "Tôi thấy khó khăn và đôi khi muốn từ bỏ sở thích.": 0
+    }
   }
 }
+

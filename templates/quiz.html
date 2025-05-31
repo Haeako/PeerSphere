@@ -870,7 +870,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const response = await fetch(`/api/questions?quiz_type=${selectedQuizType}`);
       if (!response.ok) throw new Error('Không thể tải câu hỏi từ server');
       
-      const originalResponse = await fetch(`/api/original-questions?quiz_type=${selectedQuizType}`);
+      const originalResponse = await fetch(`/api/questions?quiz_type=${selectedQuizType}`);
       if (!originalResponse.ok) throw new Error('Không thể tải câu hỏi gốc từ server');
       originalQuizQuestions = await originalResponse.json();
       

@@ -148,5 +148,155 @@
       "Tôi cảm thấy bị áp lực và không thoải mái.": 1,
       "Tôi rất áp lực và tự ti, cảm thấy khó chấp nhận bản thân.": 0
     }
+  },
+  "11": {
+    "question": "Bạn có từng cảm thấy mình cần chỉnh sửa ảnh trước khi đăng lên mạng xã hội không?",
+    "options": {
+      "A": "Không, tôi đăng ảnh nguyên bản và cảm thấy thoải mái.",
+      "B": "Thỉnh thoảng tôi chỉnh nhẹ để ảnh đẹp hơn.",
+      "C": "Tôi thường chỉnh sửa khá nhiều vì không tự tin.",
+      "D": "Tôi luôn phải chỉnh sửa kỹ lưỡng vì sợ người khác đánh giá."
+    },
+    "scores": {
+      "Không, tôi đăng ảnh nguyên bản và cảm thấy thoải mái.": 3,
+      "Thỉnh thoảng tôi chỉnh nhẹ để ảnh đẹp hơn.": 2,
+      "Tôi thường chỉnh sửa khá nhiều vì không tự tin.": 1,
+      "Tôi luôn phải chỉnh sửa kỹ lưỡng vì sợ người khác đánh giá.": 0
+    }
+  },
+  "12": {
+    "question": "Bạn cảm thấy thế nào khi người khác khoe ngoại hình trên mạng xã hội?",
+    "options": {
+      "A": "Tôi không bị ảnh hưởng và vui cho họ.",
+      "B": "Tôi có chút so sánh nhưng không để tâm nhiều.",
+      "C": "Tôi cảm thấy mình thua kém và tự ti.",
+      "D": "Tôi thấy rất áp lực và tránh xem những bài đăng đó."
+    },
+    "scores": {
+      "Tôi không bị ảnh hưởng và vui cho họ.": 3,
+      "Tôi có chút so sánh nhưng không để tâm nhiều.": 2,
+      "Tôi cảm thấy mình thua kém và tự ti.": 1,
+      "Tôi thấy rất áp lực và tránh xem những bài đăng đó.": 0
+    }
+  },
+  "13": {
+    "question": "Khi đi chơi hoặc dự tiệc, bạn chuẩn bị ngoại hình như thế nào?",
+    "options": {
+      "A": "Tôi ăn mặc theo ý thích, không để ý người khác.",
+      "B": "Tôi cố gắng trông ổn nhưng không quá cầu kỳ.",
+      "C": "Tôi rất lo lắng và mất nhiều thời gian chuẩn bị.",
+      "D": "Tôi thấy áp lực đến mức không muốn đi nếu không thấy đủ đẹp."
+    },
+    "scores": {
+      "Tôi ăn mặc theo ý thích, không để ý người khác.": 3,
+      "Tôi cố gắng trông ổn nhưng không quá cầu kỳ.": 2,
+      "Tôi rất lo lắng và mất nhiều thời gian chuẩn bị.": 1,
+      "Tôi thấy áp lực đến mức không muốn đi nếu không thấy đủ đẹp.": 0
+    }
+  },
+  "14": {
+    "question": "Bạn nghĩ gì về các tiêu chuẩn 'đẹp' được lan truyền trên mạng xã hội?",
+    "options": {
+      "A": "Tôi không bị ảnh hưởng và thấy ai cũng có vẻ đẹp riêng.",
+      "B": "Tôi đôi khi so sánh nhưng vẫn giữ quan điểm riêng.",
+      "C": "Tôi thấy mình không đáp ứng được và thấy buồn.",
+      "D": "Tôi cảm thấy áp lực phải thay đổi để phù hợp với tiêu chuẩn đó."
+    },
+    "scores": {
+      "Tôi không bị ảnh hưởng và thấy ai cũng có vẻ đẹp riêng.": 3,
+      "Tôi đôi khi so sánh nhưng vẫn giữ quan điểm riêng.": 2,
+      "Tôi thấy mình không đáp ứng được và thấy buồn.": 1,
+      "Tôi cảm thấy áp lực phải thay đổi để phù hợp với tiêu chuẩn đó.": 0
+    }
+  },
+  "15": {
+    "question": "Bạn có từng từ chối chụp ảnh nhóm vì không tự tin về ngoại hình?",
+    "options": {
+      "A": "Không, tôi luôn sẵn sàng tham gia chụp ảnh.",
+      "B": "Thỉnh thoảng tôi hơi ngại nhưng vẫn tham gia.",
+      "C": "Tôi hay từ chối vì lo ảnh không đẹp.",
+      "D": "Tôi rất ngại chụp ảnh vì luôn thấy mình xấu."
+    },
+    "scores": {
+      "Không, tôi luôn sẵn sàng tham gia chụp ảnh.": 3,
+      "Thỉnh thoảng tôi hơi ngại nhưng vẫn tham gia.": 2,
+      "Tôi hay từ chối vì lo ảnh không đẹp.": 1,
+      "Tôi rất ngại chụp ảnh vì luôn thấy mình xấu.": 0
+    }
+  },
+  "16": {
+    "question": "Bạn có từng bị ảnh hưởng bởi nhận xét tiêu cực về ngoại hình từ người khác?",
+    "options": {
+      "A": "Tôi không để tâm đến những lời tiêu cực.",
+      "B": "Tôi buồn nhẹ nhưng quên nhanh.",
+      "C": "Tôi bị ảnh hưởng khá lâu và hay suy nghĩ.",
+      "D": "Tôi bị tổn thương sâu sắc và mất tự tin."
+    },
+    "scores": {
+      "Tôi không để tâm đến những lời tiêu cực.": 3,
+      "Tôi buồn nhẹ nhưng quên nhanh.": 2,
+      "Tôi bị ảnh hưởng khá lâu và hay suy nghĩ.": 1,
+      "Tôi bị tổn thương sâu sắc và mất tự tin.": 0
+    }
+  },
+  "17": {
+    "question": "Bạn có từng nghĩ đến việc phẫu thuật thẩm mỹ hoặc can thiệp ngoại hình vì bạn bè/sự so sánh?",
+    "options": {
+      "A": "Không, tôi hài lòng với bản thân.",
+      "B": "Tôi từng suy nghĩ nhưng không nghiêm túc.",
+      "C": "Tôi có ý định thay đổi để đẹp hơn.",
+      "D": "Tôi rất muốn thay đổi vì không tự tin chút nào."
+    },
+    "scores": {
+      "Không, tôi hài lòng với bản thân.": 3,
+      "Tôi từng suy nghĩ nhưng không nghiêm túc.": 2,
+      "Tôi có ý định thay đổi để đẹp hơn.": 1,
+      "Tôi rất muốn thay đổi vì không tự tin chút nào.": 0
+    }
+  },
+  "18": {
+    "question": "Bạn nghĩ gì khi thấy người khác được khen là 'chuẩn đẹp'?",
+    "options": {
+      "A": "Tôi thấy bình thường, ai cũng có điểm mạnh riêng.",
+      "B": "Tôi hơi chạnh lòng nhưng vẫn ổn.",
+      "C": "Tôi thấy mình thua kém và buồn.",
+      "D": "Tôi cảm thấy rất tự ti và muốn tránh xa họ."
+    },
+    "scores": {
+      "Tôi thấy bình thường, ai cũng có điểm mạnh riêng.": 3,
+      "Tôi hơi chạnh lòng nhưng vẫn ổn.": 2,
+      "Tôi thấy mình thua kém và buồn.": 1,
+      "Tôi cảm thấy rất tự ti và muốn tránh xa họ.": 0
+    }
+  },
+  "19": {
+    "question": "Bạn có thường xuyên so sánh ngoại hình của mình với người nổi tiếng không?",
+    "options": {
+      "A": "Không, tôi không quan tâm.",
+      "B": "Thỉnh thoảng có so sánh nhẹ.",
+      "C": "Tôi thường xuyên so sánh và thấy không bằng.",
+      "D": "Tôi luôn cảm thấy tự ti khi nhìn họ."
+    },
+    "scores": {
+      "Không, tôi không quan tâm.": 3,
+      "Thỉnh thoảng có so sánh nhẹ.": 2,
+      "Tôi thường xuyên so sánh và thấy không bằng.": 1,
+      "Tôi luôn cảm thấy tự ti khi nhìn họ.": 0
+    }
+  },
+  "20": {
+    "question": "Bạn có từng ép bản thân ăn kiêng hay tập luyện quá sức vì ngoại hình?",
+    "options": {
+      "A": "Không, tôi làm mọi thứ trong sự cân bằng.",
+      "B": "Tôi có thử một chút nhưng không duy trì lâu.",
+      "C": "Tôi cố gắng ép bản thân để thay đổi.",
+      "D": "Tôi từng gây tổn hại sức khỏe vì áp lực ngoại hình."
+    },
+    "scores": {
+      "Không, tôi làm mọi thứ trong sự cân bằng.": 3,
+      "Tôi có thử một chút nhưng không duy trì lâu.": 2,
+      "Tôi cố gắng ép bản thân để thay đổi.": 1,
+      "Tôi từng gây tổn hại sức khỏe vì áp lực ngoại hình.": 0
+    }
   }
 }

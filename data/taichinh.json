@@ -148,5 +148,156 @@
       "Tôi cảm thấy ghen tị và chán nản.": 1,
       "Tôi thấy mình thua kém và không bằng họ.": 0
     }
+  },
+  "11": {
+    "question": "Khi bạn thấy bạn bè mua quà tặng cho người thân vào các dịp đặc biệt, bạn cảm thấy thế nào?",
+    "options": {
+      "A": "Tôi thấy vui và không bị áp lực gì.",
+      "B": "Tôi hơi áp lực nhưng cố gắng không để ý.",
+      "C": "Tôi buồn vì không đủ điều kiện để làm như vậy.",
+      "D": "Tôi cảm thấy tự ti và không muốn so sánh."
+    },
+    "scores": {
+      "Tôi thấy vui và không bị áp lực gì.": 3,
+      "Tôi hơi áp lực nhưng cố gắng không để ý.": 2,
+      "Tôi buồn vì không đủ điều kiện để làm như vậy.": 1,
+      "Tôi cảm thấy tự ti và không muốn so sánh.": 0
+    }
+  },
+  "12": {
+    "question": "Khi bạn bè đề cập đến việc tiết kiệm hoặc đầu tư cho tương lai, bạn nghĩ gì?",
+    "options": {
+      "A": "Tôi thấy đó là điều bình thường và không áp lực.",
+      "B": "Tôi hơi lo lắng nhưng cố gắng học hỏi.",
+      "C": "Tôi thấy khó khăn vì không có nhiều tiền để tiết kiệm.",
+      "D": "Tôi nghĩ mình không thể theo kịp họ về tài chính."
+    },
+    "scores": {
+      "Tôi thấy đó là điều bình thường và không áp lực.": 3,
+      "Tôi hơi lo lắng nhưng cố gắng học hỏi.": 2,
+      "Tôi thấy khó khăn vì không có nhiều tiền để tiết kiệm.": 1,
+      "Tôi nghĩ mình không thể theo kịp họ về tài chính.": 0
+    }
+  },
+  "13": {
+    "question": "Khi bạn bè nói về việc thuê nhà hoặc chi phí sinh hoạt đắt đỏ, bạn cảm nhận thế nào?",
+    "options": {
+      "A": "Tôi không cảm thấy áp lực vì có cách quản lý tài chính tốt.",
+      "B": "Tôi có chút áp lực nhưng vẫn kiểm soát được.",
+      "C": "Tôi thấy khó khăn khi phải chi trả các khoản đó.",
+      "D": "Tôi cảm thấy bất lực và lo lắng về tài chính của mình."
+    },
+    "scores": {
+      "Tôi không cảm thấy áp lực vì có cách quản lý tài chính tốt.": 3,
+      "Tôi có chút áp lực nhưng vẫn kiểm soát được.": 2,
+      "Tôi thấy khó khăn khi phải chi trả các khoản đó.": 1,
+      "Tôi cảm thấy bất lực và lo lắng về tài chính của mình.": 0
+    }
+  },
+  "14": {
+    "question": "Bạn nghĩ gì khi bạn bè khoe về việc mua quần áo hay phụ kiện đắt tiền?",
+    "options": {
+      "A": "Tôi thấy đó là chuyện bình thường và không để tâm.",
+      "B": "Tôi hơi áp lực nhưng cố gắng không để ảnh hưởng.",
+      "C": "Tôi cảm thấy buồn và ghen tị.",
+      "D": "Tôi thấy tự ti về khả năng tài chính của mình."
+    },
+    "scores": {
+      "Tôi thấy đó là chuyện bình thường và không để tâm.": 3,
+      "Tôi hơi áp lực nhưng cố gắng không để ảnh hưởng.": 2,
+      "Tôi cảm thấy buồn và ghen tị.": 1,
+      "Tôi thấy tự ti về khả năng tài chính của mình.": 0
+    }
+  },
+  "15": {
+    "question": "Khi bạn được mời tham gia các hoạt động nhóm tốn kém, bạn thường phản ứng thế nào?",
+    "options": {
+      "A": "Tôi vui vẻ tham gia mà không thấy áp lực.",
+      "B": "Tôi hơi băn khoăn nhưng vẫn cố gắng tham gia.",
+      "C": "Tôi ngại và cảm thấy khó xử vì chi phí cao.",
+      "D": "Tôi từ chối và cảm thấy tự ti vì tài chính hạn chế."
+    },
+    "scores": {
+      "Tôi vui vẻ tham gia mà không thấy áp lực.": 3,
+      "Tôi hơi băn khoăn nhưng vẫn cố gắng tham gia.": 2,
+      "Tôi ngại và cảm thấy khó xử vì chi phí cao.": 1,
+      "Tôi từ chối và cảm thấy tự ti vì tài chính hạn chế.": 0
+    }
+  },
+  "16": {
+    "question": "Bạn cảm thấy thế nào khi so sánh mức thu nhập của mình với bạn bè?",
+    "options": {
+      "A": "Tôi thấy hài lòng và không bị áp lực.",
+      "B": "Tôi hơi lo lắng nhưng không để ảnh hưởng đến tinh thần.",
+      "C": "Tôi thấy buồn và áp lực.",
+      "D": "Tôi cảm thấy tự ti và bất mãn với bản thân."
+    },
+    "scores": {
+      "Tôi thấy hài lòng và không bị áp lực.": 3,
+      "Tôi hơi lo lắng nhưng không để ảnh hưởng đến tinh thần.": 2,
+      "Tôi thấy buồn và áp lực.": 1,
+      "Tôi cảm thấy tự ti và bất mãn với bản thân.": 0
+    }
+  },
+  "17": {
+    "question": "Khi nghĩ về việc quản lý chi tiêu hàng tháng, bạn cảm nhận ra sao?",
+    "options": {
+      "A": "Tôi tự tin quản lý tốt tài chính của mình.",
+      "B": "Tôi có chút lo lắng nhưng vẫn ổn.",
+      "C": "Tôi gặp khó khăn và cảm thấy áp lực.",
+      "D": "Tôi thấy mất kiểm soát và lo lắng lớn."
+    },
+    "scores": {
+      "Tôi tự tin quản lý tốt tài chính của mình.": 3,
+      "Tôi có chút lo lắng nhưng vẫn ổn.": 2,
+      "Tôi gặp khó khăn và cảm thấy áp lực.": 1,
+      "Tôi thấy mất kiểm soát và lo lắng lớn.": 0
+    }
+  },
+  "18": {
+    "question": "Bạn có thường lo lắng về việc không đủ tiền cho những chi tiêu bất ngờ không?",
+    "options": {
+      "A": "Không, tôi đã có kế hoạch dự phòng tài chính.",
+      "B": "Có chút lo lắng nhưng không quá nhiều.",
+      "C": "Tôi thường xuyên lo lắng về điều đó.",
+      "D": "Tôi rất căng thẳng và không biết phải làm sao."
+    },
+    "scores": {
+      "Không, tôi đã có kế hoạch dự phòng tài chính.": 3,
+      "Có chút lo lắng nhưng không quá nhiều.": 2,
+      "Tôi thường xuyên lo lắng về điều đó.": 1,
+      "Tôi rất căng thẳng và không biết phải làm sao.": 0
+    }
+  },
+  "19": {
+    "question": "Bạn nghĩ thế nào về việc so sánh tài chính bản thân với bạn bè trên mạng xã hội?",
+    "options": {
+      "A": "Tôi không bị ảnh hưởng và thấy bình thường.",
+      "B": "Tôi có chút áp lực nhưng cố gắng không để ý.",
+      "C": "Tôi cảm thấy buồn và ghen tị.",
+      "D": "Tôi cảm thấy tự ti và mất tự tin."
+    },
+    "scores": {
+      "Tôi không bị ảnh hưởng và thấy bình thường.": 3,
+      "Tôi có chút áp lực nhưng cố gắng không để ý.": 2,
+      "Tôi cảm thấy buồn và ghen tị.": 1,
+      "Tôi cảm thấy tự ti và mất tự tin.": 0
+    }
+  },
+  "20": {
+    "question": "Khi nghĩ về tương lai tài chính của mình, bạn cảm thấy thế nào?",
+    "options": {
+      "A": "Tôi lạc quan và tin rằng mình sẽ ổn định.",
+      "B": "Tôi hơi lo lắng nhưng vẫn có kế hoạch rõ ràng.",
+      "C": "Tôi thấy áp lực và chưa biết cách giải quyết.",
+      "D": "Tôi cảm thấy bất an và hoang mang về tương lai."
+    },
+    "scores": {
+      "Tôi lạc quan và tin rằng mình sẽ ổn định.": 3,
+      "Tôi hơi lo lắng nhưng vẫn có kế hoạch rõ ràng.": 2,
+      "Tôi thấy áp lực và chưa biết cách giải quyết.": 1,
+      "Tôi cảm thấy bất an và hoang mang về tương lai.": 0
+    }
   }
 }
+

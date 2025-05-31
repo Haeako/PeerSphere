@@ -1,0 +1,212 @@
+{
+  "1": {
+    "question": "Bạn thấy bạn bè đạt học bổng danh giá, còn mình thì không. Bạn sẽ làm gì?",
+    "options": {
+      "A": "Chúc mừng họ và xem đó là động lực để cố gắng hơn.",
+      "B": "So sánh bản thân với họ và cảm thấy áp lực nhưng vẫn cố gắng.",
+      "C": "Trách bản thân vì không đủ giỏi và cảm thấy thất vọng.",
+      "D": "Nghĩ rằng họ chỉ may mắn và không thực sự giỏi hơn mình."
+    },
+    "scores": {
+      "Chúc mừng họ và xem đó là động lực để cố gắng hơn.": 3,
+      "So sánh bản thân với họ và cảm thấy áp lực nhưng vẫn cố gắng.": 2,
+      "Trách bản thân vì không đủ giỏi và cảm thấy thất vọng.": 1,
+      "Nghĩ rằng họ chỉ may mắn và không thực sự giỏi hơn mình.": 0
+    }
+  },
+  "2": {
+    "question": "Bạn bè của bạn đang tham gia nhiều hoạt động ngoại khóa và đạt được nhiều thành tựu. Bạn sẽ phản ứng thế nào?",
+    "options": {
+      "A": "Tôi sẽ cân nhắc tham gia nếu thấy phù hợp với bản thân.",
+      "B": "Cảm thấy một chút áp lực nhưng vẫn theo đuổi mục tiêu của mình.",
+      "C": "Vội vàng đăng ký nhiều hoạt động để không bị thua kém.",
+      "D": "Cảm thấy tự ti và không muốn tham gia bất kỳ hoạt động nào."
+    },
+    "scores": {
+      "Tôi sẽ cân nhắc tham gia nếu thấy phù hợp với bản thân.": 3,
+      "Cảm thấy một chút áp lực nhưng vẫn theo đuổi mục tiêu của mình.": 2,
+      "Vội vàng đăng ký nhiều hoạt động để không bị thua kém.": 1,
+      "Cảm thấy tự ti và không muốn tham gia bất kỳ hoạt động nào.": 0
+    }
+  },
+  "3": {
+    "question": "Khi bạn bè xung quanh đều có việc làm thêm, bạn sẽ làm gì?",
+    "options": {
+      "A": "Tìm hiểu xem có công việc nào phù hợp với mình không.",
+      "B": "Học cách quản lý thời gian tốt hơn để có thể vừa học vừa làm.",
+      "C": "Cảm thấy áp lực và tìm việc ngay cả khi chưa sẵn sàng.",
+      "D": "Nghĩ rằng mình vô dụng vì không có việc làm thêm."
+    },
+    "scores": {
+      "Tìm hiểu xem có công việc nào phù hợp với mình không.": 3,
+      "Học cách quản lý thời gian tốt hơn để có thể vừa học vừa làm.": 2,
+      "Cảm thấy áp lực và tìm việc ngay cả khi chưa sẵn sàng.": 1,
+      "Nghĩ rằng mình vô dụng vì không có việc làm thêm.": 0
+    }
+  },
+  "4": {
+    "question": "Bạn thấy có người tốt hơn bạn về kỹ năng mà bạn luôn tự tin. Bạn sẽ làm gì?",
+    "options": {
+      "A": "Cố gắng học hỏi và cải thiện kỹ năng của bản thân.",
+      "B": "Tập trung vào điểm mạnh của mình thay vì so sánh.",
+      "C": "Cảm thấy tự ti và nghĩ rằng mình không thể giỏi như họ.",
+      "D": "Bỏ cuộc vì cho rằng mình không có năng khiếu."
+    },
+    "scores": {
+      "Cố gắng học hỏi và cải thiện kỹ năng của bản thân.": 3,
+      "Tập trung vào điểm mạnh của mình thay vì so sánh.": 2,
+      "Cảm thấy tự ti và nghĩ rằng mình không thể giỏi như họ.": 1,
+      "Bỏ cuộc vì cho rằng mình không có năng khiếu.": 0
+    }
+  },
+  "5": {
+    "question": "Khi bạn thấy bạn cùng lớp được điểm cao trong bài kiểm tra, còn bạn thì không, bạn sẽ làm gì?",
+    "options": {
+      "A": "Xem lại bài của mình để rút kinh nghiệm và cố gắng hơn.",
+      "B": "Cảm thấy buồn nhưng tự nhủ lần sau sẽ làm tốt hơn.",
+      "C": "So sánh và tự trách bản thân vì không đủ giỏi.",
+      "D": "Cho rằng giáo viên thiên vị và cảm thấy bất công."
+    },
+    "scores": {
+      "Xem lại bài của mình để rút kinh nghiệm và cố gắng hơn.": 3,
+      "Cảm thấy buồn nhưng tự nhủ lần sau sẽ làm tốt hơn.": 2,
+      "So sánh và tự trách bản thân vì không đủ giỏi.": 1,
+      "Cho rằng giáo viên thiên vị và cảm thấy bất công.": 0
+    }
+  },
+  "6": {
+    "question": "Bạn thấy bạn mình đang học thêm nhiều khóa học nâng cao, bạn sẽ phản ứng thế nào?",
+    "options": {
+      "A": "Tìm hiểu nếu đó là khóa học phù hợp với mục tiêu của mình.",
+      "B": "Cảm thấy hơi lo lắng nhưng không chạy theo phong trào.",
+      "C": "Đăng ký học ngay cả khi chưa chắc mình có hứng thú.",
+      "D": "Bỏ mặc và cho rằng mình không cần học thêm gì nữa."
+    },
+    "scores": {
+      "Tìm hiểu nếu đó là khóa học phù hợp với mục tiêu của mình.": 3,
+      "Cảm thấy hơi lo lắng nhưng không chạy theo phong trào.": 2,
+      "Đăng ký học ngay cả khi chưa chắc mình có hứng thú.": 1,
+      "Bỏ mặc và cho rằng mình không cần học thêm gì nữa.": 0
+    }
+  },
+  "7": {
+    "question": "Trong nhóm học tập, bạn thấy mình ít đóng góp hơn người khác. Bạn sẽ làm gì?",
+    "options": {
+      "A": "Chủ động học thêm để có thể đóng góp nhiều hơn.",
+      "B": "Xin ý kiến từ bạn bè để cải thiện cách học.",
+      "C": "Im lặng và để người khác làm nhiều hơn.",
+      "D": "Tránh tham gia nhóm học tập vì cảm thấy kém cỏi."
+    },
+    "scores": {
+      "Chủ động học thêm để có thể đóng góp nhiều hơn.": 3,
+      "Xin ý kiến từ bạn bè để cải thiện cách học.": 2,
+      "Im lặng và để người khác làm nhiều hơn.": 1,
+      "Tránh tham gia nhóm học tập vì cảm thấy kém cỏi.": 0
+    }
+  },
+  "8": {
+    "question": "Bạn cùng lớp phát biểu rất tự tin trong giờ học, còn bạn thì không. Bạn sẽ phản ứng thế nào?",
+    "options": {
+      "A": "Luyện tập nhiều hơn để cải thiện kỹ năng thuyết trình.",
+      "B": "Cố gắng phát biểu dù còn ngại ngùng.",
+      "C": "Im lặng và nhường phần phát biểu cho người khác.",
+      "D": "Không bao giờ phát biểu vì nghĩ mình sẽ bị chê cười."
+    },
+    "scores": {
+      "Luyện tập nhiều hơn để cải thiện kỹ năng thuyết trình.": 3,
+      "Cố gắng phát biểu dù còn ngại ngùng.": 2,
+      "Im lặng và nhường phần phát biểu cho người khác.": 1,
+      "Không bao giờ phát biểu vì nghĩ mình sẽ bị chê cười.": 0
+    }
+  },
+  "9": {
+    "question": "Giáo viên khen ngợi bạn khác trước lớp vì thành tích học tập. Bạn cảm thấy thế nào?",
+    "options": {
+      "A": "Lấy đó làm động lực để cố gắng hơn.",
+      "B": "Cảm thấy một chút chạnh lòng nhưng vẫn giữ tinh thần tích cực.",
+      "C": "So sánh bản thân và cảm thấy tủi thân.",
+      "D": "Thấy bực bội và cho rằng mình không bao giờ được ghi nhận."
+    },
+    "scores": {
+      "Lấy đó làm động lực để cố gắng hơn.": 3,
+      "Cảm thấy một chút chạnh lòng nhưng vẫn giữ tinh thần tích cực.": 2,
+      "So sánh bản thân và cảm thấy tủi thân.": 1,
+      "Thấy bực bội và cho rằng mình không bao giờ được ghi nhận.": 0
+    }
+  },
+  "10": {
+    "question": "Bạn gặp khó khăn trong môn học mà người khác lại học rất tốt. Bạn sẽ làm gì?",
+    "options": {
+      "A": "Nhờ họ chỉ giúp để cải thiện.",
+      "B": "Cố gắng tự học thêm dù hơi khó khăn.",
+      "C": "Tránh học môn đó vì nghĩ mình không có năng khiếu.",
+      "D": "Từ bỏ và tập trung vào môn mình thích hơn."
+    },
+    "scores": {
+      "Nhờ họ chỉ giúp để cải thiện.": 3,
+      "Cố gắng tự học thêm dù hơi khó khăn.": 2,
+      "Tránh học môn đó vì nghĩ mình không có năng khiếu.": 1,
+      "Từ bỏ và tập trung vào môn mình thích hơn.": 0
+    }
+  },
+  "11": {
+    "question": "Bạn không được chọn vào đội tuyển học sinh giỏi, còn bạn bè thì có. Bạn sẽ phản ứng thế nào?",
+    "options": {
+      "A": "Chúc mừng họ và tiếp tục cố gắng lần sau.",
+      "B": "Tự nhủ mình sẽ cố gắng hơn ở lĩnh vực khác.",
+      "C": "Cảm thấy hụt hẫng và mất động lực học.",
+      "D": "Nghĩ rằng mình không đủ giỏi và từ bỏ luôn."
+    },
+    "scores": {
+      "Chúc mừng họ và tiếp tục cố gắng lần sau.": 3,
+      "Tự nhủ mình sẽ cố gắng hơn ở lĩnh vực khác.": 2,
+      "Cảm thấy hụt hẫng và mất động lực học.": 1,
+      "Nghĩ rằng mình không đủ giỏi và từ bỏ luôn.": 0
+    }
+  },
+  "12": {
+    "question": "Khi làm bài nhóm, bạn thấy mình làm sai còn người khác làm đúng. Bạn sẽ phản ứng ra sao?",
+    "options": {
+      "A": "Cảm ơn họ đã sửa sai và học hỏi từ đó.",
+      "B": "Cảm thấy xấu hổ nhưng chấp nhận để cải thiện.",
+      "C": "Trốn tránh trách nhiệm và để người khác làm.",
+      "D": "Tức giận và cho rằng mình bị coi thường."
+    },
+    "scores": {
+      "Cảm ơn họ đã sửa sai và học hỏi từ đó.": 3,
+      "Cảm thấy xấu hổ nhưng chấp nhận để cải thiện.": 2,
+      "Trốn tránh trách nhiệm và để người khác làm.": 1,
+      "Tức giận và cho rằng mình bị coi thường.": 0
+    }
+  },
+  "13": {
+    "question": "Khi bạn thấy người khác học trước giáo trình, bạn sẽ làm gì?",
+    "options": {
+      "A": "Lên kế hoạch học trước như họ nếu thấy cần thiết.",
+      "B": "Không quan tâm và giữ tiến độ học của riêng mình.",
+      "C": "Lo lắng vì nghĩ mình đang học chậm.",
+      "D": "Bỏ cuộc vì cho rằng không theo kịp họ."
+    },
+    "scores": {
+      "Lên kế hoạch học trước như họ nếu thấy cần thiết.": 3,
+      "Không quan tâm và giữ tiến độ học của riêng mình.": 2,
+      "Lo lắng vì nghĩ mình đang học chậm.": 1,
+      "Bỏ cuộc vì cho rằng không theo kịp họ.": 0
+    }
+  },
+  "14": {
+    "question": "Bạn bị điểm thấp trong khi người khác trong nhóm đều đạt điểm cao. Bạn sẽ phản ứng thế nào?",
+    "options": {
+      "A": "Xem lại cách học và cố gắng cải thiện.",
+      "B": "Tham khảo cách học của người khác.",
+      "C": "Cảm thấy xấu hổ và tránh né nhóm.",
+      "D": "Đổ lỗi cho giáo viên hoặc hoàn cảnh."
+    },
+    "scores": {
+      "Xem lại cách học và cố gắng cải thiện.": 3,
+      "Tham khảo cách học của người khác.": 2,
+      "Cảm thấy xấu hổ và tránh né nhóm.": 1,
+      "Đổ lỗi cho giáo viên hoặc hoàn cảnh.": 0
+    }
+  }
+}

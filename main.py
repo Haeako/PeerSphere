@@ -13,7 +13,7 @@ import asyncio
 
 # Cấu hình các file JSON tương ứng với từng option
 JSON_FILES = {
-    "overview": "data/overview.json",
+    "study": "data/study.json",
     "finace": "data/taichinh.json", 
     "nghinh": "data/nghinh.json",
     "hobby": "data/sothich.json",
@@ -22,7 +22,7 @@ JSON_FILES = {
 
 # Assessment ranges cho từng loại quiz
 ASSESSMENT_CONFIGS = {
-    "overview": [
+    "study": [
         {"min": 25, "max": 30, "assessment": "Bạn kiểm soát rất tốt áp lực đồng trang lứa."},
         {"min": 18, "max": 24, "assessment": "Bạn có một số áp lực nhưng vẫn giữ được sự cân bằng."},
         {"min": 10, "max": 17, "assessment": "Bạn đang bị ảnh hưởng đáng kể bởi áp lực đồng trang lứa."},
@@ -55,7 +55,7 @@ ASSESSMENT_CONFIGS = {
 }
 
 # Hàm load dữ liệu từ JSON với option
-def load_quiz_data(quiz_type: str = "overview") -> Dict[int, dict]:
+def load_quiz_data(quiz_type: str = "study") -> Dict[int, dict]:
     if quiz_type not in JSON_FILES:
         raise ValueError(f"Quiz type '{quiz_type}' không được hỗ trợ. Các loại có sẵn: {list(JSON_FILES.keys())}")
     
@@ -78,7 +78,7 @@ def shuffle_options(options: Dict[str, str]) -> Dict[str, str]:
     return dict(items)
 
 # Chọn ngẫu nhiên số câu hỏi (mặc định 10) và xáo trộn đáp án
-def get_randomized_questions(quiz_type: str = "overview", limit: int = 10) -> Dict[int, Dict[str, Any]]:
+def get_randomized_questions(quiz_type: str = "study", limit: int = 10) -> Dict[int, Dict[str, Any]]:
     quiz_data: Dict[int, dict] = load_quiz_data(quiz_type)
 
     # Lấy tất cả org_id, rồi xáo trộn
@@ -109,7 +109,7 @@ def get_randomized_questions(quiz_type: str = "overview", limit: int = 10) -> Di
 
 # Lấy assessment ranges theo quiz type
 def get_assessment_ranges(quiz_type: str) -> List[Dict]:
-    return ASSESSMENT_CONFIGS.get(quiz_type, ASSESSMENT_CONFIGS["overview"])
+    return ASSESSMENT_CONFIGS.get(quiz_type, ASSESSMENT_CONFIGS["study"])
 
 # Khởi tạo FastAPI
 app = FastAPI(title="PeerSphere💗 - Student Support Platform")
@@ -124,7 +124,7 @@ class QuizAnswer(BaseModel):
 
 class QuizSubmission(BaseModel):
     answers: List[QuizAnswer]
-    quiz_type: Optional[str] = "overview"  # Thêm quiz_type vào submission
+    quiz_type: Optional[str] = "study"  # Thêm quiz_type vào submission
 
 class QuizResult(BaseModel):
     total_score: int
@@ -160,7 +160,7 @@ async def home(request: Request):
     return templates.TemplateResponse("home.html", {"request": request})
 
 @app.get("/quiz", response_class=HTMLResponse)
-async def quiz_page(request: Request, quiz_type: str = "overview"):
+async def quiz_page(request: Request, quiz_type: str = "study"):
     # Kiểm tra quiz_type hợp lệ
     if quiz_type not in JSON_FILES:
         raise HTTPException(status_code=400, detail=f"Quiz type '{quiz_type}' không được hỗ trợ")
@@ -182,7 +182,7 @@ async def get_quiz_types():
     return {
         "available_types": list(JSON_FILES.keys()),
         "descriptions": {
-            "overview": "Đánh giá áp lực đồng trang lứa",
+            "study": "Đánh giá áp lực học tập",
             "finace": "Đánh giá áp lực về tài chính", 
             "nghinh": "Đánh giá áp lực về ngoại hình",
             "hobby": "Đánh giá áp lực về sở thích",
@@ -191,7 +191,7 @@ async def get_quiz_types():
     }
 
 @app.get("/api/original-questions")
-async def original_questions(quiz_type: str = "overview"):
+async def original_questions(quiz_type: str = "study"):
     """Lấy câu hỏi gốc theo loại quiz"""
     try:
         return load_quiz_data(quiz_type)
@@ -199,7 +199,7 @@ async def original_questions(quiz_type: str = "overview"):
         raise HTTPException(status_code=400, detail=str(e))
 
 @app.get("/api/questions")
-async def api_questions(quiz_type: str = "overview", limit: int = 10):
+async def api_questions(quiz_type: str = "study", limit: int = 10):
     """Lấy câu hỏi đã được xáo trộn theo loại quiz"""
     try:
         return JSONResponse(content=get_randomized_questions(quiz_type, limit))
@@ -233,7 +233,7 @@ async def websocket_chat(ws: WebSocket):
 
 @app.post("/api/submit", response_model=QuizResult)
 async def submit_quiz(submission: QuizSubmission):
-    quiz_type = submission.quiz_type or "overview"
+    quiz_type = submission.quiz_type or "study"
     
     try:
         quiz_data = load_quiz_data(quiz_type)
@@ -285,7 +285,7 @@ async def submit_quiz(submission: QuizSubmission):
     )
 
 @app.get("/result", response_class=HTMLResponse)
-async def result_page(request: Request, score: int, assessment: str, quiz_type: str = "overview"):
+async def result_page(request: Request, score: int, assessment: str, quiz_type: str = "study"):
     return templates.TemplateResponse(
         "result.html",
         {

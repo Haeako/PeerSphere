@@ -93,6 +93,11 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
   }
+  @media screen and (max-width: 900px) {
+  .content {
+    top: 120%; /* hoặc tăng padding */
+  }
+}
   
   .head-bar {
     z-index: 999;
@@ -119,11 +124,16 @@ body {
     color: #f4a460;
   }
   
+.foot-bar {
+  background-color: rgb(93, 93, 143);
+  width: 100%;
+  bottom: 0px;
+  height: 80px; /* hoặc padding: 10px; */
+}
+
+/* Khi chiều rộng màn hình nhỏ hơn 600px (điện thoại) */
+@media screen and (max-width: 900px) {
   .foot-bar {
-    background-color: rgb(93, 93, 143);
-    
-    bottom: 0px;
-    width: 100%;
-    /* -webkit-mask-image: linear-gradient(to bottom, transparent 1%, rgb(0, 0, 0)25px);
-    -webkit-filter: grayscale(50%); */
+    height: 120px; /* hoặc tăng padding */
   }
+}

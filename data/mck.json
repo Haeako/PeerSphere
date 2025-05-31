@@ -148,5 +148,155 @@
       "Tôi cảm thấy áp lực và đôi khi lo lắng.": 1,
       "Tôi rất áp lực và không thoải mái với bản thân.": 0
     }
+  },
+  "11": {
+    "question": "Bạn cảm thấy thế nào khi bạn bè theo đuổi phong cách sống tối giản còn bạn thì không?",
+    "options": {
+      "A": "Tôi tôn trọng sự khác biệt và sống theo cách riêng.",
+      "B": "Tôi có chút băn khoăn nhưng không thay đổi gì.",
+      "C": "Tôi thấy mình nên thử thay đổi để giống họ.",
+      "D": "Tôi cảm thấy khó chịu và không hiểu được họ."
+    },
+    "scores": {
+      "Tôi tôn trọng sự khác biệt và sống theo cách riêng.": 3,
+      "Tôi có chút băn khoăn nhưng không thay đổi gì.": 2,
+      "Tôi thấy mình nên thử thay đổi để giống họ.": 1,
+      "Tôi cảm thấy khó chịu và không hiểu được họ.": 0
+    }
+  },
+  "12": {
+    "question": "Khi bạn thấy bạn bè thường xuyên tập thể dục hoặc chơi thể thao, bạn cảm thấy thế nào?",
+    "options": {
+      "A": "Tôi thấy tích cực và có thể học hỏi theo cách riêng.",
+      "B": "Tôi cảm thấy một chút áp lực nhưng không sao cả.",
+      "C": "Tôi thấy mình đang bị tụt lại.",
+      "D": "Tôi cảm thấy kém cỏi và không muốn tham gia."
+    },
+    "scores": {
+      "Tôi thấy tích cực và có thể học hỏi theo cách riêng.": 3,
+      "Tôi cảm thấy một chút áp lực nhưng không sao cả.": 2,
+      "Tôi thấy mình đang bị tụt lại.": 1,
+      "Tôi cảm thấy kém cỏi và không muốn tham gia.": 0
+    }
+  },
+  "13": {
+    "question": "Khi bạn bè thường xuyên ăn uống healthy, bạn cảm thấy sao?",
+    "options": {
+      "A": "Tôi chọn cách ăn uống phù hợp với mình và tôn trọng họ.",
+      "B": "Tôi hơi ngại khi ăn khác họ.",
+      "C": "Tôi cảm thấy xấu hổ và muốn thay đổi.",
+      "D": "Tôi cảm thấy áp lực và tự ti khi ăn uống không giống họ."
+    },
+    "scores": {
+      "Tôi chọn cách ăn uống phù hợp với mình và tôn trọng họ.": 3,
+      "Tôi hơi ngại khi ăn khác họ.": 2,
+      "Tôi cảm thấy xấu hổ và muốn thay đổi.": 1,
+      "Tôi cảm thấy áp lực và tự ti khi ăn uống không giống họ.": 0
+    }
+  },
+  "14": {
+    "question": "Bạn cảm thấy thế nào khi bạn bè có nhiều hoạt động vào cuối tuần còn bạn thì nghỉ ngơi tại nhà?",
+    "options": {
+      "A": "Tôi hài lòng với cách sống riêng của mình.",
+      "B": "Tôi thấy hơi chạnh lòng nhưng vẫn vui vẻ.",
+      "C": "Tôi cảm thấy buồn và muốn thay đổi bản thân.",
+      "D": "Tôi cảm thấy bị bỏ rơi và cô lập."
+    },
+    "scores": {
+      "Tôi hài lòng với cách sống riêng của mình.": 3,
+      "Tôi thấy hơi chạnh lòng nhưng vẫn vui vẻ.": 2,
+      "Tôi cảm thấy buồn và muốn thay đổi bản thân.": 1,
+      "Tôi cảm thấy bị bỏ rơi và cô lập.": 0
+    }
+  },
+  "15": {
+    "question": "Bạn cảm thấy sao khi bạn bè đặt mục tiêu sống rất rõ ràng, còn bạn thì chưa có?",
+    "options": {
+      "A": "Tôi có kế hoạch riêng, không bị ảnh hưởng.",
+      "B": "Tôi cảm thấy nên cố gắng hơn.",
+      "C": "Tôi thấy lo lắng về bản thân.",
+      "D": "Tôi thấy bị áp lực và thất vọng."
+    },
+    "scores": {
+      "Tôi có kế hoạch riêng, không bị ảnh hưởng.": 3,
+      "Tôi cảm thấy nên cố gắng hơn.": 2,
+      "Tôi thấy lo lắng về bản thân.": 1,
+      "Tôi thấy bị áp lực và thất vọng.": 0
+    }
+  },
+  "16": {
+    "question": "Bạn cảm thấy thế nào khi bạn bè thường xuyên tham gia hoạt động thiện nguyện còn bạn thì không?",
+    "options": {
+      "A": "Tôi trân trọng điều đó và chọn cách đóng góp phù hợp với mình.",
+      "B": "Tôi hơi ngại nhưng vẫn ủng hộ họ.",
+      "C": "Tôi cảm thấy mình kém cỏi hơn họ.",
+      "D": "Tôi thấy bị áp lực và cảm giác không thuộc về nhóm."
+    },
+    "scores": {
+      "Tôi trân trọng điều đó và chọn cách đóng góp phù hợp với mình.": 3,
+      "Tôi hơi ngại nhưng vẫn ủng hộ họ.": 2,
+      "Tôi cảm thấy mình kém cỏi hơn họ.": 1,
+      "Tôi thấy bị áp lực và cảm giác không thuộc về nhóm.": 0
+    }
+  },
+  "17": {
+    "question": "Khi bạn bè thường xuyên chia sẻ hình ảnh cuộc sống tích cực trên mạng xã hội, bạn cảm thấy sao?",
+    "options": {
+      "A": "Tôi vui thay cho họ và không bị ảnh hưởng.",
+      "B": "Tôi hơi ganh tị nhưng vẫn ổn.",
+      "C": "Tôi cảm thấy mình thua kém và buồn.",
+      "D": "Tôi thấy tự ti và không muốn dùng mạng xã hội nữa."
+    },
+    "scores": {
+      "Tôi vui thay cho họ và không bị ảnh hưởng.": 3,
+      "Tôi hơi ganh tị nhưng vẫn ổn.": 2,
+      "Tôi cảm thấy mình thua kém và buồn.": 1,
+      "Tôi thấy tự ti và không muốn dùng mạng xã hội nữa.": 0
+    }
+  },
+  "18": {
+    "question": "Bạn cảm thấy sao khi bạn bè thích phong cách sống trải nghiệm, dịch chuyển còn bạn thích ổn định?",
+    "options": {
+      "A": "Tôi tôn trọng sự khác biệt và sống đúng với mình.",
+      "B": "Tôi có chút lo lắng mình đang bỏ lỡ điều gì đó.",
+      "C": "Tôi cảm thấy mình nên thay đổi để giống họ.",
+      "D": "Tôi thấy khó chịu và cảm giác không phù hợp với nhóm."
+    },
+    "scores": {
+      "Tôi tôn trọng sự khác biệt và sống đúng với mình.": 3,
+      "Tôi có chút lo lắng mình đang bỏ lỡ điều gì đó.": 2,
+      "Tôi cảm thấy mình nên thay đổi để giống họ.": 1,
+      "Tôi thấy khó chịu và cảm giác không phù hợp với nhóm.": 0
+    }
+  },
+  "19": {
+    "question": "Bạn nghĩ sao khi bạn bè đề cao việc học thêm kỹ năng mới thường xuyên?",
+    "options": {
+      "A": "Tôi ủng hộ và học theo cách phù hợp với mình.",
+      "B": "Tôi hơi áp lực nhưng vẫn cố gắng theo kịp.",
+      "C": "Tôi cảm thấy bị bỏ lại phía sau.",
+      "D": "Tôi cảm thấy nản và muốn từ bỏ cố gắng."
+    },
+    "scores": {
+      "Tôi ủng hộ và học theo cách phù hợp với mình.": 3,
+      "Tôi hơi áp lực nhưng vẫn cố gắng theo kịp.": 2,
+      "Tôi cảm thấy bị bỏ lại phía sau.": 1,
+      "Tôi cảm thấy nản và muốn từ bỏ cố gắng.": 0
+    }
+  },
+  "20": {
+    "question": "Bạn cảm thấy như thế nào khi bạn bè ưu tiên việc cân bằng giữa công việc và đời sống cá nhân?",
+    "options": {
+      "A": "Tôi thấy đó là điều tốt và cũng cố gắng như họ.",
+      "B": "Tôi thấy họ tốt nhưng chưa sẵn sàng làm theo.",
+      "C": "Tôi thấy mình đang mất kiểm soát cuộc sống.",
+      "D": "Tôi thấy xa lạ và không thể thay đổi được gì."
+    },
+    "scores": {
+      "Tôi thấy đó là điều tốt và cũng cố gắng như họ.": 3,
+      "Tôi thấy họ tốt nhưng chưa sẵn sàng làm theo.": 2,
+      "Tôi thấy mình đang mất kiểm soát cuộc sống.": 1,
+      "Tôi thấy xa lạ và không thể thay đổi được gì.": 0
+    }
   }
 }
