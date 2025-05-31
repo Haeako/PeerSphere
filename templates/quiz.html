@@ -1051,7 +1051,7 @@ document.addEventListener("DOMContentLoaded", function() {
         })
       };
 
-      const response = await fetch('/api/submit', {
+      const response = await fetch('/api/submit?quiz_type=${selectedQuizType}', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
