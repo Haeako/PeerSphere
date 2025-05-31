@@ -1051,7 +1051,7 @@ document.addEventListener("DOMContentLoaded", function() {
         })
       };
 
-      const response = await fetch('/api/submit?quiz_type=${selectedQuizType}', {
+      const response = await fetch('/api/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -1066,7 +1066,7 @@ document.addEventListener("DOMContentLoaded", function() {
       if (result.detailed_scores) localStorage.setItem('detailedScores', JSON.stringify(result.detailed_scores));
       if (result.detailed_answers) localStorage.setItem('detailedAnswers', JSON.stringify(result.detailed_answers));
       
-      window.location.href = `/result?score=${result.total_score}&assessment=${encodeURIComponent(result.assessment)}&detailed_scores=${encodeURIComponent(JSON.stringify(result.detailed_scores))}&detailed_answers=${encodeURIComponent(JSON.stringify(result.detailed_answers))}`;
+      window.location.href = `/result?score=${result.total_score}&assessment=${encodeURIComponent(result.assessment)}&quiz_type=${selectedQuizType}&detailed_scores=${encodeURIComponent(JSON.stringify(result.detailed_scores))}&detailed_answers=${encodeURIComponent(JSON.stringify(result.detailed_answers))}`;
     } catch (err) {
       console.error('Error submitting quiz:', err);
       alert(`Lỗi nộp bài: ${err.message}`);

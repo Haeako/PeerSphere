@@ -2,7 +2,7 @@ from google import genai
 import os
 import time
 
-api_key = os.environ["API_KEY"]
+api_key = 'a'
 
 class GeminiChatBot:
     def __init__(self):
