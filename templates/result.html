@@ -682,100 +682,34 @@
 <div class="score-ranges fade-in delay-3">
   <h4 class="ranges-title">Thang điểm đánh giá</h4>
   <ul class="range-list">
-    <li class="range-item {% if score >= 25 %}active{% endif %}" onclick="toggleAdvice('high')">
-      25 - 30 điểm: Bạn kiểm soát rất tốt áp lực đồng trang lứa.
-      <div id="advice-high" class="advice-panel advice-high {% if score >= 25 %}active{% endif %}">
+    {% for r in assessment_ranges %}
+    <li class="range-item {% if score >= r.min and score <= r.max %}active{% endif %}">
+      <strong>{{ r.min }} - {{ r.max }} điểm</strong>
+      <br>
+      <span><b>Mức độ:</b> {{ r.meaning }}</span>
+      <br>
+      <span><b>Ý nghĩa:</b> {{ r.assessment }}</span>
+      {% if score >= r.min and score <= r.max %}
+      <div class="advice-panel active">
         <div class="advice-title">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2L20 7.27V16.73L12 22L4 16.73V7.27L12 2Z" />
-            <path d="M12 22V12" />
-            <path d="M12 12L20 7.27" />
-            <path d="M12 12L4 7.27" />
-          </svg>
-          Lời khuyên để duy trì sự cân bằng tuyệt vời của bạn:
-        </div>
-        <div class="advice-content">
-          Bạn đang làm rất tốt trong việc giữ vững bản sắc và không để áp lực từ bạn bè ảnh hưởng đến quyết định của mình. Hãy tiếp tục phát huy:
-          <ul>
-            <li>Chia sẻ kinh nghiệm và hỗ trợ những người bạn đang gặp khó khăn với áp lực đồng trang lứa</li>
-            <li>Duy trì quan điểm độc lập và tự tin của bạn, đây là điểm mạnh rất đáng quý</li>
-            <li>Tiếp tục nuôi dưỡng các mối quan hệ tích cực và lành mạnh</li>
-            <li>Hãy nhớ rằng việc chọn lựa bạn bè có cùng giá trị sống với bạn sẽ giúp bạn tiếp tục phát triển</li>
-          </ul>
-        </div>
-      </div>
-    </li>
-    <li class="range-item {% if score >= 18 and score <= 24 %}active{% endif %}" onclick="toggleAdvice('medium')">
-      18 - 24 điểm: Bạn có một số áp lực nhưng vẫn giữ được sự cân bằng.
-      <div id="advice-medium" class="advice-panel advice-medium {% if score >= 18 and score <= 24 %}active{% endif %}">
-        <div class="advice-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M8 12L10.5 14.5L16 9" />
             <circle cx="12" cy="12" r="10" />
-          </svg>
-          Lời khuyên để tăng cường sự độc lập của bạn:
-        </div>
-        <div class="advice-content">
-          Bạn đã làm tốt trong việc duy trì sự cân bằng, nhưng vẫn có thể cải thiện thêm:
-          <ul>
-            <li>Luyện tập nói "không" khi bạn cảm thấy không thoải mái với một hoạt động nào đó</li>
-            <li>Dành thời gian để xác định rõ ràng các giá trị cá nhân và mục tiêu của riêng bạn</li>
-            <li>Phát triển sự tự tin bằng cách tham gia các hoạt động bạn thực sự yêu thích</li>
-            <li>Kết nối với những người có tư duy tích cực và không đánh giá người khác</li>
-            <li>Chia sẻ cảm xúc của bạn với người bạn tin tưởng khi cảm thấy áp lực</li>
-          </ul>
-        </div>
-      </div>
-    </li>
-    <li class="range-item {% if score >= 10 and score <= 17 %}active{% endif %}" onclick="toggleAdvice('low')">
-      10 - 17 điểm: Bạn đang bị ảnh hưởng đáng kể bởi áp lực đồng trang lứa.
-      <div id="advice-low" class="advice-panel advice-low {% if score >= 10 and score <= 17 %}active{% endif %}">
-        <div class="advice-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 9v4" />
-            <path d="M12 17h.01" />
-            <circle cx="12" cy="12" r="10" />
-          </svg>
-          Lời khuyên để giảm bớt áp lực đồng trang lứa:
-        </div>
-        <div class="advice-content">
-          Bạn đang chịu ảnh hưởng khá nhiều từ áp lực xung quanh. Đây là một số cách để cải thiện tình hình:
-          <ul>
-            <li>Học cách nhận diện khi nào bạn đang làm điều gì đó chỉ vì áp lực từ người khác</li>
-            <li>Tìm kiếm sự hỗ trợ từ gia đình, giáo viên hoặc cố vấn tâm lý học đường</li>
-            <li>Mở rộng vòng tròn bạn bè để không phụ thuộc vào một nhóm duy nhất</li>
-            <li>Phát triển sở thích và tài năng của riêng bạn để tăng cường sự tự tin</li>
-            <li>Đặt ra giới hạn rõ ràng cho bản thân và thực hành giữ vững những giới hạn đó</li>
-            <li>Dành thời gian rèn luyện các kỹ năng từ chối lành mạnh</li>
-          </ul>
-        </div>
-      </div>
-    </li>
-    <li class="range-item {% if score >= 0 and score <= 9 %}active{% endif %}" onclick="toggleAdvice('very-low')">
-      0 - 9 điểm: Bạn có thể đang chịu áp lực lớn và cần tìm cách giải tỏa.
-      <div id="advice-very-low" class="advice-panel advice-very-low {% if score >= 0 and score <= 9 %}active{% endif %}">
-        <div class="advice-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M12 8v8" />
             <path d="M12 20h.01" />
-            <circle cx="12" cy="12" r="10" />
           </svg>
-          Lời khuyên quan trọng để xây dựng khả năng chống lại áp lực:
+          <b>Biện pháp cụ thể:</b>
         </div>
         <div class="advice-content">
-          Bạn đang gặp khó khăn đáng kể với áp lực đồng trang lứa. Đây là những điều bạn nên cân nhắc:
           <ul>
-            <li>Nói chuyện với một người lớn đáng tin cậy về những gì bạn đang trải qua</li>
-            <li>Cân nhắc tham khảo ý kiến của chuyên gia tư vấn tâm lý để có chiến lược phù hợp</li>
-            <li>Đánh giá lại các mối quan hệ bạn bè hiện tại và xem liệu chúng có lành mạnh không</li>
-            <li>Học cách nhận diện và quản lý cảm xúc tiêu cực khi bị áp lực</li>
-            <li>Tập trung vào việc xây dựng lòng tự trọng và giá trị bản thân</li>
-            <li>Tìm kiếm các nhóm hỗ trợ hoặc câu lạc bộ có cùng sở thích với bạn</li>
-            <li>Nhớ rằng: việc từ chối làm theo đám đông đôi khi là dấu hiệu của sự mạnh mẽ, không phải yếu đuối</li>
+            {% for tip in r.advice %}
+            <li>{{ tip }}</li>
+            {% endfor %}
           </ul>
         </div>
       </div>
+      {% endif %}
     </li>
+    {% endfor %}
   </ul>
 </div>
         

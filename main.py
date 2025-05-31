@@ -23,34 +23,232 @@ JSON_FILES = {
 # Assessment ranges cho từng loại quiz
 ASSESSMENT_CONFIGS = {
     "study": [
-        {"min": 25, "max": 30, "assessment": "Bạn kiểm soát rất tốt áp lực đồng trang lứa."},
-        {"min": 18, "max": 24, "assessment": "Bạn có một số áp lực nhưng vẫn giữ được sự cân bằng."},
-        {"min": 10, "max": 17, "assessment": "Bạn đang bị ảnh hưởng đáng kể bởi áp lực đồng trang lứa."},
-        {"min": 0,  "max": 9,  "assessment": "Bạn có thể đang chịu áp lực lớn và cần tìm cách giải tỏa."}
+        {
+            "min": 27, "max": 30,
+            "meaning": "Rất thấp",
+            "assessment": "Bạn kiểm soát rất tốt áp lực đồng trang lứa.",
+            "advice": [
+                "Duy trì sự tự tin và thái độ tích cực về bản thân.",
+                "Truyền cảm hứng, hỗ trợ bạn bè xây dựng hình ảnh tích cực.",
+                "Chia sẻ quan điểm về vẻ đẹp đa dạng, không khuôn mẫu."
+            ]
+        },
+        {
+            "min": 20, "max": 26,
+            "meaning": "Thấp",
+            "assessment": "Bạn có một số áp lực nhưng vẫn giữ được sự cân bằng.",
+            "advice": [
+                "Tự nâng cao nhận thức về giá trị bản thân không chỉ qua ngoại hình.",
+                "Học cách bảo vệ cảm xúc khi tiếp nhận các bình luận về ngoại hình.",
+                "Tập trung phát triển kỹ năng, sở thích cá nhân để tăng tự tin."
+            ]
+        },
+        {
+            "min": 10, "max": 19,
+            "meaning": "Trung bình",
+            "assessment": "Bạn đang bị ảnh hưởng đáng kể bởi áp lực đồng trang lứa.",
+            "advice": [
+                "Tập luyện kỹ năng tự chấp nhận và yêu thương bản thân.",
+                "Tránh so sánh tiêu cực, thực hành mindfulness hoặc thiền.",
+                "Tìm sự hỗ trợ từ gia đình, bạn bè hoặc chuyên gia tâm lý khi cần.",
+                "Tham gia các hoạt động giúp nâng cao hình ảnh bản thân."
+            ]
+        },
+        {
+            "min": 0, "max": 9,
+            "meaning": "Cao",
+            "assessment": "Bạn có thể đang chịu áp lực lớn và cần tìm cách giải tỏa.",
+            "advice": [
+                "Tìm kiếm hỗ trợ tâm lý chuyên nghiệp hoặc tư vấn.",
+                "Thực hiện các phương pháp chăm sóc sức khỏe tâm thần như thiền, yoga, tập thể dục.",
+                "Giới hạn tiếp xúc với mạng xã hội hoặc các nguồn gây áp lực.",
+                "Đặt mục tiêu cải thiện ngoại hình lành mạnh, tránh áp lực tiêu cực.",
+                "Xây dựng môi trường sống tích cực, được khích lệ và hỗ trợ."
+            ]
+        }
     ],
     "finace": [
-        {"min": 25, "max": 30, "assessment": "Bạn rất tự tin, không bị áp lực về tài chính khi so sánh với bạn bè."},
-        {"min": 18, "max": 24, "assessment": "Bạn có chút áp lực nhưng biết cách kiểm soát và không ảnh hưởng nhiều đến tâm trạng."},
-        {"min": 10, "max": 17, "assessment": "Bạn cảm thấy áp lực khá nhiều về tài chính, đôi khi bị ảnh hưởng tâm lý"},
-        {"min": 0,  "max": 9,  "assessment": "Bạn bị áp lực tài chính đồng trang lứa lớn, có thể ảnh hưởng xấu đến tinh thần và tự tin."}
+        {
+            "min": 27, "max": 30,
+            "meaning": "Rất thấp",
+            "assessment": "Bạn rất tự tin, không bị áp lực về tài chính khi so sánh với bạn bè.",
+            "advice": [
+                "Duy trì tư duy tích cực và thái độ hài lòng với hiện tại.",
+                "Chia sẻ kinh nghiệm quản lý tài chính cá nhân với bạn bè.",
+                "Hỗ trợ bạn bè khi họ gặp khó khăn tài chính nếu có thể."
+            ]
+        },
+        {
+            "min": 20, "max": 26,
+            "meaning": "Thấp",
+            "assessment": "Bạn có chút áp lực nhưng biết cách kiểm soát và không ảnh hưởng nhiều đến tâm trạng.",
+            "advice": [
+                "Tiếp tục duy trì thói quen lập kế hoạch chi tiêu hợp lý.",
+                "Tìm hiểu thêm kỹ năng quản lý tài chính cá nhân.",
+                "Học cách so sánh tích cực, lấy bạn bè làm động lực chứ không phải áp lực.",
+                "Trao đổi, chia sẻ cảm xúc với người thân hoặc bạn bè tin cậy."
+            ]
+        },
+        {
+            "min": 10, "max": 19,
+            "meaning": "Trung bình",
+            "assessment": "Bạn cảm thấy áp lực khá nhiều về tài chính, đôi khi bị ảnh hưởng tâm lý.",
+            "advice": [
+                "Xây dựng ngân sách chi tiêu chi tiết để kiểm soát tài chính.",
+                "Học các kỹ năng kiếm thêm thu nhập như làm thêm hoặc kinh doanh nhỏ.",
+                "Tham gia các nhóm hỗ trợ tinh thần hoặc tư vấn tâm lý nếu cảm thấy quá căng thẳng.",
+                "Tập trung phát triển kỹ năng bản thân để tăng cơ hội nghề nghiệp.",
+                "Hạn chế so sánh tiêu cực với bạn bè, tập trung vào điểm mạnh của mình."
+            ]
+        },
+        {
+            "min": 0, "max": 9,
+            "meaning": "Cao",
+            "assessment": "Bạn bị áp lực tài chính đồng trang lứa lớn, có thể ảnh hưởng xấu đến tinh thần và tự tin.",
+            "advice": [
+                "Tìm kiếm sự tư vấn chuyên nghiệp về quản lý tài chính hoặc tâm lý.",
+                "Ưu tiên chăm sóc sức khỏe tâm thần: thiền, tập thể dục, nghỉ ngơi hợp lý.",
+                "Học cách nói “không” với các chi tiêu không cần thiết để giảm áp lực.",
+                "Xác định mục tiêu tài chính ngắn hạn, dễ đạt được để tạo động lực.",
+                "Tham gia các khóa học kỹ năng mềm, phát triển nghề nghiệp để cải thiện thu nhập.",
+                "Tìm kiếm sự hỗ trợ từ gia đình, bạn bè hoặc cộng đồng khi cần."
+            ]
+        }
     ],
     "nghinh": [
-        {"min": 27, "max": 30, "assessment": "Bạn rất tự tin về ngoại hình, ít bị áp lực từ bạn bè."},
-        {"min": 20, "max": 26, "assessment": "Bạn có chút áp lực nhưng kiểm soát tốt cảm xúc và hình ảnh của mình."},
-        {"min": 10, "max": 19, "assessment": "Bạn chịu áp lực khá nhiều, có lúc cảm thấy thiếu tự tin về ngoại hình."},
-        {"min": 0,  "max": 9,  "assessment": "Bạn chịu áp lực lớn, có thể ảnh hưởng tiêu cực đến sức khỏe tâm thần."}
+        {
+            "min": 27, "max": 30,
+            "meaning": "Rất thấp",
+            "assessment": "Bạn rất tự tin về ngoại hình, ít bị áp lực từ bạn bè.",
+            "advice": [
+                "Duy trì sự tự tin và thái độ tích cực về bản thân.",
+                "Truyền cảm hứng, hỗ trợ bạn bè xây dựng hình ảnh tích cực.",
+                "Chia sẻ quan điểm về vẻ đẹp đa dạng, không khuôn mẫu."
+            ]
+        },
+        {
+            "min": 20, "max": 26,
+            "meaning": "Thấp",
+            "assessment": "Bạn có chút áp lực nhưng kiểm soát tốt cảm xúc và hình ảnh của mình.",
+            "advice": [
+                "Tự nâng cao nhận thức về giá trị bản thân không chỉ qua ngoại hình.",
+                "Học cách bảo vệ cảm xúc khi tiếp nhận các bình luận về ngoại hình.",
+                "Tập trung phát triển kỹ năng, sở thích cá nhân để tăng tự tin."
+            ]
+        },
+        {
+            "min": 10, "max": 19,
+            "meaning": "Trung bình",
+            "assessment": "Bạn chịu áp lực khá nhiều, có lúc cảm thấy thiếu tự tin về ngoại hình.",
+            "advice": [
+                "Tập luyện kỹ năng tự chấp nhận và yêu thương bản thân.",
+                "Tránh so sánh tiêu cực, thực hành mindfulness hoặc thiền.",
+                "Tìm sự hỗ trợ từ gia đình, bạn bè hoặc chuyên gia tâm lý khi cần.",
+                "Tham gia các hoạt động giúp nâng cao hình ảnh bản thân."
+            ]
+        },
+        {
+            "min": 0, "max": 9,
+            "meaning": "Cao",
+            "assessment": "Bạn chịu áp lực lớn, có thể ảnh hưởng tiêu cực đến sức khỏe tâm thần.",
+            "advice": [
+                "Tìm kiếm hỗ trợ tâm lý chuyên nghiệp hoặc tư vấn.",
+                "Thực hiện các phương pháp chăm sóc sức khỏe tâm thần như thiền, yoga, tập thể dục.",
+                "Giới hạn tiếp xúc với mạng xã hội hoặc các nguồn gây áp lực.",
+                "Đặt mục tiêu cải thiện ngoại hình lành mạnh, tránh áp lực tiêu cực.",
+                "Xây dựng môi trường sống tích cực, được khích lệ và hỗ trợ."
+            ]
+        }
     ],
     "hobby": [
-        {"min": 27, "max": 30, "assessment": "Bạn rất tự tin với sở thích và thói quen của mình, không bị áp lực từ bạn bè."},
-        {"min": 20, "max": 26, "assessment": "Bạn có chút áp lực nhưng kiểm soát tốt và duy trì sự cân bằng."},
-        {"min": 10, "max": 19, "assessment": "Bạn chịu áp lực khá nhiều và đôi khi cảm thấy khó khăn với sự khác biệt."},
-        {"min": 0,  "max": 9,  "assessment": "Bạn bị áp lực lớn, cảm thấy khó hòa nhập và thiếu tự tin với sở thích, thói quen cá nhân."}
+        {
+            "min": 27, "max": 30,
+            "meaning": "Rất thấp",
+            "assessment": "Bạn rất tự tin với sở thích và thói quen của mình, không bị áp lực từ bạn bè.",
+            "advice": [
+                "Duy trì sự tự tin và thái độ tích cực.",
+                "Khuyến khích sự đa dạng và khác biệt trong nhóm bạn.",
+                "Chia sẻ và học hỏi từ sự khác biệt của nhau."
+            ]
+        },
+        {
+            "min": 20, "max": 26,
+            "meaning": "Thấp",
+            "assessment": "Bạn có chút áp lực nhưng kiểm soát tốt và duy trì sự cân bằng.",
+            "advice": [
+                "Giữ vững sở thích cá nhân đồng thời linh hoạt khi cần.",
+                "Thể hiện quan điểm rõ ràng và biết cách từ chối lịch sự.",
+                "Giao tiếp cởi mở với bạn bè về sở thích của mình."
+            ]
+        },
+        {
+            "min": 10, "max": 19,
+            "meaning": "Trung bình",
+            "assessment": "Bạn chịu áp lực khá nhiều và đôi khi cảm thấy khó khăn với sự khác biệt.",
+            "advice": [
+                "Thực hành kỹ năng chấp nhận bản thân và sự khác biệt.",
+                "Tránh so sánh tiêu cực, tập trung phát triển cá nhân.",
+                "Tìm sự hỗ trợ từ bạn bè thân thiết hoặc chuyên gia khi cần.",
+                "Tham gia các hoạt động giúp nâng cao sự tự tin và kỹ năng xã hội."
+            ]
+        },
+        {
+            "min": 0, "max": 9,
+            "meaning": "Cao",
+            "assessment": "Bạn bị áp lực lớn, cảm thấy khó hòa nhập và thiếu tự tin với sở thích, thói quen cá nhân.",
+            "advice": [
+                "Tìm kiếm tư vấn tâm lý hoặc tham gia nhóm hỗ trợ.",
+                "Thực hành chăm sóc sức khỏe tâm thần như thiền, thể dục.",
+                "Học cách đặt giới hạn và nói “không” khi cần.",
+                "Tìm kiếm môi trường, nhóm bạn phù hợp với mình hơn.",
+                "Đặt mục tiêu phát triển bản thân theo cách lành mạnh và tích cực."
+            ]
+        }
     ],
     "lifestyle": [
-        {"min": 25, "max": 30, "assessment": "Bạn rất tự tin với phong cách sống cá nhân, ít bị áp lực từ bạn bè."},
-        {"min": 18, "max": 24, "assessment": "Bạn có chút áp lực nhưng kiểm soát tốt cảm xúc và giữ sự cân bằng."},
-        {"min": 10, "max": 17, "assessment": "Bạn chịu áp lực khá nhiều và đôi khi khó giữ vững bản thân."},
-        {"min": 0,  "max": 9,  "assessment": "Bạn bị áp lực lớn, cảm thấy khó hòa nhập và thiếu tự tin."}
+        {
+            "min": 27, "max": 30,
+            "meaning": "Rất thấp",
+            "assessment": "Bạn rất tự tin với phong cách sống cá nhân, ít bị áp lực từ bạn bè.",
+            "advice": [
+                "Duy trì sự tự tin và thái độ tích cực.",
+                "Khuyến khích sự đa dạng và tôn trọng phong cách khác nhau.",
+                "Chia sẻ và học hỏi từ sự khác biệt của nhau."
+            ]
+        },
+        {
+            "min": 20, "max": 26,
+            "meaning": "Thấp",
+            "assessment": "Bạn có chút áp lực nhưng kiểm soát tốt cảm xúc và giữ sự cân bằng.",
+            "advice": [
+                "Giữ vững quan điểm cá nhân đồng thời linh hoạt khi cần.",
+                "Giao tiếp cởi mở và rõ ràng với bạn bè.",
+                "Thể hiện sự tôn trọng và đặt giới hạn khi cần."
+            ]
+        },
+        {
+            "min": 10, "max": 19,
+            "meaning": "Trung bình",
+            "assessment": "Bạn chịu áp lực khá nhiều và đôi khi khó giữ vững bản thân.",
+            "advice": [
+                "Thực hành kỹ năng chấp nhận bản thân và sự khác biệt.",
+                "Tập trung phát triển cá nhân, tránh so sánh tiêu cực.",
+                "Tìm hỗ trợ từ bạn bè thân thiết hoặc chuyên gia khi cần.",
+                "Tham gia các hoạt động nâng cao tự tin và kỹ năng xã hội."
+            ]
+        },
+        {
+            "min": 0, "max": 9,
+            "meaning": "Cao",
+            "assessment": "Bạn bị áp lực lớn, cảm thấy khó hòa nhập và thiếu tự tin.",
+            "advice": [
+                "Tìm kiếm tư vấn tâm lý hoặc nhóm hỗ trợ.",
+                "Thực hành chăm sóc sức khỏe tâm thần như thiền, thể dục.",
+                "Học cách đặt giới hạn và nói “không”.",
+                "Tìm môi trường bạn bè phù hợp và tích cực.",
+                "Đặt mục tiêu phát triển bản thân theo cách lành mạnh."
+            ]
+        }
     ]
 }
 
@@ -109,7 +307,7 @@ def get_randomized_questions(quiz_type: str = "study", limit: int = 10) -> Dict[
 
 # Lấy assessment ranges theo quiz type
 def get_assessment_ranges(quiz_type: str) -> List[Dict]:
-    return ASSESSMENT_CONFIGS.get(quiz_type, ASSESSMENT_CONFIGS["study"])
+    return ASSESSMENT_CONFIGS.get(quiz_type, [])
 
 # Khởi tạo FastAPI
 app = FastAPI(title="PeerSphere💗 - Student Support Platform")
@@ -286,13 +484,15 @@ async def submit_quiz(submission: QuizSubmission):
 
 @app.get("/result", response_class=HTMLResponse)
 async def result_page(request: Request, score: int, assessment: str, quiz_type: str = "study"):
+    assessment_ranges = ASSESSMENT_CONFIGS.get(quiz_type, [])
     return templates.TemplateResponse(
         "result.html",
         {
-            "request": request, 
-            "score": score, 
+            "request": request,
+            "score": score,
             "assessment": assessment,
-            "quiz_type": quiz_type
+            "quiz_type": quiz_type,
+            "assessment_ranges": assessment_ranges
         }
     )
 
